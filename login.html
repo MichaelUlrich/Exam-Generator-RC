@@ -9,7 +9,6 @@
                         var username = document.getElementById("username").value;       //Value entered in 'username' in HTML segment
                         var password = document.getElementById("pwd").value;            //Value entered in 'pwd' in HTML segment
                         var url = "username="+username+"&password="+password;           //Secure?
-                        //var buttonInput = document.getElementById("button");          //Can use 'Enter' key to submit data
 
                         XMLHobj.open("POST", phpFile, true);
                         XMLHobj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
@@ -35,16 +34,6 @@
                 <b> Password </b><br> <label for="pwd"></label>
                 <input name="pwd" id="pwd" type="password" placeholder="Enter Password"> <br><br>
                 <button id="button" onClick="ajax_post_req()"> Login </button> <br><br>
-                        <script>
-                                var buttonInput = document.getElementById("button");            //Can use 'Enter' key to submit data
-                                <!--Can submit datat by hitting 'Enter' key -->
-                                buttonInput.addEventListener("keyup", function(event)) {
-                                        //event.preventDefault();
-                                        if(event.keyCode == 13) {
-                                                 document.getElementById("button").click();
-                                        }
-                                });
-                        </script>
                 <div id="status"></div> <!-- ID for PHP file to connect to -->
         </body>
 </html>
