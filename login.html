@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<head>
+        <title> CS490 Login </title>
+        <script>
+                <!-- AJAX dynamically change page -->
+                function ajax_post_req() {
+                        var XMLHobj = new XMLHttpRequest();                             //Create XMLHttpRequest Obj
+                        var phpFile = "login.php";                                      //File name of PHP for curl request
+                        var username = document.getElementById("username").value;       //Value entered in 'username' in HTML segment
+                        var password = document.getElementById("pwd").value;            //Value entered in 'pwd' in HTML segment
+                        var url = "username="+username+"&password="+password;           //Secure?
+                        //var buttonInput = document.getElementById("button");          //Can use 'Enter' key to submit data
+
+                        XMLHobj.open("POST", phpFile, true);
+                        XMLHobj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
+                        XMLHobj.onreadystatechange = function() {
+                                if(XMLHobj.readyState == 4 && XMLHobj.status == 200) {  //Coneection is established and working
+                                        var return_data = XMLHobj.responseText;
+                                        document.getElementById("status").innerHTML = return_data;
+                                }
+                        }
+                        XMLHobj.send(url); //Send request
+
+                        document.getElementById("status").innerHTML = "Loading..." //Temporary loading text to be replaced with data
+                }
+        </script>
+</head>
+<html>
+        <body>
+                <h1> Login </h1>
+
+                <b> Username </b><br> <label for="username"></label>
+                <input name="username" id="username" type="text" placeholder="Enter Username"> <br>
+
+                <b> Password </b><br> <label for="pwd"></label>
+                <input name="pwd" id="pwd" type="password" placeholder="Enter Password"> <br><br>
+                <button id="button" onClick="ajax_post_req()"> Login </button> <br><br>
+                        <script>
+                                var buttonInput = document.getElementById("button");            //Can use 'Enter' key to submit data
+                                <!--Can submit datat by hitting 'Enter' key -->
+                                buttonInput.addEventListener("keyup", function(event)) {
+                                        //event.preventDefault();
+                                        if(event.keyCode == 13) {
+                                                 document.getElementById("button").click();
+                                        }
+                                });
+                        </script>
+                <div id="status"></div> <!-- ID for PHP file to connect to -->
+        </body>
+</html>
