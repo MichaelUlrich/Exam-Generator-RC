@@ -27,7 +27,8 @@ accessing -->
 <body>
 	<h2> Temporary Teacher Homepage </h2>
 	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/questionSelect.php'"> Question Selection </button> <br>
-	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/test.php'"> View Test </button> <br>
 	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/addQuestion.php'"> Add Questions </button> <br>
+	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/test.php'"> View Test </button> <br>
+	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/makeComments.php'"> Review Grades and Comments </button> <br>
 </body>
 </HTML>
