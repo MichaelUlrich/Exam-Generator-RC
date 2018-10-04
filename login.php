@@ -6,7 +6,7 @@
 
 
 	$user = array('username' => $_POST['username'], 'password' =>$_POST['password']);
-	$middle_url = "https://web.njit.edu/~bkw2/middle.php";				//Receive if login is for student or teacher
+	$middle_url = "https://web.njit.edu/~bkw2/middle_beta.php";				//Receive if login is for student or teacher
 	$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $middle_url);                             //Set URL
 		curl_setopt($ch, CURLOPT_POST, true);                                   //Set to POST
