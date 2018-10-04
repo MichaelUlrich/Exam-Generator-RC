@@ -6,7 +6,7 @@
 		header("Location: https://web.njit.edu/~meu3/CS490/Exam-Generator/login.html");
 		die();
 	} else {
-		echo "Teacher, OK";
+		echo "[Teacher Mode is always enabled for testing]" . "<br>";
 	}
 
 ?>
