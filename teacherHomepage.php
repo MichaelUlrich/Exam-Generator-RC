@@ -8,7 +8,7 @@ accessing -->
 <style>
 	.block {
 		display: block;
-		width: 50%;
+		width: 25%;
 		border: 2px solid #000;
 		background-color: #00FFFF;
 		color: black;
@@ -17,18 +17,19 @@ accessing -->
 		cursor: pointer;
 		text-align: center;
 		margin: 0 auto;
+        float:left;
 	}
 	.block:hover {
 		background-color: #000;
 		color: white;
-	}
+	} 
 </style>
 </head>
 <body>
 	<h2> Temporary Teacher Homepage </h2>
-	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/questionSelect.php'"> Question Selection </button> <br>
-	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/addQuestion.php'"> Add Questions </button> <br>
-	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/test.php'"> View Test </button> <br>
-	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/makeComments.php'"> Review Grades and Comments </button> <br>
+	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/questionSelect.php'"> Question Selection </button> 
+	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/addQuestion.php'"> Add Questions </button> 
+	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/test.php'"> View Test </button> 
+	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/makeComments.php'"> Review Grades and Comments </button> 
 </body>
 </HTML>
