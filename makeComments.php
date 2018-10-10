@@ -6,7 +6,7 @@
 		* { box-sizing: border-box; }
 		.row { display: flex; }
 		.column {
-			flex: 505%;
+			flex: 50%;
 			padding: 10px;
 		}
 	</style>
