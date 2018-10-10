@@ -16,14 +16,8 @@
 		cursor: pointer;
 		text-align: center;
 		margin: 0 auto;
-<<<<<<< HEAD
 		float:left;
 	} .block:hover {
-=======
-        float:left;
-	}
-	.block:hover {
->>>>>>> 77f888083b9c4393b75aea4a112ae05ee580b007
 		background-color: #000;
 		color: white;
 	} 
@@ -31,17 +25,10 @@
 </head>
 <body>
 	<h2> Temporary Teacher Homepage </h2>
-<<<<<<< HEAD
 	<button class="block" onclick="window.location.href='questionSelect.php'"> Question Selection </button>
 	<button class="block" onclick="window.location.href='addQuestion.php'"> Add Questions </button>
 	<button class="block" onclick="window.location.href='test.php'"> View Test </button>
 	<button class="block" onclick="window.location.href='makeComments.php'"> Review Grades and Comments </button>
-=======
-	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/questionSelect.php'"> Question Selection </button> 
-	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/addQuestion.php'"> Add Questions </button> 
-	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/test.php'"> View Test </button> 
-	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/makeComments.php'"> Review Grades and Comments </button> 
->>>>>>> 77f888083b9c4393b75aea4a112ae05ee580b007
 </body>
 </html>
 
