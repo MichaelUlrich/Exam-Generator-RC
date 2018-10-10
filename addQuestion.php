@@ -24,6 +24,20 @@
 				<input type="text" name="question"><br>
 				<p> Enter Correct Answer </p>
 				<input type="text" name="answer"><br>
+				<p> Select Question Difficulty </p>
+				<select name="difficulty">
+					<option value="easy">Easy</option>
+					<option value="medium">Medium</option>
+					<option value="hard">Hard</option>
+				</select>
+				<p> Select Question Type </p>
+				        <select name="type">
+					<option value="loop">Loop</option>
+					<option value="function">Function</option>
+					<option value="variable">Variable</option>
+				</select>
+
+																											
 			</form>
 		</div>
 		<div class="column" style="background-color:#bbb;">

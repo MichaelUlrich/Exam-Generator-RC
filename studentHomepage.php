@@ -8,8 +8,8 @@ accessing -->
 <style>
 	.block {
 		display: block;
-		width: 50%;
-		border: 2px solid #000;
+		width: 25%;
+		border: 1px solid #000;
 		background-color: #98FB98;
 		color: black;
 		padding: 10px 10px;
@@ -17,6 +17,7 @@ accessing -->
 		cursor: pointer;
 		text-align: center;
 		margin: 0 auto;
+		float: left;
 	}
 	.block:hover {
 		background-color: #000;
@@ -27,7 +28,7 @@ accessing -->
 <body>
 	<h2> Temporary Student  Homepage </h2>
 	
-	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/test.php'"> Take Test </button> <br>
-	<button class="block" onclick="window.location.href='https://web.njit.edu/~meu3/CS490/Exam-Generator/grades.php'"> View Grades and Comments </button> <br>
+	<button class="block" onclick="window.location.href='test.php'"> Take Test </button> 
+	<button class="block" onclick="window.location.href='grades.php'"> View Grades and Comments </button> 
 </body>
 </HTML>

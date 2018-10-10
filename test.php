@@ -18,20 +18,10 @@
 	<div class ="row">
 		<div class ="column" style="background-color:#fff;">
 			<form method="post" action="test.php" /*PHP file to submit student answer*/ >
-				<textarea name="studentCode" id='studentCode' rows="25" cols="125" placeholder="Write Your Code Here" required> </textarea> <!-- Large text box for students code -->
+				<textarea name="studentCode" id='studentCode' rows="25" cols="125" placeholder="Write Your Code Here" required></textarea> <!-- Large text box for students code -->
 				<br>
 				<input type="submit">
 			</form>
-			<?php
-					$ch = curl_init("https://web.njit.edu/~bkw2/grader.php");
-					curl_setopt($ch, CURLOPT_POST, true);                                   //Set to POST
-					curl_setopt($ch, CURLOPT_POSTFIELDS, $_POST['studentCode']);       //Send array
-					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                         //Receive results of cURL and store in var instead of printing
-					
-					$result = curl_exec($ch);
-					echo $result. "<br>"; //Testing
-					echo $_POST['studentCode']; //Testing
-			?>
 		</div>
 		<div class="column" style="background-color:#bbb;">
 			<h2> Question # </h2>
@@ -39,4 +29,16 @@
 			<p> SAMPLE TEXT </p>
 		</div>
 	</div>
+	<?php
+		$var = array('code' => $_POST['studentCode']);
+		$ch = curl_init("https://web.njit.edu/~bkw2/grader.php");
+		curl_setopt($ch, CURLOPT_POST, true);                                   //Set to POST
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $var);       //Send array
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                         //Receive results of cURL and store in var instead of printing
+		$result = curl_exec($ch);
+
+		echo 'result:' .  $result . "<br>"; //Testing echo 
+	//	echo $_POST['studentCode']; //Testing
+	//	echo $var;
+	?>
 </html>	
