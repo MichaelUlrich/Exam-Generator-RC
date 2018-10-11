@@ -1,26 +1,27 @@
 <!DOCTYPE HTML>
 <!-- Homepage for teachers to create tests and make comments on test -->
 <html>
-<?php include 'teacherHeader.php'; ?>  <!-- Header to prevent a non-logged in teacher from accessing -->
+<?php include 'teacherHeader.php'; ?>  <!-- Header to prevent a non-logged in teacher from
+accessing -->
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1"> <!--Dynamic Sizing-->
 <style>
 	.block {
 		display: block;
-		width: 25%;
+		width: 	25%;
 		border: 2px solid #000;
 		background-color: #00FFFF;
-		color: black;
+		color: 	black;
 		padding: 10px 10px;
 		font-size: 16px;
 		cursor: pointer;
 		text-align: center;
 		margin: 0 auto;
-		float:left;
+		float: left;
 	} .block:hover {
 		background-color: #000;
 		color: white;
-	} 
+	}
 </style>
 </head>
 <body>
@@ -33,5 +34,3 @@
 </html>
 
 
-
-	

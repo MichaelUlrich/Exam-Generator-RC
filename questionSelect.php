@@ -14,20 +14,23 @@
 	}
 </style>
 </head>
+<script>
+	//JS to move text
+</script>
 <body>
 	<h2> Choose Questions to Add to the Test </h2>
 	<div class="row">
 		<div class="column" style="background-color:#fff;">
 			<h2> Selected Questions </h2>
-			<p> SAMPLE TEXT </p>
+			<p> Make selected Questions appear over here</p>
 		</div>
 		<div class="column" style="background-color:#bbb;">
 			<h2> Availabe Questions </h2>
 			<p> SAMPLE TEXT </p>
 			<!-- Increase number dynamically -->
 			<!-- https://stackoverflow.com/questions/13330202/how-to-create-list-of-checkboxes-dynamically-with-javascript-->
-			<input type="checkbox" name="test" value="test"> SAMPLE TEXT <br><br>
-			<button type="button" onClick=>Submit Selected</button>
+			<input type="checkbox" name="test" value="test">Question #<br><br>
+			<button type="button" onClick= > Submit Selected </button>
 		</div>
 	</div>
 </body>
