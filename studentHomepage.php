@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!-- Homepage for students to take tests and view grades -->
-<HTML>
+<html>
 <?php include 'studentHeader.php'; ?>  <!-- Header to prevent a non-logged in teacher from
 accessing -->
 <head> 
@@ -31,4 +31,4 @@ accessing -->
 	<button class="block" onclick="window.location.href='test.php'"> Take Test </button> 
 	<button class="block" onclick="window.location.href='grades.php'"> View Grades and Comments </button> 
 </body>
-</HTML>
+</html>

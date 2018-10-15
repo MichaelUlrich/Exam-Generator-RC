@@ -11,7 +11,15 @@
 			padding: 10px
 		}
 	</style>
+	<script>	
+		function goToHomepage() {
+			window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator/studentHomepage.php";
+		}
+	</script>
 </head>
+	<div id="banner">
+		<button id="homepageButton" name="homepageButton" onclick="goToHomepage()">Return to Homepage</button>
+	</div>
 	<h2>Grades and Comments</h2>
 	<div class="row">
 		<div class="column" style="background-color:#98FB98">
