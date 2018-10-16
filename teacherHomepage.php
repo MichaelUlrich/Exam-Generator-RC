@@ -17,7 +17,7 @@ accessing -->
 		cursor: pointer;
 		text-align: center;
 		margin: 0 auto;
-		float: left;
+		//float: left;
 	}
 	.block:hover {
 		background-color: #000;
@@ -28,7 +28,9 @@ accessing -->
 <body>
 	<h2> Temporary Student  Homepage </h2>
 	
-	<button class="block" onclick="window.location.href='test.php'"> Take Test </button> 
-	<button class="block" onclick="window.location.href='grades.php'"> View Grades and Comments </button> 
+	<button class="block" onclick="window.location.href='addQuestion.php'"> Add Questions </button><br> 
+	<button class="block" onclick="window.location.href='questionSelect.php'"> Select Questions </button><br> 
+	<button class="block" onclick="window.location.href='test.php'"> Review Test </button><br>
+	<button class="block" onclick="window.location.href='makeComments.php'"> Add Comments/Grades </button><br>
 </body>
 </html>
