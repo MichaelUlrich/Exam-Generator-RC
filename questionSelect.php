@@ -1,63 +1,69 @@
 <!DOCTYPE HTML>
-<html>
-<?php 
-include 'teacherHeader.php'; 
-//$name = "mike";
-//$selectedQuestions = array('questions' => $_POST[
-$ch = curl_init("https://web.njit.edu/~bkw2/fetchQuestions.php");
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$result = curl_exec($ch);
-
-echo $result;
-
+<?php
+	$ch = curl_init("https://web.njit.edu/~bkw2/fetchQuestions.php");
+	curl_setopt($ch, CURLOPT_POST, true);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$result = curl_exec($ch);
 ?>
-<title> Edit Test </title>
+<html>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
-<!-- Resize to fit screen dynamically -->
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
 <style>
-	* { box-sizing: border-box; }
-	.row { display: flex; }
+	* {box-sizing: border-box;}
+	.row {display: flex;}
 	.column {
 		flex: 50%;
 		padding: 10px;
 	}
 </style>
-</head>
 <script>
 	function moveText(myVar) {
-		var checkBox = document.getElementById("quesCheck");
-		if(checkBox.checked == true) {
-			var add = document.getElementById("selected");
-			//add.innerHTML = myVar;
-			var node = document.createElement("P");
-			var textnode = document.createTextNode(myVar);
-			node.appendChild(textnode);
-			add.appendChild(node);
-		} else {
-			//document.getElementById("text").innerHTML = "Removed Question";
-			add.innerHTML = "";
+		//Empty TODO
+	}
+	function AjaxRequest(myVar) {
+		var x = document.getElementById(myVar.id).value;	
+		var arr = <?php echo json_encode($result); ?>;
+		var varValueInt = parseInt(x, 10);
+		var jsonData = JSON.parse(arr);
+
+		document.getElementById("test").innerHTML = jsonData[varValueInt].question;
+
+		var xmlhObj = new XMLHttpRequest();
+		var phpFile = "examDbCurl.php";
+		var question = jsonData[varValueInt].question;
+		var answer = jsonData[varValueInt].answer;
+		var type = jsonData[varValueInt].type;
+		var difficulty = jsonData[varValueInt].difficulty;
+		var url = "question="+question+"&answer="+answer+"&type="+type+"&difficulty="+difficulty;
+		
+		xmlhObj.open("POST", phpFile, true);
+		xmlhObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xmlhObj.onreadystatechange = function() {
+			if(xmlhObj.readyState == 4 && xmlhObj.status == 200) {
+				var return_data = xmlhObj.responseText;
+				document.getElementById("f").innerHTML = return_data;
+			}
 		}
+		xmlhObj.send(url);
+		document.getElementById("f").innerHTML = "waiting for confirmation";
+	}	
+	function createButtons() {
+		
 	}
 </script>
+</head>
 <body>
-	<h2> Choose Questions to Add to the Test </h2>
-	<div class="row">
+	<h1> Choose Questions to Add to the Test </h1>
+	<div class = "row">
 		<div class="column" style="background-color:#fff;">
-			<h2> Selected Questions </h2>
-			<p id="selected"></p>
+			<h2> Selected Questions</h2>
+			<p id="test">test1</p>
+			<p id="f">test2</p>
 		</div>
 		<div class="column" style="background-color:#bbb;">
-			<h2> Availabe Questions </h2>
-			<!-- Increase number dynamically -->
-			<!-- https://stackoverflow.com/questions/13330202/how-to-create-list-of-checkboxes-dynamically-with-javascript-->
-			<form method="get"> <!-- GET just for testing, will be POST in submitted
-			project -->
-				<input type="checkbox" id="quesCheck" name="question1"  value=<?php echo $name; ?> onclick="moveText('<?php echo $name; ?>');">Question #1: <?php echo $name; ?><br><br>
-				<input type="checkbox" id="quesCheck2" name="question2" value=<?php echo $name; ?> onclick="moveText('test2')">Question #2: <?php echo $name; ?><br><br>
-				<input type="submit">
-			</form>
+			<h2> Available Questions </h2>
+				<button id="button1" value="0" onclick="AjaxRequest(this)">Select1</button><br>
+				<button id="button2" value="1" onclick="AjaxRequest(this)">Select2</button><br>
 		</div>
 	</div>
 </body>

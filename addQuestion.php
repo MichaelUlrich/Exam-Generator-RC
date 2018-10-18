@@ -42,9 +42,9 @@
 			<h2> Enter Question and Correct Output </h2>
 			<form method="post">
 				<p> Enter Question: </p>
-					<input type="text" name="question" id="question"><br>
+					<input type="text" name="question" id="question" required><br>
 				<p> Enter Correct Answer </p>
-					<input type="text" name="answer" id="answer"><br>
+					<input type="text" name="answer" id="answer" required><br>
 				<p> Select Question Difficulty </p>
 				<select name="difficulty" id="difficulty">
 					<option value="easy">Easy</option>
