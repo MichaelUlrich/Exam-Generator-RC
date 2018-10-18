@@ -33,9 +33,13 @@
 <script>
        // var = curlResult = "<?php echo $result; ?>" ;
 	function moveText() {
-		document.getElementById("result").innerHTML = "HELLO";
+		//document.getElementById("result").innerHTML = "HELLO";
+	}
+	function goToHomepage() {
+		window.location.href="teacherHomepage.php";
 	}
 </script>
+	<button onclick="goToHomepage()">Go To Homepage</button>
 	<h2> Choose Questions to Add to the Test </h2>
 	<div class="row">
 		<div class="column" style="background-color:#fff;">
@@ -67,6 +71,7 @@
 			<p id="result"></p>
 		</div>
 	</div>
+
 </body>
 </html>
 
