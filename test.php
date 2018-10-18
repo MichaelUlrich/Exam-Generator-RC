@@ -35,7 +35,7 @@
 
 		var url = "studentCode="+studentCode+"&answer="+jsonData[varValueInt].answer;
 		
-		document.getElementById("questionNumber4").innerHTML = url;
+
 
 		xmlhObj.open("POST", phpFile, true);
 		xmlhObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
