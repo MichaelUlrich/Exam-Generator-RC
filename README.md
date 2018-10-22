@@ -10,9 +10,9 @@ Exam System that both Student and Instructor can log into.
 4. Teacher reviews auto-generated exam and can adjust score and comments, the is released to the Student.
 
 ## Needed
-1. Login.php receives if credentials belong to student or instructor and re-directs to proper page
-2. Student Homepage & Instructor Homepage (HTML & PHP)
-3. PHP for QuestionSelector.html and Test.html
-4. Display page for student to view grades (HTML & PHP)
-5. Page for teacher to add comments (HTML & PHP)
-6. Add sessions to lock Students out of Instructor pages
+1. AJAX implemented on all pages
+2. Page for teacher to add comments (HTML & PHP)
+3. Display page for student to view grades (HTML & PHP)
+4. Add sessions to lock Students out of Instructor pages
+5. Filetering system to selecting grades
+6. Re-do Auto-Grader
