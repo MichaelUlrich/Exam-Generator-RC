@@ -1,43 +1,90 @@
 <!DOCTYPE HTML>
 <html>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Select Questions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Select Questions</title>
 <head>
 <style>
 	*{box-sizing: border-box;}
 	.row{display: flex;}
 	.column{flex: 50%; padding: 10px}
-
+	//table,td{border: 1px solid grey;}
+	table{border-spacing: 0; border: 1px solid grey}
+	td,th{text-align: left; padding: 16px;}
+	tr:nth-child(even){background-color: #bbb;}
+	//th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 </style>
 <script>
-	function drawAvailable() {
+	function drawAvailableTable() {
+		//Call getQuestions, print array of [question, type, difficulty]
+		var question = "question1";
+		var diff = "easy";
+		var type = "method";
+		var points = 10;
+		var table =document.getElementById('availableTable');
+		var row = table.insertRow(0);
+		var questionCell = row.insertCell(0);
+		var typeCell = row.insertCell(1);
+		var diffCell = 	row.insertCell(2);
+		var pointsCell = row.insertCell(3);
+
+		questionCell.innerHTML = question;
+		typeCell.innerHTML = type;
+		diffCell.innerHTML = diff;
+		pointsCell.innerHTML = points;
+
+		drawAvailableTableHeader();
+
+		row = table.insertRow(1);
+		questionCell = row.insertCell(0);
+		typeCell = row.insertCell(1);
+		diffCell = row.insertCell(2);
+		pointsCell = row.insertCell(3);
+
+		questionCell.innerHTML = "question2";
+		typeCell.innerHTML = "loop";
+		diffCell.innerHTML = "medium";
+		pointsCell.innerHTML = 15;
 
 	}
-	function moveSelected() {
+	function drawAvailableTableHeader() {
+		var table = document.getElementById('availableTable');
+		var header = table.createTHead();
+		var row = header.insertRow(0);
+		var cell = row.insertCell(0);
+		var questionHead = "<b>Question<b>";
+		var typeHead = "<b>Type<b>";
+		var diffHead = "<b>Difficulty<b>";
+		var pointHead = "<b>Points<b>";
 
+		cell.innerHTML = questionHead;
+		cell = row.insertCell(1);
+		cell.innerHTML = typeHead;
+		cell = row.insertCell(2);
+		cell.innerHTML = diffHead;
+		cell = row.insertCell(3);
+		cell.innerHTML = pointHead;
 	}
-	function ajaxRequest() {
-
+	function goToHomepage() {
+		document.getElementById('test').innerHTML = "hello";
 	}
-	function returnToHomepage() {
-
-	}
-	function test() { //Testing only
-
-	}
+	window.onload = drawAvailableTable;
 </script>
 </head>
 <body>
+	<button onClick="returnToHomepage()">Return to Homepage</button>
 	<h1> Chooose Questions to Add to the Test </h1>
 	<div class="row">
-		<div class="column" style="background-color:#fff;">
+		<div class="column" style="background-color:#bbb;">
 			<h2> Selected Questions </h2>
+			<p id="test2"></p>
 			<ul id="selectedQuestions"></ul>
 		</div>
-		<div class="column" style="background-color:#bbb;">
+		<div class="column" style="background-color:#fff;">
 			<h2> Available Questions </h2>
-
+			<p id="test"></p>
+			<table id="availableTable">
 		</div>
 	</div>
 </body>
-</html
+</html>
+

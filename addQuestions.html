@@ -14,12 +14,11 @@
 		var question = document.getElementById('question').value; 
 		var type = document.getElementById('type').value;
 		var diff = document.getElementById('diff').value;
-		
+		var points = document.getElementById('points').value;	
 		var node = document.createElement('li');
-		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + ']');
+		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + '] | [Points: '+ points + ']');
 		node.appendChild(textNode);
 		document.getElementById('selectedList').appendChild(node);
-
 	}
 	function ajaxRequest() {
 		var xmhlObj = new XMLHttpRequest();
@@ -39,17 +38,19 @@
 	<div class="row">
 		<div class="column" style="background-color:#fff;">
 			<h2> Enter Questions and Test Cases </h2>
-			<p> Enter Question: </p>
+			<p> Enter Question </p>
 				<textarea name="question" id="question" placeholder="Write your question here" rows="5" cols="50" required></textarea>
-			<p> Enter Test Cases </p>
-				<input type="text" name="answer" id="answer" placeholder="placeholder" required>
-				<input type="text" name="answer" id="answer" placeholder="placeholder" required><br><br>
-				<input type="text" name="answer" id="answer" placeholder="placeholder" required>
-				<input type="text" name="answer" id="answer" placeholder="placeholder" required><br><br>
-				<input type="text" name="answer" id="answer" placeholder="placeholder" required>
-				<input type="text" name="answer" id="answer" placeholder="placeholder" required><br><br>
-				<input type="text" name="answer" id="answer" placeholder="placeholder" required>
-				<input type="text" name="answer" id="answer" placeholder="placeholder" required><br><br>
+			<p> Enter Function Name </p>
+				<input type="text" name="funcName" id="funcName" placeholder="Function Name" required><br>
+			<p> Enter Variable Names (Seperated by Comma) </p>
+				<input type="text" name="varNames" id="varNames" placeholder="Variable Names" required><br>
+			<p> Enter Test Cases (Leave Extra Inputs Blank) </p>
+				<input type="text" name="testCase0" id="testCase0" placeholder="Test Case #1" required>
+				<input type="text" name="testCase1" id="testCase1" placeholder="Test Case #2" required><br><br>
+				<input type="text" name="testCase2" id="testCase2" placeholder="Test Case #3" required>
+				<input type="text" name="testCase3" id="testCase3" placeholder="Test Case #4" required><br><br>
+				<input type="text" name="testCase4" id="testCase4" placeholder="Test Case #5" required>
+				<input type="text" name="testCase5" id="testCase5" placeholder="Test Case #6" required><br><br>
 			<p> Select Question Difficulty 
 				<select name="diff" id="diff" required>
 					<option value="easy">Easy</option>
@@ -64,12 +65,12 @@
 					<option value="variable">Variable</option>
 				</select>
 			</p>
+			<p> Number of Points <input type="text" name="points" id="points" placeholder="Point Value" required> </p>
 			<button onClick="moveText(); ajaxRequest();">Submit Question:</button>
 		</div>
 		<div class="column" style="background-color:#bbb;">
 			<h2> Submitted Questions </h2>
-			<ul id="selectedList"></ul>
-			<p id="test"></p>	
+			<ul id="selectedList"></ul>	
 		</div>
 	</div>
 </body>
