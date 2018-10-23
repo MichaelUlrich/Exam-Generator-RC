@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<title> Add Quesitons to Database </title>
+<!-- Resize to fit screen dynamically -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<style>
+	* {box-sizing: border-box;}
+	.row{display: flex;}
+	.column{flex: 50%; padding: 10px;}
+</style>
+<script>
+	function moveText() {
+		var question = document.getElementById('question').value; 
+		var type = document.getElementById('type').value;
+		var diff = document.getElementById('diff').value;
+		
+		var node = document.createElement('li');
+		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + ']');
+		node.appendChild(textNode);
+		document.getElementById('selectedList').appendChild(node);
+
+	}
+	function ajaxRequest() {
+	//	var node = document.createElement('p');
+	//	var textNode = document.createTextNode("two func");
+	//	node.appendChild(textNode);
+	//	document.getElementById('test').appendChild(node);
+		var xmhlObj = new XMLHttpRequest();
+		var phpFile = ''; //Need file
+		var question = document.getElementById('question').value;
+		var type = document.getElementById('type').value;
+		var diff = document.getElementById('diff').value;
+		//Need to figure out how to choose between 2-6 test cases
+	}
+	function goToHomepage() {
+		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
+	}
+</script>
+</head>
+<body>
+	<button onClick="goToHomepage()">Return to Homepage </button>
+	<div class="row">
+		<div class="column" style="background-color:#fff;">
+			<h2> Enter Questions and Test Cases </h2>
+			<p> Enter Question: </p>
+				<textarea name="question" id="question" placeholder="Write your question here" rows="5" cols="50" required></textarea>
+			<p> Enter Test Cases </p>
+				<input type="text" name="answer" id="answer" placeholder="placeholder" required>
+				<input type="text" name="answer" id="answer" placeholder="placeholder" required><br><br>
+				<input type="text" name="answer" id="answer" placeholder="placeholder" required>
+				<input type="text" name="answer" id="answer" placeholder="placeholder" required><br><br>
+				<input type="text" name="answer" id="answer" placeholder="placeholder" required>
+				<input type="text" name="answer" id="answer" placeholder="placeholder" required><br><br>
+				<input type="text" name="answer" id="answer" placeholder="placeholder" required>
+				<input type="text" name="answer" id="answer" placeholder="placeholder" required><br><br>
+			<p> Select Question Difficulty 
+				<select name="diff" id="diff" required>
+					<option value="easy">Easy</option>
+					<option value="medium">Medium</option>
+					<option value="hard">Hard</option>
+				</select>
+			</p>
+			<p> Select Question Type
+				<select name="type" id="type" required>
+					<option value="loop">Loop</option>
+					<option value="method">Method</option>
+					<option value="variable">Variable</option>
+				</select>
+			</p>
+			<button onClick="moveText(); ajaxRequest();">Submit Question:</button>
+		</div>
+		<div class="column" style="background-color:#bbb;">
+			<h2> Submitted Questions </h2>
+			<ul id="selectedList"></ul>
+			<p id="test"></p>	
+		</div>
+	</div>
+</body>
+</html>
