@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	*{box-sizing: border-box;}
+	.row{display: flex;}
+	.column{flex: 5%; padding: 1%}
+</style>
+</head>
+<script>
+	var sample = [  {"id":"0", "question":"question1", "type":"loop", "diff":"hard", "points":"10"},
+			{"id":"1", "question":"question2", "type":"method","diff":"easy","points":"15"},
+			{"id":"2", "question":"question3", "type":"loop", "diff":"medium","points":"25"},
+			{"id":"3", "question":"question4", "type":"method", "diff":"easy","points":"5"},
+			{"id":"4", "question":"question5", "type":"loop", "diff":"medium","points":"35"}];
+	
+	function drawExam() {
+		//document.getElementById("test").innerHTML = "test";
+		for(var i in sample) {
+			var textElement = document.createElement("textarea");
+			var breakElement = document.createElement("br");
+			var x = document.getElementById("testDiv");
+			var intI = parseInt(i, 10);
+		//	var submitButton = '<input type="button" value="Select" onClick="addQuestion('+i+')" id="question_to_add_'+i+'"></div>';
+			intI += 1;
+			textElement.setAttribute("placeholder", "Write code here for Question #"+intI+"...");
+			textElement.setAttribute("cols", "100");
+			textElement.setAttribute("rows", "10");
+			x.appendChild(textElement);
+		//	x.appendChild(submitButton);
+			x.appendChild(breakElement);
+		}
+	}
+	window.onload = drawExam;
+</script>
+<body>
+	<h2> Carefully read each question. Hit Submit for Each Question.  Good Luck. </h2>
+	<p> Only click submit when you code is 100% finished </p>
+	<div class="row">
+		<div id="testDiv" class="column" style="background-color:#aaa;">
+			<P id="test"></p>
+		</div>
+		<div class="column" style="background-color:#bbb;">
+			<div id="questions"></div>
+		</div>
+	</div>
+</body>
+</html>

@@ -30,7 +30,7 @@ accessing -->
 	
 	<button class="block" onclick="window.location.href='addQuestions.html'"> Add Questions </button><br> 
 	<button class="block" onclick="window.location.href='selectQuestions.html'"> Select Questions </button><br> 
-	<button class="block" onclick="window.location.href='test.php'"> Review Test </button><br>
+	<button class="block" onclick="window.location.href='test.html'"> Review Test </button><br>
 	<button class="block" onclick="window.location.href='makeComments.php'"> Add Comments/Grades </button><br>
 </body>
 </html>
