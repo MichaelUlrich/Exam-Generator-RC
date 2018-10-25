@@ -13,36 +13,73 @@
 			{"id":"1", "question":"question2", "type":"method","diff":"easy","points":"15"},
 			{"id":"2", "question":"question3", "type":"loop", "diff":"medium","points":"25"},
 			{"id":"3", "question":"question4", "type":"method", "diff":"easy","points":"5"},
-			{"id":"4", "question":"question5", "type":"loop", "diff":"medium","points":"35"}];
+			{"id":"4", "question":"question5", "type":"loop", "diff":"medium","points":"35"},
+			{"id":"5", "question":"question6", "type":"loop", "diff":"medium","points":"35"},
+			{"id":"6", "question":"question7", "type":"loop", "diff":"medium","points":"35"}
+			
+			];
 	
 	function drawExam() {
-		//document.getElementById("test").innerHTML = "test";
+		
 		for(var i in sample) {
 			var textElement = document.createElement("textarea");
 			var breakElement = document.createElement("br");
-			var x = document.getElementById("testDiv");
+			var submitElement = document.createElement("span");
+			var displayElement = document.createElement("span");
+			var x = document.getElementById("test");
 			var intI = parseInt(i, 10);
-		//	var submitButton = '<input type="button" value="Select" onClick="addQuestion('+i+')" id="question_to_add_'+i+'"></div>';
-			intI += 1;
+			intI += 1; //Question 0 displayed as Question 1
+			
 			textElement.setAttribute("placeholder", "Write code here for Question #"+intI+"...");
 			textElement.setAttribute("cols", "100");
 			textElement.setAttribute("rows", "10");
+			submitElement.innerHTML = '<button id="'+i+'" onclick="submit(this)">Submit Question #'+intI+'</button>';
+			displayElement.innerHTML = '<p id=isSubmit'+i+'></p>';
+
 			x.appendChild(textElement);
-		//	x.appendChild(submitButton);
+			x.appendChild(submitElement);
+			x.appendChild(displayElement);
 			x.appendChild(breakElement);
 		}
 	}
-	window.onload = drawExam;
+	function submit(calling) {
+		var callingButton = document.getElementById(calling.id);
+		var intId = parseInt(calling.id, 10);
+		intId += 1;
+	//	document.getElementById("qText").innerHTML = "called by "+calling.id;
+		document.getElementById("isSubmit"+calling.id).innerHTML = "Question #" +intId + " has been submitted";
+		callingButton.disabled=true; //Only submit question once
+	}
+	function drawQuestions() {
+		var questionDiv = document.getElementById("questions");
+		document.getElementById("questions").innerHTML = "QUESTIONS GO HERE";
+		for(var i in sample) {
+			var questionElement = document.createElement("p")
+			var intI = parseInt(i, 10);
+			intI+=1;
+			//questionElement.setAttribute("data-content", "Question #"+i+": ");  //+sample[i].question);
+			questionElement.textContent =  "Question #"+intI+": "+sample[i].question;
+			questionDiv.appendChild(questionElement);
+		}
+	}
+	window.onload = function() {
+		drawExam();
+		drawQuestions();
+		//drawExam();
+	}
 </script>
 <body>
 	<h2> Carefully read each question. Hit Submit for Each Question.  Good Luck. </h2>
 	<p> Only click submit when you code is 100% finished </p>
 	<div class="row">
 		<div id="testDiv" class="column" style="background-color:#aaa;">
-			<P id="test"></p>
+			<div id="test"></div>
+			<!--<button onclick="test()">test</button>-->
 		</div>
 		<div class="column" style="background-color:#bbb;">
-			<div id="questions"></div>
+			<div id="questions">
+				<p id="qText"></p>
+			</div>
 		</div>
 	</div>
 </body>
