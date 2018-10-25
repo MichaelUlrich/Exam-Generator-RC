@@ -62,6 +62,9 @@
 			questionDiv.appendChild(questionElement);
 		}
 	}
+	function goToHomepage() {	
+		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
+	}
 	window.onload = function() {
 		drawExam();
 		drawQuestions();
@@ -69,6 +72,7 @@
 	}
 </script>
 <body>
+	<button onClick="goToHomepage()">Return to Homepage</button>
 	<h2> Carefully read each question. Hit Submit for Each Question.  Good Luck. </h2>
 	<p> Only click submit when you code is 100% finished </p>
 	<div class="row">
