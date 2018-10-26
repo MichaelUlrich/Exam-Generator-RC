@@ -31,12 +31,13 @@
 			intI += 1; //Question 0 displayed as Question 1
 			
 			textElement.setAttribute("placeholder", "Write code here for Question #"+intI+"...");
-			textElement.setAttribute("cols", "100");
+			textElement.setAttribute("cols", "120");
 			textElement.setAttribute("rows", "10");
 			submitElement.innerHTML = '<button id="'+i+'" onclick="submit(this)">Submit Question #'+intI+'</button>';
 			displayElement.innerHTML = '<p id=isSubmit'+i+'></p>';
 
 			x.appendChild(textElement);
+			
 			x.appendChild(submitElement);
 			x.appendChild(displayElement);
 			x.appendChild(breakElement);
@@ -52,7 +53,7 @@
 	}
 	function drawQuestions() {
 		var questionDiv = document.getElementById("questions");
-		document.getElementById("questions").innerHTML = "QUESTIONS GO HERE";
+		//document.getElementById("questions").innerHTML = "QUESTIONS GO HERE";
 		for(var i in sample) {
 			var questionElement = document.createElement("p")
 			var intI = parseInt(i, 10);
