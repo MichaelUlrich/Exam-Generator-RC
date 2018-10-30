@@ -11,34 +11,46 @@
 </style>
 <script>
 	function moveText() {
-		var question = document.getElementById('question').value; 
+		var question = document.getElementById('question').value;
 		var type = document.getElementById('type').value;
 		var diff = document.getElementById('diff').value;
-		var points = document.getElementById('points').value;	
+		var points = document.getElementById('points').value;
 		var node = document.createElement('li');
 		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + '] | [Points: '+ points + ']');
 		node.appendChild(textNode);
 		document.getElementById('selectedList').appendChild(node);
 	}
 	function ajaxRequest() {
+		/*
+			Question, Type(For/While), Difficulty, Test Cases[], Function Name, Variables[], Return/Print
+		*/
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = ''; //Need file
 		var question = document.getElementById('question').value;
 		var type = document.getElementById('type').value;
 		var diff = document.getElementById('diff').value;
 		var text = "";
+		var testCases = [];
 		//Need to figure out how to choose between 2-6 test cases
 		/*
 			for i = 1; i <=6		//Check 1-6
 				if text+i == ""		//if no text
-					continue	//skip
-		
+					continue				//skip
+				else
+					testCase = text+i //add
+	*/
 		var testCase = document.getElementById("testCase");
-		for(vari i = 0; i < testCase.length; i++) {
-			text += testCase.elements[i].value +"<br>";
+		var j = 0;
+		for(var i = 0; i < testCase.length; i++) {
+			if(testCase.elements[i].value == "") {
+				continue;
+			} else {
+				 testCases[j] = testCase.elements[i].value;
+				 j++;
+			 }
 		}
-		document.getElementById("test").innerHTML = text;
-	*/}
+		document.getElementById("test").innerHTML = testCases;
+	}
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
 	}
@@ -70,10 +82,8 @@
 					<input type="text" name="testCase6" id="testCase6" placeholder="Test Case #6" required>
 					<input type="text" name="answer6" id="answer6" placeholder="Answer #6" required><br><br>
 				</form>
-
-
-			<p> Select Question Difficulty 
-				<select name="diff" id="diff" required>	
+			<p> Select Question Difficulty
+				<select name="diff" id="diff" required>
 					<option value="easy">Easy</option>
 					<option value="medium">Medium</option>
 					<option value="hard">Hard</option>
@@ -96,7 +106,6 @@
 			<select name="displayType" id="displayType" required>
 					<option value="return">Return</option>
 					<option value="print">Print</option>
-					
 			</select>
 			</p>
 			<p> Number of Points <input type="text" name="points" id="points" placeholder="Point Value" required> </p>
@@ -105,7 +114,7 @@
 		<div class="column" style="background-color:#bbb;">
 			<h2> Submitted Questions </h2>
 			<p id="test"></p>
-			<ul id="selectedList"></ul>	
+			<ul id="selectedList"></ul>
 		</div>
 	</div>
 </body>
