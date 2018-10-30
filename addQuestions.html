@@ -20,18 +20,7 @@
 		node.appendChild(textNode);
 		document.getElementById('selectedList').appendChild(node);
 	}
-	function ajaxRequest() {
-		/*
-			Question, Type(For/While), Difficulty, Test Cases[], Function Name, Variables[], Return/Print
-		*/
-		var xmhlObj = new XMLHttpRequest();
-		var phpFile = ''; //Need file
-		var question = document.getElementById('question').value;
-		var type = document.getElementById('type').value;
-		var diff = document.getElementById('diff').value;
-		var text = "";
-		var testCases = [];
-		//Need to figure out how to choose between 2-6 test cases
+	function getTestCases() {
 		/*
 			for i = 1; i <=6		//Check 1-6
 				if text+i == ""		//if no text
@@ -41,6 +30,7 @@
 	*/
 		var testCase = document.getElementById("testCase");
 		var j = 0;
+		var testCases = [];
 		for(var i = 0; i < testCase.length; i++) {
 			if(testCase.elements[i].value == "") {
 				continue;
@@ -49,7 +39,47 @@
 				 j++;
 			 }
 		}
-		document.getElementById("test").innerHTML = testCases;
+		return testCases;
+	}
+	function getLoopType() {
+		if(document.getElementById("forRadio").checked) {
+			return "for";
+		} else if (document.getElementById("whileRadio").checked) {
+			return "while";
+		} else {
+			return "";
+		}
+	}
+
+	function ajaxRequest() {
+		/*
+			Question, Type(For/While), Difficulty, Points, Test Cases[], Function Name, Variables[], Return/Print
+		*/
+		var xmhlObj = new XMLHttpRequest();
+		var phpFile = ''; //Need file
+		var question = document.getElementById('question').value;
+		var type = document.getElementById('type').value;
+		var loopType = getLoopType();
+		var diff = document.getElementById('diff').value;
+		var points = document.getElementById('points').value;
+		var testCases = getTestCases();
+		var functionName = document.getElementById('funcName').value;
+		var varNames = document.getElementById('varNames').value;
+		var returnPrint = document.getElementById('displayType').value;
+		var url = "question="+question+"&type="+type+"&loopType="+loopType+"&diff="+diff+"&points="+points+"&testCases="+testCases
+							+"&functionName="+functionName+"&variableNames="+varNames+"&returnPrint="+returnPrint; //For AJAX POST
+		//NEED AJAX POST
+/*
+		XMLHobj.open("POST", phpFile, true);
+		XMLHobj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
+		XMLHobj.onreadystatechange = function() {
+			if(XMLHobj.readyState == 4 && XMLHobj.status == 200) {  //Conection is established and working
+				var return_data = XMLHobj.responseText;
+				document.getElementById("test").innerHTML = return_data;
+				}
+			}
+		XMLHobj.send(url); //Send request  */
+		document.getElementById("test").innerHTML = url;
 	}
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
@@ -96,9 +126,9 @@
 					<option value="variable">Variable</option>
 					<option value="recursion">Recursion</option>
 					<option value="topic6">TOPIC#6</option>
-					<form action="">
-						<input type="radio" name="loopType" value="forLoop">For-Loop
-						<input type="radio" name="loopType" value="whileLoop">While-Loop<br>
+					<form id="loopType" action="">
+						<input type="radio" id="forRadio" name="loopType" value="forLoop">For-Loop
+						<input type="radio" id="whileRadio" name="loopType" value="whileLoop">While-Loop<br>
 					</form>
 				</select>
 			</p>
