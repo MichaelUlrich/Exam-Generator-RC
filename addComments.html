@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	*{box-sizing: border-box;}
+	.row{display: flex;}
+	.column{ flex: 50%; padding: 10px;}
+</style>
+<script>
+	var sample = [{"studentInput":"input1", "autoComments":"", "grade":"100"}		
+		];
+
+	function drawAutoComments() {
+	
+	}
+	function drawStudentInput() {
+		var studentDiv = document.getElementById("studentInput");
+	}
+	function drawTeacherInput() {
+		var teacherDiv = document.getElementById("teacherInput");
+	}
+</script>
+</head>
+<body>
+	<h2> Edit Grades and Comments </h2>
+	<div class="row">
+		<div class="column" id="teacherInput" style="background-color:#fff">
+		</div>
+		<div class="column" id="studentInput" style="background-color:#bbb">
+			<p id="test">test</p>
+		</div>
+	</div>
+</body>
+</html>
