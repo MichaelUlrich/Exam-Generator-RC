@@ -89,12 +89,16 @@ function edit(currQuestion) {
 function confirmChange() {
 
 }
+function goToHomepage() {
+	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
+}
 window.onload = function() {
 	drawAutoComments();
 }
 </script>
 </head>
 <body>
+	<button onclick="goToHomepage()">Return to Homepage</button>
 	<h2> Edit Grades and Comments </h2>
 	<div class="row">
 		<div class="column" id="teacherInput" style="background-color:#bbb">
