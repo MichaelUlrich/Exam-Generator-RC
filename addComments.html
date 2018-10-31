@@ -1,33 +1,37 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-	*{box-sizing: border-box;}
-	.row{display: flex;}
-	.column{ flex: 50%; padding: 10px;}
-	table{border-spacing: 0; border: 1px solid grey}
-	td,th{text-align: left; padding: 16px;}
-	tr:nth-child(even){background-color: #bbb;}
+*{box-sizing: border-box;}
+.row{display: flex;}
+.column{flex: 50%; padding: 10px}
+//table,td{border: 1px solid grey;}
+table{border-spacing: 0; border: 1px solid grey}
+td,th{text-align: left; padding: 16px;}
+tr:nth-child(even){background-color: #bbb;}
+//th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 </style>
 <script>
-	var sample = [{"studentInput":"input1", "autoComments":"autoComment1", "grade":"100"},
+var sample = [{"studentInput":"input1", "autoComments":"autoComment1", "grade":"100"},
 					{"studentInput":"input2", "autoComments":"autoComment2", "grade":"100"},
 					{"studentInput":"input3", "autoComments":"autoComment3", "grade":"100"},
 					{"studentInput":"input4", "autoComments":"autoComment4", "grade":"100"},
 					{"studentInput":"input5", "autoComments":"autoComment5", "grade":"100"}];
-	function drawAutoComments() {
-		var iInt = parseInt(i,10);
-		var inputTd, inputText, commentTd, commentText, gradeTd, gradeText, tr, tableBody;
-		tableBody.getElementById("studentTableBody");
-
+function drawAutoComments() {
+		//var iInt = parseInt(i,10);
+		var inputTd, inputText, commentTd, commentText,
+					gradeTd, gradeText, tr, tableBody;
+		tableBody = document.getElementById("tableBody");
+		tableBody.innerHTML =""
 		for(var i in sample) {
-			tr.createElement("tr");
+			//document.getElementById("test").innerHTML = i;
+			tr = document.createElement("tr");
 			inputTd = document.createElement("td");
 			inputText = document.createTextNode(sample[i].studentInput);
 			inputTd.appendChild(inputText);
 			commentTd = document.createElement("td");
-			commentText document.createTextNode(sample[i].autoComments);
+			commentText = document.createTextNode(sample[i].autoComments);
 			commentTd.appendChild(commentText);
 			gradeTd = document.createElement("td");
 			gradeText = document.createTextNode(sample[i].grade);
@@ -48,7 +52,7 @@
 		teacherDiv.innerHTML = "teacherDiv"
 	}
 window.onload = function() {
-	drawStudentInput();
+	//drawStudentInput();
 	drawTeacherInput();
 	drawAutoComments();
 }
@@ -57,9 +61,10 @@ window.onload = function() {
 <body>
 	<h2> Edit Grades and Comments </h2>
 	<div class="row">
-		<div class="column" id="teacherInput" style="background-color:#fff">
+		<div class="column" id="teacherInput" style="background-color:#bbb">
+			<p id="test"></p>
 		</div>
-		<div class="column" id="studentInput" style="background-color:#bbb">
+		<div class="column" id="studentInput" style="background-color:#fff">
 			<table id="studentTable">
 				<thead>
 					<tr>
@@ -68,8 +73,7 @@ window.onload = function() {
 							<th>Grade</th>
 					</tr>
 				</thead>
-				<tbody id="studentTableBody">
-				</tbody
+				<tbody id="tableBody"></tbody>
 			</table>
 		</div>
 	</div>
