@@ -13,20 +13,25 @@ tr:nth-child(even){background-color: #bbb;}
 //th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 </style>
 <script>
-var sample = [{"studentInput":"input1", "autoComments":"autoComment1", "grade":"100"},
+var sample = [{"studentInput":"input", "autoComments":"Missing Function name, Wront Return Type", "grade":"100"},
 					{"studentInput":"input2", "autoComments":"autoComment2", "grade":"100"},
 					{"studentInput":"input3", "autoComments":"autoComment3", "grade":"100"},
 					{"studentInput":"input4", "autoComments":"autoComment4", "grade":"100"},
 					{"studentInput":"input5", "autoComments":"autoComment5", "grade":"100"}];
 function drawAutoComments() {
 		//var iInt = parseInt(i,10);
-		var inputTd, inputText, commentTd, commentText,
-					gradeTd, gradeText, tr, tableBody;
+		var inputTd, idTd, idText, inputText, commentTd, commentText,
+					gradeTd, gradeText, tr, tableBody, intI, editTd, editText,
+					confirmTd, confirmText;
 		tableBody = document.getElementById("tableBody");
 		tableBody.innerHTML =""
 		for(var i in sample) {
+			intI = parseInt(i, 10);
 			//document.getElementById("test").innerHTML = i;
 			tr = document.createElement("tr");
+			idTd = document.createElement("td");
+			idText = document.createTextNode(intI+1);
+			idTd.appendChild(idText);
 			inputTd = document.createElement("td");
 			inputText = document.createTextNode(sample[i].studentInput);
 			inputTd.appendChild(inputText);
@@ -36,24 +41,55 @@ function drawAutoComments() {
 			gradeTd = document.createElement("td");
 			gradeText = document.createTextNode(sample[i].grade);
 			gradeTd.appendChild(gradeText);
-
+			editTd = document.createElement("td");
+			editTd.innerHTML = '<div class="text-center" ><input type="button" value="Edit" onClick="drawTeacherInput('+i+')" id="'+i+'"></div>';
+			confirmTd = document.createElement("td");
+			confirmTd.innerHTML = '<div class="text-center" ><input type="button" value="Confirm" onClick="confirmChange('+i+')" id=""></div>';
+			tr.appendChild(idTd);
 			tr.appendChild(inputTd);
 			tr.appendChild(commentTd);
 			tr.appendChild(gradeTd);
+			tr.appendChild(editTd);
+			tr.appendChild(confirmTd);
 			tableBody.appendChild(tr);
 		}
 	}
-	function drawStudentInput() {
-		var studentDiv = document.getElementById("studentInput");
-		studentDiv.innerHTML = "studentDiv"
-	}
-	function drawTeacherInput() {
+function ajaxRequest(currQuestion) {
+
+}
+function drawTeacherInput(currQuestion) {
 		var teacherDiv = document.getElementById("teacherInput");
-		teacherDiv.innerHTML = "teacherDiv"
-	}
+		var commentDiv = document.getElementById("commentEdit");
+		var gradeDiv = document.getElementById("gradeEdit");
+		var buttonDiv = document.getElementById("buttonEdit");
+		var comment = sample[currQuestion].autoComments;
+				grade = sample[currQuestion].grade;
+	//	var editComment = document.createElement("textarea"),
+	//			editGrade = document.createElement("input");
+	//	var commentText = document.createTextNode(comment);
+	//	var buttonTd = document.createElement("button");
+	//	var buttonText = document.createTextNode("Save Edit");
+
+	//buttonTd.setAttribute("onClick", "edit("+currQuestion+")");
+	commentDiv.innerHTML = '<h3>Edit Comment</h3><textarea id="commentEditText" maxlength="5000" cols="45" rows="10">'+comment+'</textarea><br>';
+	gradeDiv.innerHTML ='<h3>Edit Grade</h3><input type="text" id="gradeEditText" value="'+grade+'"></input><br><br>';
+	buttonDiv.innerHTML='<button onClick="edit('+currQuestion+')">Submit Edit</button>';
+	//buttonTd.appendChild(buttonText);
+	//teacherDiv.appendChild(buttonTd);
+}
+function edit(currQuestion) {
+	var teacherComment = document.getElementById("commentEditText").value;
+	var teacherGrade = document.getElementById("gradeEditText").value;
+
+	sample[currQuestion].autoComments = teacherComment;
+	sample[currQuestion].grade = teacherGrade;
+	drawAutoComments();
+	document.getElementById("test").innerHTML = "edited: " + teacherComment +'/' + teacherGrade;//sample[currQuestion].autoComments;
+}
+function confirmChange() {
+
+}
 window.onload = function() {
-	//drawStudentInput();
-	drawTeacherInput();
 	drawAutoComments();
 }
 </script>
@@ -62,12 +98,15 @@ window.onload = function() {
 	<h2> Edit Grades and Comments </h2>
 	<div class="row">
 		<div class="column" id="teacherInput" style="background-color:#bbb">
-			<p id="test"></p>
+				<div id="commentEdit"></div>
+				<div id="gradeEdit"></div>
+				<div id="buttonEdit"></div>
 		</div>
 		<div class="column" id="studentInput" style="background-color:#fff">
 			<table id="studentTable">
 				<thead>
 					<tr>
+							<th>Question #</th>
 							<th>Student's Code</th>
 							<th>Auto Comments</th>
 							<th>Grade</th>
@@ -77,5 +116,6 @@ window.onload = function() {
 			</table>
 		</div>
 	</div>
+	<p id="test">TEST</p>
 </body>
 </html>
