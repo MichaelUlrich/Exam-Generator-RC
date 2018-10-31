@@ -1,25 +1,57 @@
 <!DOCTYPE HTML>
 <html>
-<head>	
+<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 	*{box-sizing: border-box;}
 	.row{display: flex;}
 	.column{ flex: 50%; padding: 10px;}
+	table{border-spacing: 0; border: 1px solid grey}
+	td,th{text-align: left; padding: 16px;}
+	tr:nth-child(even){background-color: #bbb;}
 </style>
 <script>
-	var sample = [{"studentInput":"input1", "autoComments":"", "grade":"100"}		
-		];
-
+	var sample = [{"studentInput":"input1", "autoComments":"autoComment1", "grade":"100"},
+					{"studentInput":"input2", "autoComments":"autoComment2", "grade":"100"},
+					{"studentInput":"input3", "autoComments":"autoComment3", "grade":"100"},
+					{"studentInput":"input4", "autoComments":"autoComment4", "grade":"100"},
+					{"studentInput":"input5", "autoComments":"autoComment5", "grade":"100"}];
 	function drawAutoComments() {
-	
+		var iInt = parseInt(i,10);
+		var inputTd, inputText, commentTd, commentText, gradeTd, gradeText, tr, tableBody;
+		tableBody.getElementById("studentTableBody");
+
+		for(var i in sample) {
+			tr.createElement("tr");
+			inputTd = document.createElement("td");
+			inputText = document.createTextNode(sample[i].studentInput);
+			inputTd.appendChild(inputText);
+			commentTd = document.createElement("td");
+			commentText document.createTextNode(sample[i].autoComments);
+			commentTd.appendChild(commentText);
+			gradeTd = document.createElement("td");
+			gradeText = document.createTextNode(sample[i].grade);
+			gradeTd.appendChild(gradeText);
+
+			tr.appendChild(inputTd);
+			tr.appendChild(commentTd);
+			tr.appendChild(gradeTd);
+			tableBody.appendChild(tr);
+		}
 	}
 	function drawStudentInput() {
 		var studentDiv = document.getElementById("studentInput");
+		studentDiv.innerHTML = "studentDiv"
 	}
 	function drawTeacherInput() {
 		var teacherDiv = document.getElementById("teacherInput");
+		teacherDiv.innerHTML = "teacherDiv"
 	}
+window.onload = function() {
+	drawStudentInput();
+	drawTeacherInput();
+	drawAutoComments();
+}
 </script>
 </head>
 <body>
@@ -28,7 +60,17 @@
 		<div class="column" id="teacherInput" style="background-color:#fff">
 		</div>
 		<div class="column" id="studentInput" style="background-color:#bbb">
-			<p id="test">test</p>
+			<table id="studentTable">
+				<thead>
+					<tr>
+							<th>Student's Code</th>
+							<th>Auto Comments</th>
+							<th>Grade</th>
+					</tr>
+				</thead>
+				<tbody id="studentTableBody">
+				</tbody
+			</table>
 		</div>
 	</div>
 </body>
