@@ -1,4 +1,5 @@
 <?php
+	// TODO: PHP file to send student input for grading
 	$testData = array('studentCode' => $_POST['studentCode'], 'answer' => $_POST['answer']);
 	//echo $_POST['studentCode'];
 	//echo $_POST['answer'];
