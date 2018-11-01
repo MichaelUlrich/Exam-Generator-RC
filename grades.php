@@ -93,7 +93,7 @@
 	<h2>Grades and Comments</h2>
 	<div class="row">
 		<div class="column" style="background-color:#fff">
-			<h2>Student Input<h2>
+			<h2>Student Input</h2>
 			<table id="codeTable">
 				<thead>
 					<th>Question #</th>
