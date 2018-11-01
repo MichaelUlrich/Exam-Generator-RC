@@ -3,21 +3,21 @@
 <html>
 <?php include 'studentHeader.php'; ?>  <!-- Header to prevent a non-logged in teacher from
 accessing -->
-<head> 
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1"> <!--Dynamic Sizing-->
 <style>
 	.block {
 		display: block;
 		width: 25%;
 		border: 1px solid #000;
-		background-color: #98FB98;
+		background-color: #DC143C;
 		color: black;
 		padding: 10px 10px;
 		font-size: 16px;
 		cursor: pointer;
 		text-align: center;
 		margin: 0 auto;
-		float: left;
+		//float: left;
 	}
 	.block:hover {
 		background-color: #000;
@@ -27,8 +27,7 @@ accessing -->
 </head>
 <body>
 	<h2> Temporary Student  Homepage </h2>
-	
-	<button class="block" onclick="window.location.href='test.php'"> Take Test </button> 
-	<button class="block" onclick="window.location.href='grades.php'"> View Grades and Comments </button> 
+	<button class="block" onclick="window.location.href='test.html'"> Take Test </button><br>
+	<button class="block" onclick="window.location.href='grades.php'"> View Grades and Comments </button><br>
 </body>
 </html>
