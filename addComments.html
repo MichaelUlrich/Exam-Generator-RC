@@ -83,7 +83,7 @@ function edit(currQuestion) {
 	sample[currQuestion].autoComments = teacherComment;
 	sample[currQuestion].grade = teacherGrade;
 	drawAutoComments();
-	document.getElementById("test").innerHTML = "edited: " + teacherComment +'/' + teacherGrade;//sample[currQuestion].autoComments;
+	//document.getElementById("test").innerHTML = "edited: " + teacherComment +'/' + teacherGrade;//sample[currQuestion].autoComments;
 }
 function confirmChange() {
 	// TODO: Ajax send grades to db
@@ -119,6 +119,6 @@ window.onload = function() {
 			</table>
 		</div>
 	</div>
-	<p id="test">TEST</p>
+	<!--<p id="test">TEST</p>-->
 </body>
 </html>
