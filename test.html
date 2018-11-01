@@ -16,11 +16,11 @@
 			{"id":"4", "question":"question5", "type":"loop", "diff":"medium","points":"35"},
 			{"id":"5", "question":"question6", "type":"loop", "diff":"medium","points":"35"},
 			{"id":"6", "question":"question7", "type":"loop", "diff":"medium","points":"35"}
-			
+
 			];
-	
+
 	function drawExam() {
-		
+
 		for(var i in sample) {
 			var textElement = document.createElement("textarea");
 			var breakElement = document.createElement("br");
@@ -29,7 +29,7 @@
 			var x = document.getElementById("test");
 			var intI = parseInt(i, 10);
 			intI += 1; //Question 0 displayed as Question 1
-			
+
 			textElement.setAttribute("placeholder", "Write code here for Question #"+intI+"...");
 			textElement.setAttribute("cols", "120");
 			textElement.setAttribute("rows", "10");
@@ -37,7 +37,7 @@
 			displayElement.innerHTML = '<p id=isSubmit'+i+'></p>';
 
 			x.appendChild(textElement);
-			
+
 			x.appendChild(submitElement);
 			x.appendChild(displayElement);
 			x.appendChild(breakElement);
@@ -63,8 +63,8 @@
 			questionDiv.appendChild(questionElement);
 		}
 	}
-	function goToHomepage() {	
-		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
+	function goToHomepage() {
+		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/studentHomepage.php";
 	}
 	window.onload = function() {
 		drawExam();
