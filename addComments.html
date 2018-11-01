@@ -13,13 +13,12 @@ tr:nth-child(even){background-color: #bbb;}
 //th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 </style>
 <script>
-var sample = [{"studentInput":"input", "autoComments":"Missing Function name, Wrong Return Type", "grade":"100"},
-					{"studentInput":"input2", "autoComments":"autoComment2", "grade":"100"},
-					{"studentInput":"input3", "autoComments":"autoComment3", "grade":"100"},
-					{"studentInput":"input4", "autoComments":"autoComment4", "grade":"100"},
-					{"studentInput":"input5", "autoComments":"autoComment5", "grade":"100"}];
+var sample = [{"studentInput":"input", "autoComments":"Missing Function name, Wrong Return Type", "grade":"100", "maxGrade": "100"},
+					{"studentInput":"input2", "autoComments":"autoComment2", "grade":"100", "maxGrade": "100"},
+					{"studentInput":"input3", "autoComments":"autoComment3", "grade":"100", "maxGrade": "100"},
+					{"studentInput":"input4", "autoComments":"autoComment4", "grade":"100", "maxGrade": "100"},
+					{"studentInput":"input5", "autoComments":"autoComment5", "grade":"100", "maxGrade": "100"}];
 function drawAutoComments() {
-		//var iInt = parseInt(i,10);
 		var inputTd, idTd, idText, inputText, commentTd, commentText,
 					gradeTd, gradeText, tr, tableBody, intI, editTd, editText,
 					confirmTd, confirmText;
@@ -39,7 +38,7 @@ function drawAutoComments() {
 			commentText = document.createTextNode(sample[i].autoComments);
 			commentTd.appendChild(commentText);
 			gradeTd = document.createElement("td");
-			gradeText = document.createTextNode(sample[i].grade);
+			gradeText = document.createTextNode(sample[i].grade+'/'+sample[i].maxGrade);
 			gradeTd.appendChild(gradeText);
 			editTd = document.createElement("td");
 			editTd.innerHTML = '<div class="text-center" ><input type="button" value="Edit" onClick="drawTeacherInput('+i+')" id="'+i+'"></div>';
@@ -55,7 +54,7 @@ function drawAutoComments() {
 		}
 	}
 function ajaxRequest(currQuestion) {
-
+	// TODO: Get grades from db
 }
 function drawTeacherInput(currQuestion) {
 		var teacherDiv = document.getElementById("teacherInput");
@@ -87,7 +86,7 @@ function edit(currQuestion) {
 	document.getElementById("test").innerHTML = "edited: " + teacherComment +'/' + teacherGrade;//sample[currQuestion].autoComments;
 }
 function confirmChange() {
-
+	// TODO: Ajax send grades to db
 }
 function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
