@@ -10,13 +10,13 @@
 </head>
 <script>
 	var sample = [  {"id":"0", "question":"question1", "type":"loop", "diff":"hard", "points":"10"},
-			{"id":"1", "question":"question2", "type":"method","diff":"easy","points":"15"},
+/*{"id":"1", "question":"question2", "type":"method","diff":"easy","points":"15"},
 			{"id":"2", "question":"question3", "type":"loop", "diff":"medium","points":"25"},
 			{"id":"3", "question":"question4", "type":"method", "diff":"easy","points":"5"},
 			{"id":"4", "question":"question5", "type":"loop", "diff":"medium","points":"35"},
 			{"id":"5", "question":"question6", "type":"loop", "diff":"medium","points":"35"},
 			{"id":"6", "question":"question7", "type":"loop", "diff":"medium","points":"35"}
-
+*/
 			];
 
 	function drawExam() {
@@ -47,8 +47,8 @@
 		var formText = "";
 		var i;
 		var returnDiv = document.getElementById("returnDiv");
-		for(var i = 0; i < form.length; i++){
-			formText += form.elements[i].value + '/'; //Testing
+		for(var i = 0; i < form.length; i++) {
+			formText = form.elements[i].value; //Testing
 			ajaxRequest(formText, i);
 		}
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
@@ -69,8 +69,31 @@
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/studentHomepage.php";
 	}
-	function ajaxRequest(studentInput) {
+	function ajaxRequest(studentInput, questionId) {
 		// TODO: send AJAX to php file
+		var xmhlObj = new XMLHttpRequest();
+		var phpFile = 'testCurl.php';
+		var question = sample[questionId].question;
+		var type = sample[questionId].type;
+		var loopType = "TEMP_LOOP_TYPE";
+		var diff = sample[questionId].diff;
+		var points = sample[questionId].points;
+		var testCases = "TEMP_TEST_CASE";
+		var functionName = "TEMP_FUNC_NAME";
+		var varNames = "TEMP_VAR_NAME";
+		var returnPrint = "TEMP_PRINT_VAL";
+		var url = "question="+question+"&studentInput="+studentInput+"&type="+type+"&loopType="+loopType+"&diff="+diff+"&points="+points+"&testCases="+testCases
+							+"&functionName="+functionName+"&variableNames="+varNames+"&returnPrint="+returnPrint; //For AJAX POST
+		xmhlObj.open("POST", phpFile, true);
+		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
+		xmhlObj.onreadystatechange = function() {
+		if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
+			var return_data = xmhlObj.responseText;
+		//	document.getElementById("testing").innerHTML = return_data;
+			}
+		}
+		xmhlObj.send(url); //Send request
+		document.getElementById("testing").innerHTML = url;
 	}
 	window.onload = function() {
 		drawExam();
@@ -78,14 +101,11 @@
 	}
 </script>
 <body>
-<<<<<<< HEAD
-	<button onClick="goToHomepage()">Return to Homepage</button>
+	<button onClick="goToHomepage()">REMOVE-Return to Homepage</button>
 	<h1> ONLY WANT ONE BUTTON </h1>
-=======
-	<button onClick="goToHomepage()">TESTING-Return to Homepage</button>
->>>>>>> 8718048a556dee87250b756318c42372ec0f8141
 	<h2> Carefully read each question. Hit Submit for Each Question.  Good Luck. </h2>
 	<p> Only click submit when you code is 100% finished </p>
+	<p id="testing"></p>
 	<div class="row">
 		<div id="testDiv" class="column" style="background-color:#aaa;">
 			<form id="test"></form>
