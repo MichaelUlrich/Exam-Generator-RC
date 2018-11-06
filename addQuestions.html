@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
 <title> Add Quesitons to Database </title>
@@ -47,12 +48,13 @@
 			return "for";
 		} else if (document.getElementById("whileRadio").checked) {
 			return "while";
+		} else if (document.getElementById("recursionRadio").checked){
+			return "recursion";
 		} else {
 			return "";
 		}
 	}
-
-	function ajaxRequest() {
+function ajaxRequest() {
 		/*
 			Question, Type(For/While), Difficulty, Points, Test Cases[], Function Name, Variables[], Return/Print
 		*/
@@ -70,7 +72,6 @@
 		var returnPrint = document.getElementById('displayType').value;
 		var url = "question="+question+"&type="+type+"&loopType="+loopType+"&diff="+diff+"&points="+points+"&testCases="+testCases
 							+"&functionName="+functionName+"&variableNames="+varNames+"&returnPrint="+returnPrint; //For AJAX POST
-		//NEED AJAX POST
 
 		xmhlObj.open("POST", phpFile, true);
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
@@ -114,25 +115,32 @@
 					<input type="text" name="testCase6" id="testCase6" placeholder="Test Case #6" required>
 					<input type="text" name="answer6" id="answer6" placeholder="Answer #6" required><br><br>
 				</form>
-			<p> Select Question Difficulty
+			<p> Select Question Difficulty:
 				<select name="diff" id="diff" required>
 					<option value="easy">Easy</option>
 					<option value="medium">Medium</option>
 					<option value="hard">Hard</option>
 				</select>
 			</p>
-			<p> Select Question Type
+			<p> Select Question Type:
 				<select name="type" id="type" required>
 					<option value="loop">Loop</option>
 					<option value="method">Method</option>
 					<option value="variable">Variable</option>
-					<option value="recursion">Recursion</option>
-					<option value="topic6">TOPIC#6</option>
-					<form id="loopType" action="">
-						<input type="radio" id="forRadio" name="loopType" value="forLoop">For-Loop
-						<input type="radio" id="whileRadio" name="loopType" value="whileLoop">While-Loop<br>
-					</form>
+					<option value="dictionaries">Dictionaries</option>
+					<option value="lists">Lists</option>
+					<option value="tuple">Tuples</option>
+					<option value="arrays">Arrays</option>
+					<option value="2dArrays">2D-Arrays</option>
+					<option value="vectors">Vectors</option>
+
 				</select>
+			</p>
+			<p> Select Constraint:
+						<input type="radio" id="forRadio" name="loopType" value="forLoop">For-Loop
+						<input type="radio" id="whileRadio" name="loopType" value="whileLoop">While-Loop
+						<input type="radio" id="recursionRadio" name="loopType" value="whileLoop">Recursion<br>
+
 			</p>
 			<p> Select if the output is Return or Printed
 			<select name="displayType" id="displayType" required>
