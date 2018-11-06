@@ -20,36 +20,40 @@
 			];
 
 	function drawExam() {
-
 		for(var i in sample) {
 			var textElement = document.createElement("textarea");
 			var breakElement = document.createElement("br");
-			var submitElement = document.createElement("span");
+			//var submitElement = document.createElement("span");
 			var displayElement = document.createElement("span");
 			var x = document.getElementById("test");
+
 			var intI = parseInt(i, 10);
 			intI += 1; //Question 0 displayed as Question 1
-
+			textElement.setAttribute("name", "question" + intI);
 			textElement.setAttribute("placeholder", "Write code here for Question #"+intI+"...");
 			textElement.setAttribute("cols", "120");
 			textElement.setAttribute("rows", "10");
-			submitElement.innerHTML = '<button id="'+i+'" onclick="submit(this)">Submit Question #'+intI+'</button>';
+			//submitElement.innerHTML = '<button id="'+i+'" onclick="submit(this)">Submit Question #'+intI+'</button>';
 			displayElement.innerHTML = '<p id=isSubmit'+i+'></p>';
 
-			x.appendChild(textElement);
 
-			x.appendChild(submitElement);
+			x.appendChild(textElement);
+		//	x.appendChild(submitElement);
 			x.appendChild(displayElement);
 			x.appendChild(breakElement);
 		}
 	}
-	function submit(calling) {
-		var callingButton = document.getElementById(calling.id);
-		var intId = parseInt(calling.id, 10);
-		intId += 1;
-	//	document.getElementById("qText").innerHTML = "called by "+calling.id;
-		document.getElementById("isSubmit"+calling.id).innerHTML = "Question #" +intId + " has been submitted";
-		callingButton.disabled=true; //Only submit question once
+	function submit(/*calling*/) {
+		var form = document.getElementById("test");
+		var formText = "";
+		var i;
+		var returnDiv = document.getElementById("returnDiv");
+		for(var i = 0; i < form.length; i++){
+			formText += form.elements[i].value + '/'; //Testing
+			ajaxRequest(formText, i);
+		}
+		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
+		returnDiv.innerHTML = '<button onclick="goToHomepage()">Return to Homepage</button>';
 	}
 	function drawQuestions() {
 		var questionDiv = document.getElementById("questions");
@@ -66,21 +70,29 @@
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/studentHomepage.php";
 	}
+	function ajaxRequest(studentInput) {
+		// TODO: send AJAX to php file
+	}
 	window.onload = function() {
 		drawExam();
 		drawQuestions();
-		//drawExam();
 	}
 </script>
 <body>
+<<<<<<< HEAD
 	<button onClick="goToHomepage()">Return to Homepage</button>
 	<h1> ONLY WANT ONE BUTTON </h1>
+=======
+	<button onClick="goToHomepage()">TESTING-Return to Homepage</button>
+>>>>>>> 8718048a556dee87250b756318c42372ec0f8141
 	<h2> Carefully read each question. Hit Submit for Each Question.  Good Luck. </h2>
 	<p> Only click submit when you code is 100% finished </p>
 	<div class="row">
 		<div id="testDiv" class="column" style="background-color:#aaa;">
-			<div id="test"></div>
-			<!--<button onclick="test()">test</button>-->
+			<form id="test"></form>
+			<button onclick="submit()">Submit Test</button>
+			<h3 id="submitedText"></h3>
+			<div id="returnDiv"></div>
 		</div>
 		<div class="column" style="background-color:#bbb;">
 			<div id="questions">

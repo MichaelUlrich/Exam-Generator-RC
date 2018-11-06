@@ -5,11 +5,13 @@
 					'points' => $_POST['points'], 'testCases' => $_POST['testCases'],
 					'functionName' => $_POST['functionName'], 'variableNames' => $_POST['variableNames'],
 					'returnPrint' => $_POST['returnPrint']);	
-	$ch = curl_init("");
+	//echo $question;
+	//:var_dump($question);
+	$ch = curl_init("https://web.njit.edu/~bkw2/addQuestions.php");
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $question);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 	$result = curl_exec($ch);
-	echo $result;*/
+	echo $result;
 ?>
