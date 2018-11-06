@@ -9,5 +9,5 @@
 
 	$result = curl_exec($ch);
 
-	echo $
+	echo $result;
  ?>
