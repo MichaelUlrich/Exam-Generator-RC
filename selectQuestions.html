@@ -29,21 +29,47 @@
 			{"id":"12", "question":"question12", "type":"loop", "diff":"medium","points":"15"},
 			{"id":"14", "question":"question13", "type":"loop", "diff":"hard","points":"15"},
 			{"id":"13", "question":"question14", "type":"method", "diff":"easy","points":"35"}
-			
-			
+
 		];
 	/***********************************************************************/
+	function ajaxRequest(questionId) {
+		var xmhlObj = new XMLHttpRequest();
+		var phpFile = 'selectQuestionsCurl.php';
+		var question = sample[questionId].question;
+		var type = sample[questionId].type;
+		var loopType = "TEMP_LOOP_TYPE";
+		var diff = sample[questionId].diff;
+		var points = sample[questionId].points;
+		var testCases = "TEMP_TEST_CASE";
+		//document.getElementById("test").innerHTML = testCases;
+		var functionName = "TEMP_FUNC_NAME";
+		var varNames = "TEMP_VAR_NAME";
+		var returnPrint = "TEMP_PRINT_VAL";
+		var url = "question="+question+"&type="+type+"&loopType="+loopType+"&diff="+diff+"&points="+points+"&testCases="+testCases
+							+"&functionName="+functionName+"&variableNames="+varNames+"&returnPrint="+returnPrint; //For AJAX POST
+		xmhlObj.open("POST", phpFile, true);
+		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
+		xmhlObj.onreadystatechange = function() {
+		if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
+			var return_data = xmhlObj.responseText;
+			document.getElementById("test2").innerHTML = return_data;
+			}
+		}
+		xmhlObj.send(url); //Send request
+
+	document.getElementById("test2").innerHTML = url;
+
+	}
 	function drawAvailableTable() {
 		var table = document.getElementById("questionTableBody");
 		table.innerHTML="";
 /*		var parseSample = JSON.parse(sample); //Need for response from AJAX cURL */
-
 		for(var i in sample) {
 			var iInt = parseInt(i, 10);
 			iInt += 1;
 			document.getElementById("test").innerHTML = "total questions: "+iInt;
 			var tr = document.createElement("tr");
-			
+
 			var idTd = document.createElement("td");
 			var idText = document.createTextNode(sample[i].id);
 			idTd.appendChild(idText);
@@ -51,7 +77,7 @@
 			var questionTd = document.createElement("td");
 			var questionText = document.createTextNode(sample[i].question);
 			questionTd.appendChild(questionText);
-			
+
 			var typeTd = document.createElement("td");
 			var typeText = document.createTextNode(sample[i].type);
 			typeTd.appendChild(typeText);
@@ -74,7 +100,6 @@
 			tr.appendChild(pointsTd);
 			tr.appendChild(selectTd);
 			table.appendChild(tr);
-
 		}
 	}
 	function sortTable(callingObj, column) {
@@ -84,7 +109,7 @@
 		   column = 3 -> Difficulty
 		*/
 		var input = document.getElementById(callingObj.id);
-		document.getElementById("test").innerHTML = callingObj.id;
+		//document.getElementById("test").innerHTML = callingObj.id;
 		var inputCaps = input.value.toUpperCase();
 		var table = document.getElementById("questionTable");
 		var tr = table.getElementsByTagName("tr");
@@ -101,24 +126,24 @@
 				}
 			}
 		}
-
 	}
 	function addQuestion(questionId) {
-		document.getElementById("test").innerHTML = questionId;
-		var question = sample[questionId].question; 
+		//document.getElementById("test").innerHTML = questionId;
+		ajaxRequest(questionId);
+		var question = sample[questionId].question;
 		var type = sample[questionId].type;
 		var diff = sample[questionId].diff;
 		var points =sample[questionId].points;
 		var node = document.createElement("li");
 		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + '] | [Points: '+ points + ']');
-		
-		document.getElementById("test").innerHTML = textNode;
+
+	//	document.getElementById("test").innerHTML = textNode;
 
 		node.appendChild(textNode);
 		document.getElementById('selectedQuestions').appendChild(node);
-	
+		//ajaxRequest(questionId);
 	}
-	function goToHomepage() {	
+	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
 	}
 	window.onload = drawAvailableTable;
@@ -130,13 +155,13 @@
 	<div class="row">
 		<div class="column" style="background-color:#bbb;">
 			<h2> Selected Questions </h2>
-			<p id="test2"></p>		
+			<p id="test2"></p>
 			<ul id="selectedQuestions"></ul>
 		</div>
 		<div class="column" style="background-color:#fff;">
 			<h2> Available Questions </h2>
 			<p id="test"></p>
-				<p>Sort Options: 
+				<p>Sort Options:
 				<input type="text" id="keywordSelect" onkeyup="sortTable(this, 1)"placeholder="Search by word...">
 				<select id="typeSelect"  onChange="sortTable(this, 2)">
 					<option value="" disabled selected>Type</option>
