@@ -27,9 +27,9 @@ accessing -->
 </head>
 <body>
 	<h2>  Teacher Homepage </h2>
-	<button class="block" onclick="window.location.href='addQuestions.html'"> Add Questions </button><br>
-	<button class="block" onclick="window.location.href='selectQuestions.html'"> Select Questions </button><br>
+	<button class="block" onclick="window.location.href='addQuestions.php'"> Add Questions </button><br>
+	<button class="block" onclick="window.location.href='selectQuestions.php'"> Select Questions </button><br>
 	<button class="block" onclick="window.location.href='test.html'"> Review Test[REMOVE AFTER TESTING] </button><br>
-	<button class="block" onclick="window.location.href='addComments.html'"> Add Comments/Grades </button><br>
+	<button class="block" onclick="window.location.href='addComments.php'"> Add Comments/Grades </button><br>
 </body>
 </html>
