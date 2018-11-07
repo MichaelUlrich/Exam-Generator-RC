@@ -6,8 +6,8 @@
 //	{
 
 	session_start();
-//	$_SESSION['teacher'] = "true"; //Testing 
-//	$_SESSION['student'] = "true"; //Testing
+//$_SESSION['teacher'] = "true"; //Testing
+//$_SESSION['student'] = "true"; //Testing
 
 	error_reporting(E_ALL);
 	ini_set('display_errors', TRUE);
@@ -26,11 +26,13 @@
 
 	if($resultDecoded->{'student'} == "true") {
 		$_SESSION['student'] = true;
+		$_SESSION['username'] = $user["username"];
 //		redirect("studentHomepage.php");
 		header('Location: studentHomepage.php');
 		exit();
 	} else if($resultDecoded->{'teacher'} == "true") {
 		$_SESSION['teacher'] = true;
+		$_SESSION['username'] = $user["username"];
 		header('Location: teacherHomepage.php');
 		exit();
 	} else {
@@ -38,6 +40,6 @@
 		header('Location: login.html');
 		exit();
 	//	echo '<div id="test"> Wrong Info. Try Again</div>';
-	}	
+	}
 	curl_close($ch);
 ?>
