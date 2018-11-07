@@ -6,10 +6,9 @@ if(!isset($_SESSION['student']) || $_SESSION['teacher'] != true)
 	WILL BE TRUE FOR TESTING
 */
 if(!true) {
-
 		header("Location: https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/login.html");
 		die();
 	} else {
 		echo "[Student mode is always enabled for testing]" . "<br>";
-
+	}
 ?>
