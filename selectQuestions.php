@@ -34,7 +34,7 @@
 			{"id":"13", "question":"question14", "type":"method", "diff":"easy","points":"35", "loopType":"for"}
 	];
 	/***********************************************************************/
-
+	document.get
 	function ajaxRequest(questionId) {
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'selectQuestionsCurl.php';
@@ -187,6 +187,7 @@
 
 		*/
 	}
+}
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
 	}
