@@ -1,5 +1,5 @@
-
 <!DOCTYPE HTML>
+<?php include 'teacherHeader.php'; ?>
 <html>
 <title> Add Quesitons to Database </title>
 <!-- Resize to fit screen dynamically -->
