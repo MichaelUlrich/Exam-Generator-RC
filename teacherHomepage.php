@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <!-- Homepage for students to take tests and view grades -->
 <html>
-<//?php include 'studentHeader.php'; ?>  <!-- Header to prevent a non-logged in teacher from
+<?php include 'teacherHeader.php'; ?>  <!-- Header to prevent a non-logged in teacher from
 accessing -->
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1"> <!--Dynamic Sizing-->
