@@ -5,7 +5,7 @@
 		header("Location: https://web.njit.edu/~meu3/CS490/Exam-Generator/login.html");
 		die();
 	} else {
-		echo "Hello "+ $_SESSION['username'] ;
+		echo "Hello " . $_SESSION['username'] ;
 	}
 
 ?>
