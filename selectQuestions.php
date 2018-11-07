@@ -158,7 +158,7 @@
 	}
 	function getAjaxRequest() {
 		var xmhlObj = new XMLHttpRequest();
-		var phpFile = 'selectQuestionsCurl.php';
+		var phpFile = 'selectQuestionsGetCurl.php';
 		xmhlObj.open("POST", phpFile, true);
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 		xmhlObj.onreadystatechange = function() {
