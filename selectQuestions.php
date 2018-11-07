@@ -16,23 +16,25 @@
 </style>
 <script>
 	/***********************************************************************/
-	var sample = [  {"id":"0", "question":"question1", "type":"loop", "diff":"hard", "points":"10"},
-			{"id":"1", "question":"question2", "type":"method","diff":"easy","points":"15"},
-			{"id":"2", "question":"question3", "type":"loop", "diff":"medium","points":"25"},
-			{"id":"3", "question":"question4", "type":"method", "diff":"easy","points":"5"},
-			{"id":"5", "question":"question5", "type":"variable", "diff":"medium","points":"35"},
-			{"id":"6", "question":"question6", "type":"loop", "diff":"medium","points":"45"},
-			{"id":"7", "question":"question7", "type":"loop", "diff":"hard","points":"5"},
-			{"id":"8", "question":"question8", "type":"method", "diff":"easy","points":"75"},
-			{"id":"9", "question":"question9", "type":"method", "diff":"hard","points":"65"},
-			{"id":"10", "question":"question10", "type":"variable", "diff":"medium","points":"25"},
-			{"id":"11", "question":"question11", "type":"variable", "diff":"hard","points":"35"},
-			{"id":"12", "question":"question12", "type":"loop", "diff":"medium","points":"15"},
-			{"id":"14", "question":"question13", "type":"loop", "diff":"hard","points":"15"},
-			{"id":"13", "question":"question14", "type":"method", "diff":"easy","points":"35"}
 
-		];
+	var sample = getAjaxRequest();/*
+	 [  {"id":"0", "question":"question1", "type":"loop", "diff":"hard", "points":"10", "loopType":"for"},
+			{"id":"1", "question":"question2", "type":"method","diff":"easy","points":"15", "loopType":""},
+			{"id":"2", "question":"question3", "type":"loop", "diff":"medium","points":"25", "loopType":"while"},
+			{"id":"3", "question":"question4", "type":"method", "diff":"easy","points":"5", "loopType":"for"},
+			{"id":"5", "question":"question5", "type":"variable", "diff":"medium","points":"35", "loopType":"for"},
+			{"id":"6", "question":"question6", "type":"loop", "diff":"medium","points":"45", "loopType":"for"},
+			{"id":"7", "question":"question7", "type":"loop", "diff":"hard","points":"5","loopType":"for"},
+			{"id":"8", "question":"question8", "type":"method", "diff":"easy","points":"75", "loopType":"for"},
+			{"id":"9", "question":"question9", "type":"method", "diff":"hard","points":"65","loopType":"for"},
+			{"id":"10", "question":"question10", "type":"variable", "diff":"medium","points":"25","loopType":"for"},
+			{"id":"11", "question":"question11", "type":"variable", "diff":"hard","points":"35", "loopType":"for"},
+			{"id":"12", "question":"question12", "type":"loop", "diff":"medium","points":"15", "loopType":"for"},
+			{"id":"14", "question":"question13", "type":"loop", "diff":"hard","points":"15", "loopType":"for"},
+			{"id":"13", "question":"question14", "type":"method", "diff":"easy","points":"35", "loopType":"for"}
+	];
 	/***********************************************************************/
+
 	function ajaxRequest(questionId) {
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'selectQuestionsCurl.php';
@@ -42,7 +44,6 @@
 		var diff = sample[questionId].diff;
 		var points = sample[questionId].points;
 		var testCases = "TEMP_TEST_CASE";
-		//document.getElementById("test").innerHTML = testCases;
 		var functionName = "TEMP_FUNC_NAME";
 		var varNames = "TEMP_VAR_NAME";
 		var returnPrint = "TEMP_PRINT_VAL";
@@ -91,6 +92,10 @@
 			var pointsText = document.createTextNode(sample[i].points);
 			pointsTd.appendChild(pointsText);
 
+			var constrainTd = document.createElement("td");
+			var constrainText = document.createTextNode(sample[i].loopType);
+			constrainTd.appendChild(constrainText);
+
 			var selectTd = document.createElement("td");
 			selectTd.innerHTML = '<div class="text-center" ><input type="button" value="Select" onClick="addQuestion('+i+')" id="question_to_add_'+i+'"></div>';
 
@@ -99,6 +104,7 @@
 			tr.appendChild(typeTd);
 			tr.appendChild(diffTd);
 			tr.appendChild(pointsTd);
+			tr.appendChild(constrainTd);
 			tr.appendChild(selectTd);
 			table.appendChild(tr);
 		}
@@ -107,8 +113,12 @@
 		/* column = 0 -> ID
 		   column = 1 -> Question
 		   column = 2 -> Type
-		   column = 3 -> Difficulty
+		   column = 3 -> LoopType
+			 column = 4 -> Difficulty
+			 column = 5 -> points
+			 column = 8 -> return
 		*/
+		//document.getElementById("test").innerHTML =
 		var input = document.getElementById(callingObj.id);
 		//document.getElementById("test").innerHTML = callingObj.id;
 		var inputCaps = input.value.toUpperCase();
@@ -116,6 +126,8 @@
 		var tr = table.getElementsByTagName("tr");
 		var td;
 		var i;
+
+		document.getElementById("test").innerHTML = inputCaps;
 
 		for(i = 0; i < tr.length; i++) {
 			td = tr[i].getElementsByTagName("td")[column];
@@ -143,6 +155,37 @@
 		node.appendChild(textNode);
 		document.getElementById('selectedQuestions').appendChild(node);
 		//ajaxRequest(questionId);
+	}
+	function getAjaxRequest() {
+		var xmhlObj = new XMLHttpRequest();
+		var phpFile = 'selectQuestionsCurl.php';
+		xmhlObj.open("POST", phpFile, true);
+		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
+		xmhlObj.onreadystatechange = function() {
+		if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
+			var return_data = xmhlObj.responseText;
+		}
+		xmhlObj.send();
+		return return_data;
+	/*	var test = [  {"id":"0", "question":"question1", "type":"loop", "diff":"hard", "points":"10", "loopType":"for"},
+				{"id":"1", "question":"question2", "type":"method","diff":"easy","points":"15", "loopType":""},
+				{"id":"2", "question":"question3", "type":"loop", "diff":"medium","points":"25", "loopType":"while"},
+				{"id":"3", "question":"question4", "type":"method", "diff":"easy","points":"5", "loopType":"for"},
+				{"id":"5", "question":"question5", "type":"variable", "diff":"medium","points":"35", "loopType":"for"},
+				{"id":"6", "question":"question6", "type":"loop", "diff":"medium","points":"45", "loopType":"for"},
+				{"id":"7", "question":"question7", "type":"loop", "diff":"hard","points":"5","loopType":"for"},
+				{"id":"8", "question":"question8", "type":"method", "diff":"easy","points":"75", "loopType":"for"},
+				{"id":"9", "question":"question9", "type":"method", "diff":"hard","points":"65","loopType":"for"},
+				{"id":"10", "question":"question10", "type":"variable", "diff":"medium","points":"25","loopType":"for"},
+				{"id":"11", "question":"question11", "type":"variable", "diff":"hard","points":"35", "loopType":"for"},
+				{"id":"12", "question":"question12", "type":"loop", "diff":"medium","points":"15", "loopType":"for"},
+				{"id":"14", "question":"question13", "type":"loop", "diff":"hard","points":"15", "loopType":"for"},
+				{"id":"13", "question":"question14", "type":"method", "diff":"easy","points":"35", "loopType":"for"}
+
+			];
+			return test;
+
+		*/
 	}
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
@@ -176,6 +219,12 @@
 					<option value="medium">Medium</option>
 					<option value="hard">Hard</option>
 				</select>
+				<select id="ConstraintSelect"  onChange="sortTable(this, 5)">
+					<option value"" disabled selected>Constraint</option>
+					<option value="for">For-Loop</option>
+					<option value="medium">Medium</option>
+					<option value="hard">Hard</option>
+				</select>
 				</p>
 			<table id="questionTable">
 				<thead>
@@ -185,6 +234,7 @@
 					<th>Type</th>
 					<th>Difficulty</th>
 					<th>Points</th>
+					<th>Constraint</th>
 				</tr>
 				</thead>
 				<tbody id="questionTableBody">
