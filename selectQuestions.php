@@ -23,7 +23,7 @@
 		var question = GLOBAL_JSON[questionId].question;
 		var type = GLOBAL_JSON[questionId].type;
 		var loopType = GLOBAL_JSON[questionId].loopType;
-		var diff = GLOBAL_JSON[questionId].diff;
+		var diff = GLOBAL_JSON[questionId].difficulty;
 		var points = GLOBAL_JSON[questionId].points;
 		var testCases = GLOBAL_JSON[questionId].testCases;
 		var functionName = GLOBAL_JSON[questionId].functionName;
