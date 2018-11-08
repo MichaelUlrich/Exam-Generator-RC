@@ -11,8 +11,8 @@
 </head>
 <script>
 	var GLOBAL_JSON;
-	function drawExam() {
-		for(var i in GLOBAL_JSON) {
+	function drawExam(parseQuestions) {
+		for(var i in parseQuestions) {
 			var textElement = document.createElement("textarea");
 			var breakElement = document.createElement("br");
 			//var submitElement = document.createElement("span");
@@ -48,19 +48,21 @@
 		returnDiv.innerHTML = '<button onclick="goToHomepage()">Return to Homepage</button>';
 	}
 	function drawQuestions(questions) {
-		document.getElementById("testing").innerHTML = questions;
+	//	document.getElementById("testing").innerHTML = questions;//questions;
 		var questionDiv = document.getElementById("questions");
 		var parseQuestions = JSON.parse(questions);
 		//document.getElementById("questions").innerHTML = "QUESTIONS GO HERE";
-		for(var i in questions) {
+		for(var i in parseQuestions) {
 			var questionElement = document.createElement("p")
 			var intI = parseInt(i, 10);
 			intI+=1;
-			//questionElement.setAttribute("data-content", "Question #"+i+": ");  //+sample[i].question);
+			questionElement.setAttribute("data-content", "Question #"+i+": ");  //+sample[i].question);
 			questionElement.textContent =  "Question #"+intI+": "+parseQuestions[i].question;
 			questionDiv.appendChild(questionElement);
-			GLOBAL_JSON = parseQuestions;
+			//GLOBAL_JSON = parseQuestions;
 		}
+		drawExam(parseQuestions);
+
 	}
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/studentHomepage.php";
@@ -74,9 +76,7 @@
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 		xmhlObj.onreadystatechange = function() {
 		if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
-			var return_data = xmhlObj.responseText
-
-
+			var return_data = xmhlObj.responseText;
 			}
 		}
 		xmhlObj.send(url); //Send request
@@ -91,15 +91,14 @@
 		xmhlObj.onreadystatechange = function() {
 			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 				return_data = xmhlObj.responseText;
-				drawQuestions(return_data);
+			//	document.getElementById("testing").innerHTML = return_data;
+				drawQuestions(return_data);	
 			}
 		}
 		xmhlObj.send();
 	}
-	window.onload = function() {
-		drawExam();
-		drawQuestions();
-	}
+	window.onload = ajaxGetRequest;
+	
 </script>
 <body>
 	<button onClick="goToHomepage()">REMOVE-Return to Homepage</button>
