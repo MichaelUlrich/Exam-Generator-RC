@@ -72,7 +72,7 @@
 	}
 	function generateURL(formText) {
 		var username = "<?php echo $_SESSION['username']?>";
-		URL = "username="+username+"&studentInput="+formText;
+		URL += "username="+username+"&studentInput="+formText;
 	}
 	function ajaxRequest(studentInput) {
 		// TODO: send AJAX to php file
