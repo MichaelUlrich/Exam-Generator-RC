@@ -14,7 +14,7 @@
 	var USERNAME = "";//<//?php echo $_SESSION['username']?>;
 	function drawExam(parseQuestions) {
 		for(var i in parseQuestions) {
-			USERNAME = <?php echo $_SESSION['username']?>;
+			USERNAME = "<?php echo $_SESSION['username']?>";
 			document.getElementById("testing").innerHTML = "user from php: " + USERNAME;
 			var textElement = document.createElement("textarea");
 			var breakElement = document.createElement("br");
