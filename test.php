@@ -10,7 +10,7 @@
 </style>
 </head>
 <script>
-	var GLOBAL_JSON;
+	var GLOBAL_JSON = "";
 	//var USERNAME = "";//<//?php echo $_SESSION['username']?>;
 	function drawExam(parseQuestions) {
 		for(var i in parseQuestions) {
@@ -45,7 +45,7 @@
 			formText = form.elements[i].value; //Testing
 			testingText += formText;
 			//document.getElementById("testing").innerHTML = formText;
-			ajaxRequest(formText, testingText);
+			ajaxRequest(formText);
 		}
 		document.getElementById("studentInput").innerHTML = testingText;
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
@@ -70,8 +70,8 @@
 	}
 	function ajaxRequest(studentInput) {
 		// TODO: send AJAX to php file
-		var formText = "";
-		formText += studentInput;
+		//var formText = "";
+		GLOBAL_JSON += studentInput;
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'testCurl.php';
 		var username = "<?php echo $_SESSION['username']?>";
@@ -84,7 +84,7 @@
 				var return_data= xmhlObj.responseText;
 				//document.getElementById("testing").innerHTML = testingText;
 			}
-			document.getElementById("testing").innerHTML = formText;
+			document.getElementById("testing").innerHTML = GLOBAL_JSON;
 		}
 		xmhlObj.send(url); //Send request
 		//document.getElementById("testing").innerHTML = testingText;
