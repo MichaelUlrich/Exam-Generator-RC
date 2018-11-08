@@ -79,8 +79,8 @@
 		xmhlObj.onreadystatechange = function() {
 			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 				var return_data = xmhlObj.responseText;
-				testingText += return_data
-				document.getElementById("testing").innerHTML = testingText;
+
+				document.getElementById("testing").innerHTML = return_data;
 			}
 		}
 		xmhlObj.send(url); //Send request
