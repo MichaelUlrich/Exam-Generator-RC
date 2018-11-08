@@ -130,10 +130,10 @@
 	function addQuestion(questionId) {
 		//document.getElementById("test").innerHTML = questionId;
 		ajaxRequest(questionId);
-		var question = sample[questionId].question;
-		var type = sample[questionId].type;
-		var diff = sample[questionId].diff;
-		var points =sample[questionId].points;
+		var question = GLOBAL_JSON[questionId].question;
+		var type = GLOBAL_JSON[questionId].type;
+		var diff = GLOBAL_JSON[questionId].diff;
+		var points = GLOBAL_JSON[questionId].points;
 		var node = document.createElement("li");
 		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + '] | [Points: '+ points + ']');
 
