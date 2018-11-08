@@ -70,7 +70,8 @@
 	}
 	function ajaxRequest(studentInput) {
 		// TODO: send AJAX to php file
-		var formText += studentInput;
+		var formText = "";
+		formText += studentInput;
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'testCurl.php';
 		var username = "<?php echo $_SESSION['username']?>";
