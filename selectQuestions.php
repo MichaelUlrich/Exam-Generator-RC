@@ -75,6 +75,10 @@
 			var constrainText = document.createTextNode(parseSample[i].loopType);
 			constrainTd.appendChild(constrainText);
 
+			var returnPrintTd = document.createElement("td");
+			var returnPrintText = document.createTextNode(parseSample[i].returnPrint);
+			returnPrintTd.appendChild(returnPrintText);
+
 			var selectTd = document.createElement("td");
 			selectTd.innerHTML = '<div class="text-center" ><input type="button" value="Select" onClick="addQuestion('+i+')" id="question_to_add_'+i+'"></div>';
 
@@ -84,6 +88,7 @@
 			tr.appendChild(diffTd);
 			tr.appendChild(pointsTd);
 			tr.appendChild(constrainTd);
+			tr.appendChild(returnPrintTd);
 			tr.appendChild(selectTd);
 			table.appendChild(tr);
 		}
@@ -193,7 +198,7 @@
 					<option value"" disabled selected>Return/Print</option>
 					<option value="return">Return</option>
 					<option value="print">Print</option>
-				</select>:
+				</select>
 				</p>
 			<table id="questionTable">
 				<thead>
