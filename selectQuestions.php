@@ -15,7 +15,8 @@
 	//th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 </style>
 <script>
-	//document.getElementById("test").innerHTML = sample;
+//document.getElementById("test").innerHTML = sample;
+	var GLOBAL_JSON;
 	function ajaxRequest(questionId) {
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'selectQuestionsCurl.php';
@@ -42,7 +43,7 @@
 	function drawAvailableTable(sample) {
 		var table = document.getElementById("questionTableBody");
 		table.innerHTML="";
-		document.getElementById("test").innerHTML = sample;
+		//document.getElementById("test").innerHTML = sample;
 		var parseSample = JSON.parse(sample); //Need for response from AJAX cURL */
 //		document.getElementById("test").innerHTML = parseSameple;
 		for(var i in parseSample) {
@@ -91,6 +92,8 @@
 			tr.appendChild(returnPrintTd);
 			tr.appendChild(selectTd);
 			table.appendChild(tr);
+			GLOBAL_JSON = parseSample;
+			document.getElementById("test").innerHTML = GLOBAL_JSON;
 		}
 	}
 	function sortTable(callingObj, column) {
