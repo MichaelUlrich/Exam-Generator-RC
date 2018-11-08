@@ -45,7 +45,7 @@
 			formText = form.elements[i].value; //Testing
 			testingText += formText;
 			//document.getElementById("testing").innerHTML = formText;
-			ajaxRequest(formText);
+			ajaxRequest(formText, testingText);
 		}
 		document.getElementById("studentInput").innerHTML = testingText;
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
@@ -70,6 +70,7 @@
 	}
 	function ajaxRequest(studentInput) {
 		// TODO: send AJAX to php file
+		var formText += studentInput;
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'testCurl.php';
 		var username = "<?php echo $_SESSION['username']?>";
@@ -82,7 +83,7 @@
 				var return_data= xmhlObj.responseText;
 				//document.getElementById("testing").innerHTML = testingText;
 			}
-			document.getElementById("testing").innerHTML = return_data;
+			document.getElementById("testing").innerHTML = formText;
 		}
 		xmhlObj.send(url); //Send request
 		//document.getElementById("testing").innerHTML = testingText;
