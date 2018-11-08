@@ -10,15 +10,7 @@
 </style>
 </head>
 <script>
-	var sample = [  {"id":"0", "question":"question1", "type":"loop", "diff":"hard", "points":"10"},
-			{"id":"1", "question":"question2", "type":"method","diff":"easy","points":"15"}
-/*			{"id":"2", "question":"question3", "type":"loop", "diff":"medium","points":"25"},
-			{"id":"3", "question":"question4", "type":"method", "diff":"easy","points":"5"},
-			{"id":"4", "question":"question5", "type":"loop", "diff":"medium","points":"35"},
-			{"id":"5", "question":"question6", "type":"loop", "diff":"medium","points":"35"},
-			{"id":"6", "question":"question7", "type":"loop", "diff":"medium","points":"35"}
-*/
-			];
+	var GLOBAL_JSON;
 
 	function drawExam() {
 		for(var i in sample) {
@@ -56,16 +48,18 @@
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
 		returnDiv.innerHTML = '<button onclick="goToHomepage()">Return to Homepage</button>';
 	}
-	function drawQuestions() {
+	function drawQuestions(questions) {
 		var questionDiv = document.getElementById("questions");
+		VAR parseQuestions = json.parse(questions);
 		//document.getElementById("questions").innerHTML = "QUESTIONS GO HERE";
-		for(var i in sample) {
+		for(var i in questions) {
 			var questionElement = document.createElement("p")
 			var intI = parseInt(i, 10);
 			intI+=1;
 			//questionElement.setAttribute("data-content", "Question #"+i+": ");  //+sample[i].question);
-			questionElement.textContent =  "Question #"+intI+": "+sample[i].question;
+			questionElement.textContent =  "Question #"+intI+": "+parseQuestions[i].question;
 			questionDiv.appendChild(questionElement);
+			GLOBAL_JSON = parseQuestions;
 		}
 	}
 	function goToHomepage() {
@@ -75,27 +69,32 @@
 		// TODO: send AJAX to php file
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'testCurl.php';
-	/*	var question = sample[questionId].question;
-		var type = sample[questionId].type;
-		var loopType = "TEMP_LOOP_TYPE";
-		var diff = sample[questionId].diff;
-		var points = sample[questionId].points;
-		var testCases = "TEMP_TEST_CASE";
-		var functionName = "TEMP_FUNC_NAME";
-		var varNames = "TEMP_VAR_NAME";
-		var returnPrint = "TEMP_PRINT_VAL";*/
-		var url = "id="+questionId+"&studentInput="+studentInput;//+"&type="+type+"&loopType="+loopType+"&diff="+diff+"&points="+points+"&testCases="+testCases
-						//	+"&functionName="+functionName+"&variableNames="+varNames+"&returnPrint="+returnPrint; //For AJAX POST
+		var url = "id="+questionId+"&studentInput="+studentInput;//For AJAX POST
 		xmhlObj.open("POST", phpFile, true);
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 		xmhlObj.onreadystatechange = function() {
 		if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
-			var return_data = xmhlObj.responseText;
-		//	document.getElementById("testing").innerHTML = return_data;
+			var return_data = xmhlObj.responseText
+
+
 			}
 		}
 		xmhlObj.send(url); //Send request
 		document.getElementById("testing").innerHTML = url;
+	}
+	function ajaxGetRequest() {
+		var xmhlObj = new XMLHttpRequest();
+		var phpFile = "testGetCurl.php";
+		var return_data;
+		xmhlObj.open("POST", phpFile, true);
+		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
+		xmhlObj.onreadystatechange = function() {
+			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
+				return_data = xmhlObj.responseText;
+				drawQuestions(return_data);
+			}
+		}
+		xmhlObj.send();
 	}
 	window.onload = function() {
 		drawExam();
