@@ -93,7 +93,7 @@
 			tr.appendChild(selectTd);
 			table.appendChild(tr);
 			GLOBAL_JSON = parseSample;
-			document.getElementById("test").innerHTML = GLOBAL_JSON;
+			document.getElementById("test").innerHTML = json.parse(GLOBAL_JSON);
 		}
 	}
 	function sortTable(callingObj, column) {
