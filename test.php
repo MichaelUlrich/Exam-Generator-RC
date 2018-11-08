@@ -72,7 +72,7 @@
 	}
 	function generateURL(formText) {
 		var username = "<?php echo $_SESSION['username']?>";
-		URL = "username="+username+"&studentInput="+studentInput;
+		URL = "username="+username+"&studentInput="+formText;
 	}
 	function ajaxRequest(studentInput) {
 		// TODO: send AJAX to php file
@@ -80,7 +80,6 @@
 		//GLOBAL_JSON += studentInput;
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'testCurl.php';
-
 		//var url = "username="+username+"&studentInput="+studentInput;//For AJAX POST
 	//GLOBAL_JSON += url;
 		var testingText = "";
