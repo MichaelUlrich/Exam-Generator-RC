@@ -11,8 +11,10 @@
 </head>
 <script>
 	var GLOBAL_JSON;
+	var USERNAME = <?php echo $_SESSION['username'];
 	function drawExam(parseQuestions) {
 		for(var i in parseQuestions) {
+			document.getElementById("testing").innerHTML = "user from php: " + USERNAME;
 			var textElement = document.createElement("textarea");
 			var breakElement = document.createElement("br");
 			//var submitElement = document.createElement("span");
@@ -92,13 +94,13 @@
 			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 				return_data = xmhlObj.responseText;
 			//	document.getElementById("testing").innerHTML = return_data;
-				drawQuestions(return_data);	
+				drawQuestions(return_data);
 			}
 		}
 		xmhlObj.send();
 	}
 	window.onload = ajaxGetRequest;
-	
+
 </script>
 <body>
 	<button onClick="goToHomepage()">REMOVE-Return to Homepage</button>
