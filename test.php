@@ -45,9 +45,10 @@
 			formText = form.elements[i].value; //Testing
 			//testingText += formText;
 			//document.getElementById("testing").innerHTML = formText;
-			document.getElementById("studentInput").innerHTML = formText;
+
 			ajaxRequest(formText);
 		}
+		document.getElementById("studentInput").innerHTML = formText;
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
 		returnDiv.innerHTML = '<button onclick="goToHomepage()">Return to Homepage</button>';
 	}
@@ -80,8 +81,9 @@
 		xmhlObj.onreadystatechange = function() {
 			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 				testingText += xmhlObj.responseText;
-				document.getElementById("testing").innerHTML = testingText;
+				//document.getElementById("testing").innerHTML = testingText;
 			}
+			document.getElementById("testing").innerHTML = testingText;
 		}
 		xmhlObj.send(url); //Send request
 		//document.getElementById("testing").innerHTML = testingText;
