@@ -86,7 +86,7 @@
 	//GLOBAL_JSON += url;
 		var testingText = "";
 		var return_data = "";
-		xmhlObj.open("POST", phpFile, true);
+		xmhlObj.open("POST", phpFile, false);
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 		xmhlObj.onreadystatechange = function() {
 			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
@@ -95,7 +95,7 @@
 			}
 			document.getElementById("testing2").innerHTML = "server output: "+USERNAME;
 		}
-		xmhlObj.send(URL, , false); //Send request
+		xmhlObj.send(URL); //Send request
 		//document.getElementById("testing").innerHTML = testingText;
 	}
 	function ajaxGetRequest() {
