@@ -12,7 +12,7 @@
 <script>
 	var GLOBAL_JSON;
 	function drawExam() {
-		for(var i in sample) {
+		for(var i in GLOBAL_JSON) {
 			var textElement = document.createElement("textarea");
 			var breakElement = document.createElement("br");
 			//var submitElement = document.createElement("span");
