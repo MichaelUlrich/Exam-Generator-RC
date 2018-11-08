@@ -11,7 +11,6 @@
 </head>
 <script>
 	var GLOBAL_JSON;
-
 	function drawExam() {
 		for(var i in sample) {
 			var textElement = document.createElement("textarea");
@@ -50,7 +49,7 @@
 	}
 	function drawQuestions(questions) {
 		var questionDiv = document.getElementById("questions");
-		VAR parseQuestions = json.parse(questions);
+		var parseQuestions = json.parse(questions);
 		//document.getElementById("questions").innerHTML = "QUESTIONS GO HERE";
 		for(var i in questions) {
 			var questionElement = document.createElement("p")
