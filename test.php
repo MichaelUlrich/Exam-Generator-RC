@@ -47,7 +47,7 @@
 			testingText += i;
 			generateURL(formText);
 		}
-			//document.getElementById("testing").innerHTML = formText;
+		document.getElementById("testing").innerHTML = "url is: "+URL;
 		ajaxRequest();
 		document.getElementById("studentInput").innerHTML = testingText;
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
@@ -73,8 +73,9 @@
 	function generateURL(formText) {
 		var username = "<?php echo $_SESSION['username']?>";
 		URL += "username="+username+"&studentInput="+formText;
+		//document.getElementById("testing").innerHTML = UURL;
 	}
-	function ajaxRequest(studentInput) {
+	function ajaxRequest() {
 		// TODO: send AJAX to php file
 		//var formText = "";
 		//GLOBAL_JSON += studentInput;
@@ -89,10 +90,9 @@
 		xmhlObj.onreadystatechange = function() {
 			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 				USERNAME += xmhlObj.responseText;
-				document.getElementById("testing").innerHTML = return_data;
+				//document.getElementById("testing").innerHTML = return_data;
 			}
-			document.getElementById("testing2").innerHTML = USERNAME;
-			document.getElementById("testing").innerHTML = URL;
+			document.getElementById("testing2").innerHTML = "server output: "+USERNAME;	
 		}
 		xmhlObj.send(URL); //Send request
 		//document.getElementById("testing").innerHTML = testingText;
