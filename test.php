@@ -38,11 +38,13 @@
 	function submit(/*calling*/) {
 		var form = document.getElementById("test");
 		var formText = "";
+		var testingText = "";
 		var i;
 		var returnDiv = document.getElementById("returnDiv");
 		for(var i = 0; i < form.length; i++) {
 			formText = form.elements[i].value; //Testing
-			document.getElementById("testing").innerHTML = formText;
+			testingText += formText;
+			document.getElementById("testing").innerHTML = testingText;
 			ajaxRequest(formText);
 		}
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
