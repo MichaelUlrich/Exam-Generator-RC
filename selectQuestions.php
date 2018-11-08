@@ -149,7 +149,7 @@
 			}
 		}
 		xmhlObj.send();
-	}	
+	}
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
 	}
@@ -184,10 +184,16 @@
 				</select>
 				<select id="ConstraintSelect"  onChange="sortTable(this, 5)">
 					<option value"" disabled selected>Constraint</option>
+					<option value="none">None</option>
 					<option value="for">For-Loop</option>
-					<option value="medium">Medium</option>
-					<option value="hard">Hard</option>
+					<option value="while">While-Loop</option>
+					<option value="recursion">Recursion</option>
 				</select>
+				<select id="returnPrintSelect"  onChange="sortTable(this, 6)">
+					<option value"" disabled selected>Return/Print</option>
+					<option value="return">Return</option>
+					<option value="print">Print</option>
+				</select>:
 				</p>
 			<table id="questionTable">
 				<thead>
