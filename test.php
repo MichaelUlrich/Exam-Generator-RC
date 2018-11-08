@@ -80,10 +80,11 @@
 			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 				var return_data = xmhlObj.responseText;
 				testingText += return_data
+				document.getElementById("testing").innerHTML = testingText;
 			}
 		}
 		xmhlObj.send(url); //Send request
-		document.getElementById("testing").innerHTML = testingText;
+		//document.getElementById("testing").innerHTML = testingText;
 	}
 	function ajaxGetRequest() {
 		var xmhlObj = new XMLHttpRequest();
