@@ -38,13 +38,13 @@
 	function submit(/*calling*/) {
 		var form = document.getElementById("test");
 		var formText = "";
-		var testingText = "";
+		//var testingText = "";
 		var i;
 		var returnDiv = document.getElementById("returnDiv");
 		for(var i = 0; i < form.length; i++) {
 			formText = form.elements[i].value; //Testing
-			testingText += formText;
-			document.getElementById("testing").innerHTML = formText;
+			//testingText += formText;
+			//document.getElementById("testing").innerHTML = formText;
 			ajaxRequest(formText);
 		}
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
@@ -77,9 +77,9 @@
 		xmhlObj.open("POST", phpFile, true);
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 		xmhlObj.onreadystatechange = function() {
-		if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
-			var return_data = xmhlObj.responseText;
-			testingText += return_data
+			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
+				var return_data = xmhlObj.responseText;
+				testingText += return_data
 			}
 		}
 		xmhlObj.send(url); //Send request
