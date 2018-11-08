@@ -12,6 +12,7 @@
 <script>
 	var GLOBAL_JSON = "";
 	var USERNAME = "";//<//?php echo $_SESSION['username']?>;
+	var URL = "";
 	function drawExam(parseQuestions) {
 		for(var i in parseQuestions) {
 			var textElement = document.createElement("textarea");
@@ -43,10 +44,11 @@
 		var returnDiv = document.getElementById("returnDiv");
 		for(var i = 0; i < form.length; i++) {
 			formText = form.elements[i].value; //Testing
-			testingText += formText;
-			//document.getElementById("testing").innerHTML = formText;
-			ajaxRequest(formText);
+			testingText += i;
+			generateURL(formText);
 		}
+			//document.getElementById("testing").innerHTML = formText;
+		ajaxRequest();
 		document.getElementById("studentInput").innerHTML = testingText;
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
 		returnDiv.innerHTML = '<button onclick="goToHomepage()">Return to Homepage</button>';
@@ -68,15 +70,19 @@
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/studentHomepage.php";
 	}
+	function generateURL(formText) {
+		var username = "<?php echo $_SESSION['username']?>";
+		URL = "username="+username+"&studentInput="+studentInput;
+	}
 	function ajaxRequest(studentInput) {
 		// TODO: send AJAX to php file
 		//var formText = "";
 		//GLOBAL_JSON += studentInput;
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'testCurl.php';
-		var username = "<?php echo $_SESSION['username']?>";
-		var url = "username="+username+"&studentInput="+studentInput;//For AJAX POST
-		GLOBAL_JSON += url;
+
+		//var url = "username="+username+"&studentInput="+studentInput;//For AJAX POST
+	//GLOBAL_JSON += url;
 		var testingText = "";
 		var return_data = "";
 		xmhlObj.open("POST", phpFile, true);
@@ -87,9 +93,9 @@
 				document.getElementById("testing").innerHTML = return_data;
 			}
 			document.getElementById("testing2").innerHTML = USERNAME;
-			document.getElementById("testing").innerHTML = GLOBAL_JSON;
+			document.getElementById("testing").innerHTML = URL;
 		}
-		xmhlObj.send(url); //Send request
+		xmhlObj.send(URL); //Send request
 		//document.getElementById("testing").innerHTML = testingText;
 	}
 	function ajaxGetRequest() {
