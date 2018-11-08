@@ -51,7 +51,7 @@
 		} else if (document.getElementById("recursionRadio").checked){
 			return "recursion";
 		} else {
-			return "";
+			return "none";
 		}
 	}
 function ajaxRequest() {
