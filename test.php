@@ -49,7 +49,7 @@
 	}
 	function drawQuestions(questions) {
 		var questionDiv = document.getElementById("questions");
-		var parseQuestions = json.parse(questions);
+		var parseQuestions = JSON.parse(questions);
 		//document.getElementById("questions").innerHTML = "QUESTIONS GO HERE";
 		for(var i in questions) {
 			var questionElement = document.createElement("p")
