@@ -43,12 +43,11 @@
 		var returnDiv = document.getElementById("returnDiv");
 		for(var i = 0; i < form.length; i++) {
 			formText = form.elements[i].value; //Testing
-			//testingText += formText;
+			testingText += formText;
 			//document.getElementById("testing").innerHTML = formText;
-
 			ajaxRequest(formText);
 		}
-		document.getElementById("studentInput").innerHTML = formText;
+		document.getElementById("studentInput").innerHTML = testingText;
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
 		returnDiv.innerHTML = '<button onclick="goToHomepage()">Return to Homepage</button>';
 	}
@@ -69,7 +68,7 @@
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/studentHomepage.php";
 	}
-	function ajaxRequest(studentInput, questionId) {
+	function ajaxRequest(studentInput) {
 		// TODO: send AJAX to php file
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'testCurl.php';
@@ -80,10 +79,10 @@
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 		xmhlObj.onreadystatechange = function() {
 			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
-				testingText += xmhlObj.responseText;
+				var return_data= xmhlObj.responseText;
 				//document.getElementById("testing").innerHTML = testingText;
 			}
-			document.getElementById("testing").innerHTML = testingText;
+			document.getElementById("testing").innerHTML = return_data;
 		}
 		xmhlObj.send(url); //Send request
 		//document.getElementById("testing").innerHTML = testingText;
