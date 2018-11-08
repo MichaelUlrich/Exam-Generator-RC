@@ -22,6 +22,7 @@
 	$result = curl_exec($ch);
 	$result_decode=json_decode($result);
 	$resultDecoded = json_decode($result);
+
 	//Result will be JSON stating if login was successful and if Student/Teacher ex.{ teacher/student : true/false }
 
 	if($resultDecoded->{'student'} == "true") {
