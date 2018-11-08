@@ -45,6 +45,7 @@
 			formText = form.elements[i].value; //Testing
 			//testingText += formText;
 			//document.getElementById("testing").innerHTML = formText;
+			document.getElementById("studentInput").innerHTML = formText;
 			ajaxRequest(formText);
 		}
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
@@ -78,9 +79,8 @@
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 		xmhlObj.onreadystatechange = function() {
 			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
-				var return_data = xmhlObj.responseText;
-
-				document.getElementById("testing").innerHTML = return_data;
+				testingText += xmhlObj.responseText;
+				document.getElementById("testing").innerHTML = testingText;
 			}
 		}
 		xmhlObj.send(url); //Send request
@@ -109,6 +109,7 @@
 	<h1> ONLY WANT ONE BUTTON </h1>
 	<h2> Carefully read each question. Hit Submit for Each Question.  Good Luck. </h2>
 	<p> Only click submit when you code is 100% finished </p>
+	<p id="studentInput"></p>
 	<p id="testing"></p>
 	<div class="row">
 		<div id="testDiv" class="column" style="background-color:#aaa;">
