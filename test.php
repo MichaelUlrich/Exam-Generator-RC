@@ -11,7 +11,7 @@
 </head>
 <script>
 	var GLOBAL_JSON = "";
-	//var USERNAME = "";//<//?php echo $_SESSION['username']?>;
+	var USERNAME = "";//<//?php echo $_SESSION['username']?>;
 	function drawExam(parseQuestions) {
 		for(var i in parseQuestions) {
 			var textElement = document.createElement("textarea");
@@ -78,13 +78,15 @@
 		var url = "username="+username+"&studentInput="+studentInput;//For AJAX POST
 		GLOBAL_JSON += url;
 		var testingText = "";
+		var return_data = "";
 		xmhlObj.open("POST", phpFile, true);
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 		xmhlObj.onreadystatechange = function() {
 			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
-				var return_data= xmhlObj.responseText;
-				//document.getElementById("testing").innerHTML = testingText;
+				USERNAME += xmhlObj.responseText;
+				document.getElementById("testing").innerHTML = return_data;
 			}
+			document.getElementById("testing2").innerHTML = USERNAME;
 			document.getElementById("testing").innerHTML = GLOBAL_JSON;
 		}
 		xmhlObj.send(url); //Send request
@@ -115,6 +117,7 @@
 	<p> Only click submit when you code is 100% finished </p>
 	<p id="studentInput"></p>
 	<p id="testing"></p>
+	<p id="testing2"></p>
 	<div class="row">
 		<div id="testDiv" class="column" style="background-color:#aaa;">
 			<form id="test"></form>
