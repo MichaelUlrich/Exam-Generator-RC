@@ -13,6 +13,7 @@
 	ini_set('display_errors', TRUE);
 
 	$user = array('username' => $_POST['username'], 'password' =>$_POST['password']);
+	var_dump($user);
 	$middle_url = "https://web.njit.edu/~bkw2/middle_beta.php";				//Receive if login is for student or teacher
 	$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $middle_url);                             //Set URL
@@ -23,7 +24,7 @@
 	$result_decode=json_decode($result);
 	$resultDecoded = json_decode($result);
 	//Result will be JSON stating if login was successful and if Student/Teacher ex.{ teacher/student : true/false }
-
+//	var_dump($resultDecoded);
 	if($resultDecoded->{'student'} == "true") {
 		$_SESSION['student'] = true;
 		$_SESSION['username'] = $user["username"];
@@ -37,9 +38,9 @@
 		exit();
 	} else {
 //		redirect("login.html");
-		header('Location: login.html');
+	//	header('Location: login.html');
 		exit();
-	//	echo '<div id="test"> Wrong Info. Try Again</div>';
+//		echo '<div id="test"> Wrong Info. Try Again</div>';
 	}
 	curl_close($ch);
 ?>

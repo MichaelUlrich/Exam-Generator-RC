@@ -15,26 +15,7 @@
 	//th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 </style>
 <script>
-	/***********************************************************************/
-
-	var sample = getAjaxRequest();/*
-	 [  {"id":"0", "question":"question1", "type":"loop", "diff":"hard", "points":"10", "loopType":"for"},
-			{"id":"1", "question":"question2", "type":"method","diff":"easy","points":"15", "loopType":""},
-			{"id":"2", "question":"question3", "type":"loop", "diff":"medium","points":"25", "loopType":"while"},
-			{"id":"3", "question":"question4", "type":"method", "diff":"easy","points":"5", "loopType":"for"},
-			{"id":"5", "question":"question5", "type":"variable", "diff":"medium","points":"35", "loopType":"for"},
-			{"id":"6", "question":"question6", "type":"loop", "diff":"medium","points":"45", "loopType":"for"},
-			{"id":"7", "question":"question7", "type":"loop", "diff":"hard","points":"5","loopType":"for"},
-			{"id":"8", "question":"question8", "type":"method", "diff":"easy","points":"75", "loopType":"for"},
-			{"id":"9", "question":"question9", "type":"method", "diff":"hard","points":"65","loopType":"for"},
-			{"id":"10", "question":"question10", "type":"variable", "diff":"medium","points":"25","loopType":"for"},
-			{"id":"11", "question":"question11", "type":"variable", "diff":"hard","points":"35", "loopType":"for"},
-			{"id":"12", "question":"question12", "type":"loop", "diff":"medium","points":"15", "loopType":"for"},
-			{"id":"14", "question":"question13", "type":"loop", "diff":"hard","points":"15", "loopType":"for"},
-			{"id":"13", "question":"question14", "type":"method", "diff":"easy","points":"35", "loopType":"for"}
-	];
-	/***********************************************************************/
-	document.get
+	//document.getElementById("test").innerHTML = sample;
 	function ajaxRequest(questionId) {
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'selectQuestionsCurl.php';
@@ -54,46 +35,44 @@
 		xmhlObj.onreadystatechange = function() {
 		if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 			var return_data = xmhlObj.responseText;
-			document.getElementById("test2").innerHTML = return_data;
 			}
 		}
 		xmhlObj.send(url); //Send request
-
-	document.getElementById("test2").innerHTML = url;
-
 	}
-	function drawAvailableTable() {
+	function drawAvailableTable(sample) {
 		var table = document.getElementById("questionTableBody");
 		table.innerHTML="";
-/*		var parseSample = JSON.parse(sample); //Need for response from AJAX cURL */
-		for(var i in sample) {
+		document.getElementById("test").innerHTML = sample;
+		var parseSample = JSON.parse(sample); //Need for response from AJAX cURL */
+//		document.getElementById("test").innerHTML = parseSameple;
+		for(var i in parseSample) {
 			var iInt = parseInt(i, 10);
 			iInt += 1;
-			document.getElementById("test").innerHTML = "total questions: "+iInt;
+		//	document.getElementById("test").innerHTML = "total questions: "+iInt;
 			var tr = document.createElement("tr");
 
 			var idTd = document.createElement("td");
-			var idText = document.createTextNode(sample[i].id);
+			var idText = document.createTextNode(iInt);
 			idTd.appendChild(idText);
 
 			var questionTd = document.createElement("td");
-			var questionText = document.createTextNode(sample[i].question);
+			var questionText = document.createTextNode(parseSample[i].question);
 			questionTd.appendChild(questionText);
 
 			var typeTd = document.createElement("td");
-			var typeText = document.createTextNode(sample[i].type);
+			var typeText = document.createTextNode(parseSample[i].type);
 			typeTd.appendChild(typeText);
 
 			var diffTd = document.createElement("td");
-			var diffText =  document.createTextNode(sample[i].diff);
+			var diffText =  document.createTextNode(parseSample[i].difficulty);
 			diffTd.appendChild(diffText);
 
 			var pointsTd =  document.createElement("td");
-			var pointsText = document.createTextNode(sample[i].points);
+			var pointsText = document.createTextNode(parseSample[i].points);
 			pointsTd.appendChild(pointsText);
 
 			var constrainTd = document.createElement("td");
-			var constrainText = document.createTextNode(sample[i].loopType);
+			var constrainText = document.createTextNode(parseSample[i].loopType);
 			constrainTd.appendChild(constrainText);
 
 			var selectTd = document.createElement("td");
@@ -114,9 +93,9 @@
 		   column = 1 -> Question
 		   column = 2 -> Type
 		   column = 3 -> LoopType
-			 column = 4 -> Difficulty
-			 column = 5 -> points
-			 column = 8 -> return
+		   column = 4 -> Difficulty
+		   column = 5 -> points
+		   column = 8 -> return
 		*/
 		//document.getElementById("test").innerHTML =
 		var input = document.getElementById(callingObj.id);
@@ -157,41 +136,24 @@
 		//ajaxRequest(questionId);
 	}
 	function getAjaxRequest() {
+	//	document.getElementById("test").innerHTML = "func called";
 		var xmhlObj = new XMLHttpRequest();
-		var phpFile = 'selectQuestionsGetCurl.php';
+		var phpFile = "selectQuestionsGetCurl.php";
+		var return_data;
 		xmhlObj.open("POST", phpFile, true);
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 		xmhlObj.onreadystatechange = function() {
-		if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
-			var return_data = xmhlObj.responseText;
+			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
+				return_data = xmhlObj.responseText;
+				drawAvailableTable(return_data);
+			}
 		}
 		xmhlObj.send();
-		return return_data;
-	/*	var test = [  {"id":"0", "question":"question1", "type":"loop", "diff":"hard", "points":"10", "loopType":"for"},
-				{"id":"1", "question":"question2", "type":"method","diff":"easy","points":"15", "loopType":""},
-				{"id":"2", "question":"question3", "type":"loop", "diff":"medium","points":"25", "loopType":"while"},
-				{"id":"3", "question":"question4", "type":"method", "diff":"easy","points":"5", "loopType":"for"},
-				{"id":"5", "question":"question5", "type":"variable", "diff":"medium","points":"35", "loopType":"for"},
-				{"id":"6", "question":"question6", "type":"loop", "diff":"medium","points":"45", "loopType":"for"},
-				{"id":"7", "question":"question7", "type":"loop", "diff":"hard","points":"5","loopType":"for"},
-				{"id":"8", "question":"question8", "type":"method", "diff":"easy","points":"75", "loopType":"for"},
-				{"id":"9", "question":"question9", "type":"method", "diff":"hard","points":"65","loopType":"for"},
-				{"id":"10", "question":"question10", "type":"variable", "diff":"medium","points":"25","loopType":"for"},
-				{"id":"11", "question":"question11", "type":"variable", "diff":"hard","points":"35", "loopType":"for"},
-				{"id":"12", "question":"question12", "type":"loop", "diff":"medium","points":"15", "loopType":"for"},
-				{"id":"14", "question":"question13", "type":"loop", "diff":"hard","points":"15", "loopType":"for"},
-				{"id":"13", "question":"question14", "type":"method", "diff":"easy","points":"35", "loopType":"for"}
-
-			];
-			return test;
-
-		*/
-	}
-}
+	}	
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
 	}
-	window.onload = drawAvailableTable;
+	window.onload = getAjaxRequest;
 </script>
 </head>
 <body>
