@@ -71,11 +71,12 @@
 	function ajaxRequest(studentInput) {
 		// TODO: send AJAX to php file
 		//var formText = "";
-		GLOBAL_JSON += studentInput;
+		//GLOBAL_JSON += studentInput;
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'testCurl.php';
 		var username = "<?php echo $_SESSION['username']?>";
 		var url = "username="+username+"&studentInput="+studentInput;//For AJAX POST
+		GLOBAL_JSON += url;
 		var testingText = "";
 		xmhlObj.open("POST", phpFile, true);
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
