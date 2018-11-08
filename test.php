@@ -43,7 +43,7 @@
 		for(var i = 0; i < form.length; i++) {
 			formText = form.elements[i].value; //Testing
 			document.getElementById("testing").innerHTML = formText;
-			aj(formText);
+			ajaxRequest(formText);
 		}
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
 		returnDiv.innerHTML = '<button onclick="goToHomepage()">Return to Homepage</button>';
