@@ -46,9 +46,10 @@
 			formText = form.elements[i].value; //Testing
 			testingText += i;
 			generateURL(formText);
+			ajaxRequest();
 		}
 		document.getElementById("testing").innerHTML = "url is: "+URL;
-		ajaxRequest();
+		//ajaxRequest();
 		document.getElementById("studentInput").innerHTML = testingText;
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
 		returnDiv.innerHTML = '<button onclick="goToHomepage()">Return to Homepage</button>';
@@ -72,7 +73,7 @@
 	}
 	function generateURL(formText) {
 		var username = "<?php echo $_SESSION['username']?>";
-		URL += "username="+username+"&studentInput="+formText;
+		URL = "username="+username+"&studentInput="+formText;
 		//document.getElementById("testing").innerHTML = UURL;
 	}
 	function ajaxRequest() {
@@ -92,7 +93,7 @@
 				USERNAME += xmhlObj.responseText;
 				//document.getElementById("testing").innerHTML = return_data;
 			}
-			document.getElementById("testing2").innerHTML = "server output: "+USERNAME;	
+			document.getElementById("testing2").innerHTML = "server output: "+USERNAME;
 		}
 		xmhlObj.send(URL); //Send request
 		//document.getElementById("testing").innerHTML = testingText;
