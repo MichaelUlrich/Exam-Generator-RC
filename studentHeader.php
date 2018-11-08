@@ -10,5 +10,6 @@ if(!true) {
 		die();
 	} else {
 		echo "[Student mode is always enabled for testing]" . "<br>";
+		echo "Hello " . $_SESSION['username'];
 	}
 ?>
