@@ -48,6 +48,7 @@
 		returnDiv.innerHTML = '<button onclick="goToHomepage()">Return to Homepage</button>';
 	}
 	function drawQuestions(questions) {
+		document.getElementById("testing").innerHTML = questions;
 		var questionDiv = document.getElementById("questions");
 		var parseQuestions = JSON.parse(questions);
 		//document.getElementById("questions").innerHTML = "QUESTIONS GO HERE";
