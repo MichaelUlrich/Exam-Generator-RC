@@ -20,15 +20,15 @@
 	function ajaxRequest(questionId) {
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'selectQuestionsCurl.php';
-		var question = sample[questionId].question;
-		var type = sample[questionId].type;
-		var loopType = "TEMP_LOOP_TYPE";
-		var diff = sample[questionId].diff;
-		var points = sample[questionId].points;
-		var testCases = "TEMP_TEST_CASE";
-		var functionName = "TEMP_FUNC_NAME";
-		var varNames = "TEMP_VAR_NAME";
-		var returnPrint = "TEMP_PRINT_VAL";
+		var question = GLOBAL_JSON[questionId].question;
+		var type = GLOBAL_JSON[questionId].type;
+		var loopType = GLOBAL_JSON[questionId].loopType;
+		var diff = GLOBAL_JSON[questionId].diff;
+		var points = GLOBAL_JSON[questionId].points;
+		var testCases = GLOBAL_JSON[questionId].testCases;
+		var functionName = GLOBAL_JSON[questionId].functionName;
+		var varNames = GLOBAL_JSON[questionId].varNames;
+		var returnPrint = GLOBAL_JSON[questionId].returnPrint;
 		var url = "question="+question+"&type="+type+"&loopType="+loopType+"&diff="+diff+"&points="+points+"&testCases="+testCases
 							+"&functionName="+functionName+"&variableNames="+varNames+"&returnPrint="+returnPrint; //For AJAX POST
 		xmhlObj.open("POST", phpFile, true);
@@ -92,8 +92,8 @@
 			tr.appendChild(returnPrintTd);
 			tr.appendChild(selectTd);
 			table.appendChild(tr);
-			GLOBAL_JSON = parseSample;
-			document.getElementById("test").innerHTML = GLOBAL_JSON[0].question;
+			GLOBAL_JSON = parseSample; //Initialize global variable for all other functions to use
+			//document.getElementById("test").innerHTML = GLOBAL_JSON[0].question;
 		}
 	}
 	function sortTable(callingObj, column) {
