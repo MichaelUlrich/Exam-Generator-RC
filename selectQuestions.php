@@ -114,8 +114,6 @@
 		var td;
 		var i;
 
-		document.getElementById("test").innerHTML = inputCaps;
-
 		for(i = 0; i < tr.length; i++) {
 			td = tr[i].getElementsByTagName("td")[column];
 			if(td) {
