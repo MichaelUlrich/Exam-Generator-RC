@@ -48,7 +48,7 @@
 		}
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
 		returnDiv.innerHTML = '<button onclick="goToHomepage()">Return to Homepage</button>';
-	}aj
+	}
 	function drawQuestions(questions) {
 		var questionDiv = document.getElementById("questions");
 		var parseQuestions = JSON.parse(questions);
