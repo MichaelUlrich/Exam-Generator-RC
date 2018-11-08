@@ -132,7 +132,7 @@
 		ajaxRequest(questionId);
 		var question = GLOBAL_JSON[questionId].question;
 		var type = GLOBAL_JSON[questionId].type;
-		var diff = GLOBAL_JSON[questionId].diff;
+		var diff = GLOBAL_JSON[questionId].difficulty;
 		var points = GLOBAL_JSON[questionId].points;
 		var node = document.createElement("li");
 		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + '] | [Points: '+ points + ']');
