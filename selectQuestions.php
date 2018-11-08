@@ -209,6 +209,7 @@
 					<th>Difficulty</th>
 					<th>Points</th>
 					<th>Constraint</th>
+					<th>Return/Print</th>
 				</tr>
 				</thead>
 				<tbody id="questionTableBody">
