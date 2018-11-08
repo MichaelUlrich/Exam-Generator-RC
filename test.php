@@ -38,7 +38,7 @@
 	function submit(/*calling*/) {
 		var form = document.getElementById("test");
 		var formText = "";
-		//var testingText = "";
+		var testingText = "";
 		var i;
 		var returnDiv = document.getElementById("returnDiv");
 		for(var i = 0; i < form.length; i++) {
