@@ -11,10 +11,9 @@
 </head>
 <script>
 	var GLOBAL_JSON;
-	var USERNAME = "";//<//?php echo $_SESSION['username']?>;
+	//var USERNAME = "";//<//?php echo $_SESSION['username']?>;
 	function drawExam(parseQuestions) {
 		for(var i in parseQuestions) {
-			USERNAME = "<?php echo $_SESSION['username']?>";
 			document.getElementById("testing").innerHTML = "user from php: " + USERNAME;
 			var textElement = document.createElement("textarea");
 			var breakElement = document.createElement("br");
@@ -45,16 +44,14 @@
 		for(var i = 0; i < form.length; i++) {
 			formText = form.elements[i].value; //Testing
 			document.getElementById("testing").innerHTML = formText;
-			ajaxRequest(formText, i);
+			aj(formText);
 		}
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
 		returnDiv.innerHTML = '<button onclick="goToHomepage()">Return to Homepage</button>';
-	}
+	}aj
 	function drawQuestions(questions) {
-	//	document.getElementById("testing").innerHTML = questions;//questions;
 		var questionDiv = document.getElementById("questions");
 		var parseQuestions = JSON.parse(questions);
-		//document.getElementById("questions").innerHTML = "QUESTIONS GO HERE";
 		for(var i in parseQuestions) {
 			var questionElement = document.createElement("p")
 			var intI = parseInt(i, 10);
@@ -65,7 +62,6 @@
 			//GLOBAL_JSON = parseQuestions;
 		}
 		drawExam(parseQuestions);
-
 	}
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/studentHomepage.php";
@@ -74,7 +70,8 @@
 		// TODO: send AJAX to php file
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'testCurl.php';
-		var url = "id="+questionId+"&studentInput="+studentInput;//For AJAX POST
+		var username = "<?php echo $_SESSION['username']?>";
+		var url = "username="+username+"&studentInput="+studentInput;//For AJAX POST
 		xmhlObj.open("POST", phpFile, true);
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 		xmhlObj.onreadystatechange = function() {
