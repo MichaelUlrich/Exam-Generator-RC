@@ -11,7 +11,7 @@
 </head>
 <script>
 	var GLOBAL_JSON;
-	var USERNAME = <?php echo $_SESSION['username'];
+	var USERNAME = <?php echo $_SESSION['username']?>;
 	function drawExam(parseQuestions) {
 		for(var i in parseQuestions) {
 			document.getElementById("testing").innerHTML = "user from php: " + USERNAME;
