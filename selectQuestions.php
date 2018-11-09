@@ -70,7 +70,7 @@
 			diffTd.appendChild(diffText);
 
 			var pointsTd =  document.createElement("td");
-			pointsTd.innerHTML = '<div class="text-center"<input id=points type="text" placeholder="points"></div>';
+			pointsTd.innerHTML = '<div class="text-center"><input type="text" id=points placeholder="points"></div>';
 			//pointsTd.appendChild(pointsText);
 
 			var constrainTd = document.createElement("td");
