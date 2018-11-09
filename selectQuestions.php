@@ -82,7 +82,7 @@
 			returnPrintTd.appendChild(returnPrintText);
 
 			var selectTd = document.createElement("td");
-			selectTd.innerHTML = '<div class="text-center" ><input type="button" value="Select" onClick="addQuestion('+i+')" id="question_to_add_'+i+'"></div>';
+			selectTd.innerHTML = '<div class="text-center" ><input type="button" value="Select" onClick="addQuestion('+iInt-1+')" id="question_to_add_'+iInt-1+'"></div>';
 
 			tr.appendChild(idTd);
 			tr.appendChild(questionTd);
