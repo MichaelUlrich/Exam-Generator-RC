@@ -9,7 +9,7 @@ if(!true) {
 		header("Location: https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/login.html");
 		die();
 	} else {
-		echo "[Student mode is always enabled for testing]" . "<br>";
-		echo "Hello " . $_SESSION['username'];
+		//echo "[Student mode is always enabled for testing]" . "<br>";
+		echo $_SESSION['username'];
 	}
 ?>
