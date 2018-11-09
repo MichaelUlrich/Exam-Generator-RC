@@ -134,7 +134,7 @@
 		var type = GLOBAL_JSON[questionId].type;
 		var diff = GLOBAL_JSON[questionId].difficulty;
 		var points = GLOBAL_JSON[questionId].points;
-		TOTAL_POINTS = parseInt(points, 10);
+		TOTAL_POINTS += parseInt(points, 10);
 		var node = document.createElement("li");
 		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + '] | [Points: '+ points + ']');
 		document.getElementById("points").innerHTML = TOTAL_POINTS;
