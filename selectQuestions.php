@@ -70,7 +70,7 @@
 			diffTd.appendChild(diffText);
 
 			//var pointsTd =  document.createElement("td");
-		//	pointsTd.innerHTML = '<div class="text-center"><input type="text" id=points placeholder="points"></div>';
+			//pointsTd.innerHTML = '<div class="text-center"><input type="text" id=points placeholder="points"></div>';
 			//pointsTd.appendChild(pointsText);
 
 			var constrainTd = document.createElement("td");
@@ -101,10 +101,9 @@
 		/* column = 0 -> ID
 		   column = 1 -> Question
 		   column = 2 -> Type
-		   column = 3 -> LoopType
-		   column = 4 -> Difficulty
-		   column = 5 -> points
-		   column = 8 -> return
+		   column = 4 -> LoopType
+		   column = 3 -> Difficulty
+		   column = 5 -> return
 		*/
 		//document.getElementById("test").innerHTML =
 		var input = document.getElementById(callingObj.id);
@@ -200,14 +199,14 @@
 					<option value="medium">Medium</option>
 					<option value="hard">Hard</option>
 				</select>
-				<select id="ConstraintSelect"  onChange="sortTable(this, 5)">
+				<select id="ConstraintSelect"  onChange="sortTable(this, 4)">
 					<option value"" disabled selected>Constraint</option>
 					<option value="none">None</option>
 					<option value="for">For-Loop</option>
 					<option value="while">While-Loop</option>
 					<option value="recursion">Recursion</option>
 				</select>
-				<select id="returnPrintSelect"  onChange="sortTable(this, 6)">
+				<select id="returnPrintSelect"  onChange="sortTable(this, 5)">
 					<option value"" disabled selected>Return/Print</option>
 					<option value="return">Return</option>
 					<option value="print">Print</option>
