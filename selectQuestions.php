@@ -128,7 +128,7 @@
 	function addQuestion(questionId) {
 		//document.getElementById("test").innerHTML = questionId;
 		var intPoints;
-		ajaxRequest(questionId);
+		//ajaxRequest(questionId);
 		var question = GLOBAL_JSON[questionId].question;
 		var type = GLOBAL_JSON[questionId].type;
 		var diff = GLOBAL_JSON[questionId].difficulty;
@@ -139,7 +139,9 @@
 		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + '] | [Points: '+ points + ']');
 		document.getElementById("points").innerHTML = TOTAL_POINTS;
 	//	document.getElementById("test").innerHTML = textNode;
-
+	var pointsLi =  document.createElement("li");
+	pointsLi.innerHTML = '<div class="text-center"><input type="text" id=points placeholder="Enter Points"><button id=questoinPoints'+questionId+' onClick="ajaxRequest('+questionId+')"></div>';
+	pointsLi.appendChild(pointsText);
 		node.appendChild(textNode);
 		document.getElementById('selectedQuestions').appendChild(node);
 		//ajaxRequest(questionId);
@@ -148,7 +150,7 @@
 	//	document.getElementById("test").innerHTML = "func called";
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = "selectQuestionsGetCurl.php";
-		var return_data;
+		var return_data
 		xmhlObj.open("POST", phpFile, true);
 		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 		xmhlObj.onreadystatechange = function() {
