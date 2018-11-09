@@ -71,7 +71,7 @@
 
 			var pointsTd =  document.createElement("td");
 			pointsTd = document.innerHTML = '<div class="text-center"<input id=points type="text" placeholder="points"></div>';
-			pointsTd.appendChild(pointsText);
+			//pointsTd.appendChild(pointsText);
 
 			var constrainTd = document.createElement("td");
 			var constrainText = document.createTextNode(parseSample[i].loopType);
