@@ -70,7 +70,7 @@
 			diffTd.appendChild(diffText);
 
 			var pointsTd =  document.createElement("td");
-			var pointsText = document.createTextNode(parseSample[i].points);
+			pointsTd = document.innerHTML = '<div class="text-center"<input id=points type="text" placeholder="points"''></div>'
 			pointsTd.appendChild(pointsText);
 
 			var constrainTd = document.createElement("td");
@@ -133,8 +133,9 @@
 		var question = GLOBAL_JSON[questionId].question;
 		var type = GLOBAL_JSON[questionId].type;
 		var diff = GLOBAL_JSON[questionId].difficulty;
-		var points = GLOBAL_JSON[questionId].points;
+		var points = document.getElementById("points"+questionId).value;
 		TOTAL_POINTS += parseInt(points, 10);
+		GLOBAL_JSON[questionId].points = points;
 		var node = document.createElement("li");
 		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + '] | [Points: '+ points + ']');
 		document.getElementById("points").innerHTML = TOTAL_POINTS;
