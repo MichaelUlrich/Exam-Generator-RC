@@ -178,9 +178,15 @@
 				<input type="text" id="keywordSelect" onkeyup="sortTable(this, 1)"placeholder="Search by word...">
 				<select id="typeSelect"  onChange="sortTable(this, 2)">
 					<option value="" disabled selected>Type</option>
-				        <option value="method">Method</option>
 					<option value="loop">Loop</option>
+					<option value="method">Method</option>
 					<option value="variable">Variable</option>
+					<option value="dictionaries">Dictionaries</option>
+					<option value="lists">Lists</option>
+					<option value="tuple">Tuples</option>
+					<option value="arrays">Arrays</option>
+					<option value="2dArrays">2D-Arrays</option>
+					<option value="vectors">Vectors</option>
 				</select>
 				<select id="diffSelect"  onChange="sortTable(this, 3)">
 					<option value"" disabled selected>Difficulty</option>
