@@ -45,7 +45,7 @@
 		for(var i = 0; i < form.length; i++) {
 			formText = form.elements[i].value; //Testing
 			testingText += i;
-			generateURL(formText);
+			generateURL(formText, i);
 			ajaxRequest();
 		}
 		document.getElementById("testing").innerHTML = "url is: "+URL;
@@ -71,9 +71,9 @@
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/studentHomepage.php";
 	}
-	function generateURL(formText) {
+	function generateURL(formText, id) {
 		var username = "<?php echo $_SESSION['username']?>";
-		URL = "username="+username+"&studentInput="+formText;
+		URL = "username="+username+"&studentInput="+formText+"&id="+id;
 		//document.getElementById("testing").innerHTML = UURL;
 	}
 	function ajaxRequest() {
