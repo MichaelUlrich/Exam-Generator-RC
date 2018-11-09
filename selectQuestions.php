@@ -17,7 +17,7 @@
 <script>
 //document.getElementById("test").innerHTML = sample;
 	var GLOBAL_JSON;
-	var TOTAL_POINTS;
+	var TOTAL_POINTS = 0;
 	function ajaxRequest(questionId) {
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'selectQuestionsCurl.php';
