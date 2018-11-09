@@ -17,6 +17,7 @@
 <script>
 //document.getElementById("test").innerHTML = sample;
 	var GLOBAL_JSON;
+	var TOTAL_POINTS;
 	function ajaxRequest(questionId) {
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'selectQuestionsCurl.php';
@@ -127,14 +128,16 @@
 	}
 	function addQuestion(questionId) {
 		//document.getElementById("test").innerHTML = questionId;
+		var intPoints;
 		ajaxRequest(questionId);
 		var question = GLOBAL_JSON[questionId].question;
 		var type = GLOBAL_JSON[questionId].type;
 		var diff = GLOBAL_JSON[questionId].difficulty;
 		var points = GLOBAL_JSON[questionId].points;
+		TOTAL_POINTS = parseInt(points, 10);
 		var node = document.createElement("li");
 		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + '] | [Points: '+ points + ']');
-
+		document.getElementById("points").innerHTML = TOTAL_POINTS;
 	//	document.getElementById("test").innerHTML = textNode;
 
 		node.appendChild(textNode);
@@ -169,7 +172,9 @@
 		<div class="column" style="background-color:#bbb;">
 			<h2> Selected Questions </h2>
 			<p id="test2"></p>
-			<ul id="selectedQuestions"></ul>
+			<ul id="selectedQuestions">
+				<h2>Points: </h2><h2 id="points"></h2>
+			</ul>
 		</div>
 		<div class="column" style="background-color:#fff;">
 			<h2> Available Questions </h2>
