@@ -69,8 +69,8 @@
 			var diffText =  document.createTextNode(parseSample[i].difficulty);
 			diffTd.appendChild(diffText);
 
-			var pointsTd =  document.createElement("td");
-			pointsTd.innerHTML = '<div class="text-center"><input type="text" id=points placeholder="points"></div>';
+			//var pointsTd =  document.createElement("td");
+		//	pointsTd.innerHTML = '<div class="text-center"><input type="text" id=points placeholder="points"></div>';
 			//pointsTd.appendChild(pointsText);
 
 			var constrainTd = document.createElement("td");
@@ -88,7 +88,7 @@
 			tr.appendChild(questionTd);
 			tr.appendChild(typeTd);
 			tr.appendChild(diffTd);
-			tr.appendChild(pointsTd);
+			//tr.appendChild(pointsTd);
 			tr.appendChild(constrainTd);
 			tr.appendChild(returnPrintTd);
 			tr.appendChild(selectTd);
@@ -220,7 +220,7 @@
 					<th>Question</th>
 					<th>Type</th>
 					<th>Difficulty</th>
-					<th>Points</th>
+					<!--<th>Points</th>-->
 					<th>Constraint</th>
 					<th>Return/Print</th>
 				</tr>
