@@ -26,7 +26,6 @@
 		var loopType = GLOBAL_JSON[questionId].loopType;
 		var diff = GLOBAL_JSON[questionId].difficulty;
 		var points = document.getElementById("userPoints"+questionId).value;//GLOBAL_JSON[questionId].points;
-		document.getElementById("test2").innerHTML = points;
 		var testCases = GLOBAL_JSON[questionId].testCases;
 		var functionName = GLOBAL_JSON[questionId].functionName;
 		var varNames = GLOBAL_JSON[questionId].varNames;
