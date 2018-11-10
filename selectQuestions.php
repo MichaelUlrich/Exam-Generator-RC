@@ -141,9 +141,10 @@
 	//	document.getElementById("test").innerHTML = textNode;
 		var pointsLi =  document.createElement("li");
 		pointsLi.innerHTML = '<div class="text-center"><input type="text" id=points placeholder="Enter Points"><button id=questionPoints'+questionId+' onClick="ajaxRequest('+questionId+')"></div>';
-		pointsLi.appendChild(pointsText);
+		//pointsLi.appendChild(pointsText);
 		node.appendChild(textNode);
 		document.getElementById('selectedQuestions').appendChild(node);
+		document.getElementById('selectedQuestions').appendChild(pointsLi);
 		//ajaxRequest(questionId);
 	}
 	function getAjaxRequest() {
