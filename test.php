@@ -63,7 +63,8 @@
 			var intI = parseInt(i, 10);
 			intI+=1;
 
-			pointsElement.textContent = "		Points: "+parseQuestions[i].points;
+
+			pointsElement.innerHTML = <'p style="margin-left:10%; margin-right:10>Points: "'+parseQuestions[i].points'</p>';
 			questionElement.setAttribute("data-content", "Question #"+i+": ");  //+sample[i].question);
 			questionElement.textContent =  "Question #"+intI+": "+parseQuestions[i].question;
 			questionDiv.appendChild(questionElement);
