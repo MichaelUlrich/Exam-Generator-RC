@@ -41,7 +41,7 @@
 			}
 		}
 		xmhlObj.send(url); //Send request
-		TOTAL_POINTS += points;
+		TOTAL_POINTS += parseInt(points, 10);
 		document.getElementById("points").innerHTML = TOTAL_POINTS;
 	}
 	function drawAvailableTable(sample) {
