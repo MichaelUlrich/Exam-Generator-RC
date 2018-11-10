@@ -64,7 +64,7 @@
 			intI+=1;
 
 
-			pointsElement.innerHTML = <'p style="margin-left:10%; margin-right:10>Points: "'+parseQuestions[i].points'</p>';
+			pointsElement.innerHTML = '<p style="margin-left:10%; margin-right:10>Points: '+parseQuestions[i].points'</p>';
 			questionElement.setAttribute("data-content", "Question #"+i+": ");  //+sample[i].question);
 			questionElement.textContent =  "Question #"+intI+": "+parseQuestions[i].question;
 			questionDiv.appendChild(questionElement);
