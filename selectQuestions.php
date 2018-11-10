@@ -119,19 +119,15 @@
 	function addQuestion(questionId) {
 		//document.getElementById("test").innerHTML = questionId;
 		var intPoints;
-		//ajaxRequest(questionId);
 		var question = GLOBAL_JSON[questionId].question;
 		var type = GLOBAL_JSON[questionId].type;
 		var diff = GLOBAL_JSON[questionId].difficulty;
-		//var points = document.getElementById("points"+questionId).value;
-		//TOTAL_POINTS += parseInt(points, 10);
 		GLOBAL_JSON[questionId].points = points;
 		var node = document.createElement("li");
 		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + ']');
-
 	//	document.getElementById("test").innerHTML = textNode;
 		var pointsLi =  document.createElement("li");
-		pointsLi.innerHTML = '<div class="text-center"><input type="text" id=userPoints'+questionId+'placeholder="Enter Points"><button id=questionPoints'+questionId+' onClick="ajaxRequest('+questionId+')">Set Points</button></div>';
+		pointsLi.innerHTML = '<div class="text-center"><input type="text" id=userPoints'+questionId+' placeholder="Enter Points"><button id=questionPoints'+questionId+' onClick="ajaxRequest('+questionId+')">Set Points</button></div>';
 		//pointsLi.appendChild(pointsText);
 		node.appendChild(textNode);
 		document.getElementById('selectedQuestions').appendChild(node);
