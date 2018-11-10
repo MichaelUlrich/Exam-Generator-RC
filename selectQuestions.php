@@ -15,9 +15,9 @@
 	//th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 </style>
 <script>
-//document.getElementById("test").innerHTML = sample;
 	var GLOBAL_JSON;
 	var TOTAL_POINTS = 0;
+
 	function ajaxRequest(questionId) {
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'selectQuestionsCurl.php';
@@ -25,7 +25,7 @@
 		var type = GLOBAL_JSON[questionId].type;
 		var loopType = GLOBAL_JSON[questionId].loopType;
 		var diff = GLOBAL_JSON[questionId].difficulty;
-		var points = document.getElementById("questionPoints"+questionId).value;//GLOBAL_JSON[questionId].points;
+		var points = document.getElementById("userPoints"+questionId).value;//GLOBAL_JSON[questionId].points;
 		document.getElementById("test2").innerHTML = points;
 		var testCases = GLOBAL_JSON[questionId].testCases;
 		var functionName = GLOBAL_JSON[questionId].functionName;
@@ -47,46 +47,34 @@
 	function drawAvailableTable(sample) {
 		var table = document.getElementById("questionTableBody");
 		table.innerHTML="";
-		//document.getElementById("test").innerHTML = sample;
 		var parseSample = JSON.parse(sample); //Need for response from AJAX cURL */
-//		document.getElementById("test").innerHTML = parseSameple;
 		for(var i in parseSample) {
 			var iInt = parseInt(i, 10);
 			iInt += 1;
-		//	document.getElementById("test").innerHTML = "total questions: "+iInt;
 			var tr = document.createElement("tr");
-
 			var idTd = document.createElement("td");
 			var idText = document.createTextNode(iInt);
 			idTd.appendChild(idText);
-
 			var questionTd = document.createElement("td");
 			var questionText = document.createTextNode(parseSample[i].question);
 			questionTd.appendChild(questionText);
-
 			var typeTd = document.createElement("td");
 			var typeText = document.createTextNode(parseSample[i].type);
 			typeTd.appendChild(typeText);
-
 			var diffTd = document.createElement("td");
 			var diffText =  document.createTextNode(parseSample[i].difficulty);
 			diffTd.appendChild(diffText);
-
 			//var pointsTd =  document.createElement("td");
 			//pointsTd.innerHTML = '<div class="text-center"><input type="text" id=points placeholder="points"></div>';
 			//pointsTd.appendChild(pointsText);
-
 			var constrainTd = document.createElement("td");
 			var constrainText = document.createTextNode(parseSample[i].loopType);
 			constrainTd.appendChild(constrainText);
-
 			var returnPrintTd = document.createElement("td");
 			var returnPrintText = document.createTextNode(parseSample[i].returnPrint);
 			returnPrintTd.appendChild(returnPrintText);
-
 			var selectTd = document.createElement("td");
 			selectTd.innerHTML = '<div class="text-center" ><input type="button" value="Select" onClick="addQuestion('+i+')" id="question_to_add_'+i+'"></div>';
-
 			tr.appendChild(idTd);
 			tr.appendChild(questionTd);
 			tr.appendChild(typeTd);
@@ -143,7 +131,7 @@
 
 	//	document.getElementById("test").innerHTML = textNode;
 		var pointsLi =  document.createElement("li");
-		pointsLi.innerHTML = '<div class="text-center"><input type="text" id=points placeholder="Enter Points"><button id=questionPoints'+questionId+' onClick="ajaxRequest('+questionId+')">Set Points</button></div>';
+		pointsLi.innerHTML = '<div class="text-center"><input type="text" id=userPoints'+questionId+'placeholder="Enter Points"><button id=questionPoints'+questionId+' onClick="ajaxRequest('+questionId+')">Set Points</button></div>';
 		//pointsLi.appendChild(pointsText);
 		node.appendChild(textNode);
 		document.getElementById('selectedQuestions').appendChild(node);
