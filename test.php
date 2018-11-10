@@ -58,13 +58,16 @@
 		var questionDiv = document.getElementById("questions");
 		var parseQuestions = JSON.parse(questions);
 		for(var i in parseQuestions) {
-			var questionElement = document.createElement("p")
+			var questionElement = document.createElement("p");
+			var pointsElement = document.createElement("p");
 			var intI = parseInt(i, 10);
 			intI+=1;
+
+			pointsElement.textContent = "		Points: "+parseQuestions[i].points;
 			questionElement.setAttribute("data-content", "Question #"+i+": ");  //+sample[i].question);
 			questionElement.textContent =  "Question #"+intI+": "+parseQuestions[i].question;
 			questionDiv.appendChild(questionElement);
-			//GLOBAL_JSON = parseQuestions;
+			questionDiv.appendChild(pointsElement);
 		}
 		drawExam(parseQuestions);
 	}
