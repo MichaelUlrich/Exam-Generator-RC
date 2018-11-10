@@ -40,6 +40,8 @@
 			}
 		}
 		xmhlObj.send(url); //Send request
+		TOTAL_POINTS += points;
+		document.getElementById("points").innerHTML = TOTAL_POINTS;
 	}
 	function drawAvailableTable(sample) {
 		var table = document.getElementById("questionTableBody");
@@ -137,10 +139,10 @@
 		GLOBAL_JSON[questionId].points = points;
 		var node = document.createElement("li");
 		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + '] | [Points: '+ points + ']');
-		document.getElementById("points").innerHTML = TOTAL_POINTS;
+
 	//	document.getElementById("test").innerHTML = textNode;
 		var pointsLi =  document.createElement("li");
-		pointsLi.innerHTML = '<div class="text-center"><input type="text" id=points placeholder="Enter Points"><button id=questionPoints'+questionId+' onClick="ajaxRequest('+questionId+')"></div>';
+		pointsLi.innerHTML = '<div class="text-center"><input type="text" id=points placeholder="Enter Points"><button id=questionPoints'+questionId+' onClick="ajaxRequest('+questionId+')">Set Points</button></div>';
 		//pointsLi.appendChild(pointsText);
 		node.appendChild(textNode);
 		document.getElementById('selectedQuestions').appendChild(node);
