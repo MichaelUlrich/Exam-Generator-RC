@@ -26,6 +26,7 @@
 		var loopType = GLOBAL_JSON[questionId].loopType;
 		var diff = GLOBAL_JSON[questionId].difficulty;
 		var points = document.getElementById("questionPoints"+questionId).value;//GLOBAL_JSON[questionId].points;
+		document.getElementById("test2").innerHTML = points;
 		var testCases = GLOBAL_JSON[questionId].testCases;
 		var functionName = GLOBAL_JSON[questionId].functionName;
 		var varNames = GLOBAL_JSON[questionId].varNames;
@@ -138,7 +139,7 @@
 		//TOTAL_POINTS += parseInt(points, 10);
 		GLOBAL_JSON[questionId].points = points;
 		var node = document.createElement("li");
-		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + '] | [Points: '+ points + ']');
+		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + ']');
 
 	//	document.getElementById("test").innerHTML = textNode;
 		var pointsLi =  document.createElement("li");
