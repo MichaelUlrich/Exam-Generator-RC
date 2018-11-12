@@ -112,6 +112,7 @@ function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
 }
 function drawStudentSelect() {
+	document.getElementById("testing").innerHTML = "not working";
 	var studentArr = ["meu3", "bk95"];
 	var optionText = "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
@@ -122,7 +123,7 @@ function drawStudentSelect() {
 	selectDiv.innerHTML = optionText;
 }
 window.onload = function() {
-	drawAutoComments();
+	//drawAutoComments();
 	drawStudentSelect();
 }
 </script>
@@ -138,7 +139,7 @@ window.onload = function() {
 		</div>
 		<div class="column" id="studentInput" style="background-color:#fff">
 			<!--Dropdown to select student who's test to edit-->
-			<select id="studentSelect" name="diff" id="diff" onchange="" required>
+			<select id="studentSelect" name="diff" id="diff" required>
 			</select>
 			<p id="testing"></p>
 			<table id="studentTable">
