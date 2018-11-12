@@ -112,7 +112,7 @@ function goToHomepage() {
 }
 function drawStudentSelect() {
 	var studentArr = ["meu3", "bk95"];
-	var optionText = "<option value"" disabled selected>Select Student</option>";
+	var optionText = "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
 	for(var i = 0; i < studentArr.length; i++) {
 		optionText += "<option value="+studentArr[i]+">"+studentArr[i]+"</option>";
