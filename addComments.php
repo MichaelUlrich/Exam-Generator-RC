@@ -117,7 +117,7 @@ function goToHomepage() {
 function drawStudentSelect() {
 	document.getElementById("testing").innerHTML = "not working";
 	var studentArr = ["meu3", "bk95"];
-	var optionText = "";//= "<option value\"\" disabled selected>Select Student</option>";
+	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
 	for(var i = 0; i < studentArr.length; i++) {
 		optionText += '<option value="'+studentArr[i]+'"onChange="ajaxGetRequest()">'+studentArr[i]+'</option>';
