@@ -14,11 +14,11 @@ tr:nth-child(even){background-color: #bbb;}
 //th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 </style>
 <script>
-var sample = [{"studentInput":"input", "autoComments":"Missing Function name, Wrong Return Type", "grade":"100", "maxGrade": "100"},
+/*var sample = [{"studentInput":"input", "autoComments":"Missing Function name, Wrong Return Type", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input2", "autoComments":"autoComment2", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input3", "autoComments":"autoComment3", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input4", "autoComments":"autoComment4", "grade":"100", "maxGrade": "100"},
-					{"studentInput":"input5", "autoComments":"autoComment5", "grade":"100", "maxGrade": "100"}];
+					{"studentInput":"input5", "autoComments":"autoComment5", "grade":"100", "maxGrade": "100"}];*/
 function drawAutoComments() {
 		var inputTd, idTd, idText, inputText, commentTd, commentText,
 					gradeTd, gradeText, tr, tableBody, intI, editTd, editText,
@@ -124,11 +124,12 @@ window.onload = function() {
 				<div id="gradeEdit"></div>
 				<div id="buttonEdit"></div>
 		</div>
-		<!-- -->
-		<select name="diff" id="diff" required>
-			<option value"" disabled selected>Select Student</option>
-		</select>
+		<!--Dropdown to select student who's test to edit-->
+
 		<div class="column" id="studentInput" style="background-color:#fff">
+			<select name="diff" id="diff" required>
+				<option value"" disabled selected>Select Student</option>
+			</select>
 			<p id="testing"></p>
 			<table id="studentTable">
 				<thead>
