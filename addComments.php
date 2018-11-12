@@ -106,7 +106,7 @@ function confirmChange(callingId) {
 			}
 		}
 		xmhlObj.send(url); //Send request
-		document.getElementById("testing").innerHTML = url;
+		//document.getElementById("testing").innerHTML = url;
 }
 function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
@@ -116,9 +116,9 @@ function drawStudentSelect() {
 	var studentArr = ["meu3", "bk95"];
 	var optionText ;//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
-	for(var i = 0; i < studentArr.length; i++) {
-		optionText += '<option value="'+studentArr[i]+'" onChange="ajaxGetRequest()">'+studentArr[i]+'</option>';
-	}
+	//for(var i = 0; i < studentArr.length; i++) {
+		optionText += '<option value="'+studentArr[0]+'" onChange="ajaxGetRequest()">'+studentArr[0]+'</option>';
+	//}
 	//selectText += "<select>";
 	selectDiv.innerHTML = optionText;
 }
