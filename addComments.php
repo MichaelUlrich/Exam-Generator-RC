@@ -117,7 +117,7 @@ function drawStudentSelect() {
 	var optionText = "";//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
 	for(var i = 0; i < studentArr.length; i++) {
-		optionText += '<option value="'+studentArr[0]+'" onChange="ajaxGetRequest()">'+studentArr[0]+'</option>';
+		optionText += '<option value="'+studentArr[i]+'"onChange="ajaxGetRequest()">'+studentArr[i]+'</option>';
 	}
 	//selectText += "<select>";
 	selectDiv.innerHTML = optionText;
@@ -139,7 +139,10 @@ window.onload = function() {
 		</div>
 		<div class="column" id="studentInput" style="background-color:#fff">
 			<!--Dropdown to select student who's test to edit-->
-			<select id="studentSelect" required></select>
+			<select id="studentSelect" required>
+				<option value="test1" onChange="ajaxGetRequest()"></option>
+				<option value="test2" onChange="ajaxGetRequest()"></option>
+			</select>
 			<p id="testing"></p>
 			<table id="studentTable">
 				<thead>
