@@ -54,8 +54,9 @@ function drawAutoComments() {
 			tableBody.appendChild(tr);
 		}
 	}
-function ajaxGetRequest(currQuestion) {
+function ajaxGetRequest(studentId) {
 	// TODO: Get grades from db
+	document.getElementById("testing").innerHTML = studentId;
 }
 function drawTeacherInput(currQuestion) {
 		var teacherDiv = document.getElementById("teacherInput");
