@@ -57,7 +57,7 @@ function drawAutoComments() {
 function ajaxGetRequest(student) {
 	// TODO: Get grades from db
 	//document.getElementById("testing").innerHTML = "working";
-	var studentId = document.getElementById(student.id)
+	var studentId = document.getElementById(student.id);
 	document.getElementById("testing").innerHTML = studentId;
 }
 function drawTeacherInput(currQuestion) {
