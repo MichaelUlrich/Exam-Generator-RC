@@ -54,7 +54,7 @@ function drawAutoComments() {
 			tableBody.appendChild(tr);
 		}
 	}
-function ajaxRequest(currQuestion) {
+function ajaxGetRequest(currQuestion) {
 	// TODO: Get grades from db
 }
 function drawTeacherInput(currQuestion) {
@@ -124,6 +124,10 @@ window.onload = function() {
 				<div id="gradeEdit"></div>
 				<div id="buttonEdit"></div>
 		</div>
+		<!-- -->
+		<select name="diff" id="diff" required>
+			<option value"" disabled selected>Select Student</option>
+		</select>
 		<div class="column" id="studentInput" style="background-color:#fff">
 			<p id="testing"></p>
 			<table id="studentTable">
