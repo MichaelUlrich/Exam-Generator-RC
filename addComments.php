@@ -56,10 +56,13 @@ function drawAutoComments() {
 	}
 function ajaxGetRequest(student) {
 	// TODO: Get grades from db
+	/*
+		Get UCID -> cURL graded DB w/UCID -> return&print
+	*/
 	//document.getElementById("testing").innerHTML = "working";
 	var studentId = document.getElementById(student.id);
 	studentId = studentId.value;
-	document.getElementById("testing").innerHTML = studentId;
+	//document.getElementById("testing").innerHTML = studentId;
 	drawAutoComments();
 
 }
@@ -117,7 +120,7 @@ function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
 }
 function drawStudentSelect() {
-	document.getElementById("testing").innerHTML = "not working";
+	//document.getElementById("testing").innerHTML = "not working";
 	var studentArr = ["meu3", "bk95"];
 	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
@@ -159,6 +162,7 @@ window.onload = function() {
 			</table>
 		</div>
 	</div>
+	<button>Publish Grades</button> <!-- Publish to public DB for student to view -->
 	<!--<p id="test">TEST</p>-->
 </body>
 </html>
