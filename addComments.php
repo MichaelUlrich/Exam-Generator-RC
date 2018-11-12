@@ -110,8 +110,19 @@ function confirmChange(callingId) {
 function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
 }
+function drawStudentSelect() {
+	var studentArr = ["meu3", "bk95"];
+	var optionText = "<option value"" disabled selected>Select Student</option>";
+	var selectDiv = document.getElementById("studentSelect");
+	for(var i = 0; i < studentArr.length; i++) {
+		optionText += "<option value='"+studentArr[i]+"'>"+studentArr[i]+"</option>";
+	}
+	//selectText += "<select>";
+	selectDiv.innerHTML = selectText;
+}
 window.onload = function() {
 	drawAutoComments();
+	drawStudentSelect();
 }
 </script>
 </head>
@@ -124,11 +135,9 @@ window.onload = function() {
 				<div id="gradeEdit"></div>
 				<div id="buttonEdit"></div>
 		</div>
-		<!--Dropdown to select student who's test to edit-->
-
 		<div class="column" id="studentInput" style="background-color:#fff">
-			<select name="diff" id="diff" required>
-				<option value"" disabled selected>Select Student</option>
+			<!--Dropdown to select student who's test to edit-->
+			<select id="studentSelect" name="diff" id="diff" onchange="" required>
 			</select>
 			<p id="testing"></p>
 			<table id="studentTable">
