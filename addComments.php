@@ -58,6 +58,7 @@ function ajaxGetRequest(student) {
 	// TODO: Get grades from db
 	//document.getElementById("testing").innerHTML = "working";
 	var studentId = document.getElementById(student.id);
+	studentId = studentId.value;
 	document.getElementById("testing").innerHTML = studentId;
 }
 function drawTeacherInput(currQuestion) {
