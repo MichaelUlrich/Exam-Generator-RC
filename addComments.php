@@ -117,7 +117,7 @@ function drawStudentSelect() {
 	var optionText ;//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
 	for(var i = 0; i < studentArr.length; i++) {
-		optionText += "<option value="+studentArr[i]+" onChange=ajaxGetRequest()>"+studentArr[i]+"</option>";
+		optionText += "<option value="+studentArr[i]+"onChange=\"ajaxGetRequest()\">"+studentArr[i]+"</option>";
 	}
 	//selectText += "<select>";
 	selectDiv.innerHTML = optionText;
