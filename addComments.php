@@ -54,9 +54,11 @@ function drawAutoComments() {
 			tableBody.appendChild(tr);
 		}
 	}
-function ajaxGetRequest() {
+function ajaxGetRequest(student) {
 	// TODO: Get grades from db
-	document.getElementById("testing").innerHTML = "working";
+	//document.getElementById("testing").innerHTML = "working";
+	var studentId = document.getElementById(student.id)
+	document.getElementById("testing").innerHTML = studentId;
 }
 function drawTeacherInput(currQuestion) {
 		var teacherDiv = document.getElementById("teacherInput");
@@ -123,8 +125,8 @@ function drawStudentSelect() {
 	selectDiv.innerHTML = optionText;
 }
 window.onload = function() {
-	//drawAutoComments();
-	//drawStudentSelect();
+	drawAutoComments();
+	drawStudentSelect();
 }
 </script>
 </head>
@@ -139,9 +141,7 @@ window.onload = function() {
 		</div>
 		<div class="column" id="studentInput" style="background-color:#fff">
 			<!--Dropdown to select student who's test to edit-->
-			<select id="studentSelect" onChange="ajaxGetRequest()" required>
-				<option value="test1">t1</option>
-				<option value="test2">t2</option>
+			<select id="studentSelect" onChange="ajaxGetRequest(this)" required>
 			</select>
 			<p id="testing"></p>
 			<table id="studentTable">
