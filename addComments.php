@@ -139,8 +139,7 @@ window.onload = function() {
 		</div>
 		<div class="column" id="studentInput" style="background-color:#fff">
 			<!--Dropdown to select student who's test to edit-->
-			<select id="studentSelect" name="diff" id="diff" required>
-			</select>
+			<select id="studentSelect" required></select>
 			<p id="testing"></p>
 			<table id="studentTable">
 				<thead>
