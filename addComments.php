@@ -118,7 +118,7 @@ function drawStudentSelect() {
 		optionText += "<option value="+studentArr[i]+">"+studentArr[i]+"</option>";
 	}
 	//selectText += "<select>";
-	selectDiv.innerHTML = selectText;
+	selectDiv.innerHTML = optionText;
 }
 window.onload = function() {
 	drawAutoComments();
