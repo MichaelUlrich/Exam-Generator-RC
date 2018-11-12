@@ -60,6 +60,7 @@ function ajaxGetRequest(student) {
 	var studentId = document.getElementById(student.id);
 	studentId = studentId.value;
 	document.getElementById("testing").innerHTML = studentId;
+	drawStudentSelect();
 }
 function drawTeacherInput(currQuestion) {
 		var teacherDiv = document.getElementById("teacherInput");
@@ -127,7 +128,7 @@ function drawStudentSelect() {
 }
 window.onload = function() {
 	drawAutoComments();
-	drawStudentSelect();
+
 }
 </script>
 </head>
