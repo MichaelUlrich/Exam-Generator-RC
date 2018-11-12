@@ -56,7 +56,7 @@ function drawAutoComments() {
 	}
 function ajaxGetRequest(studentId) {
 	// TODO: Get grades from db
-	document.getElementById("testing").innerHTML = studentId;
+	document.getElementById("testing").innerHTML = "working";
 }
 function drawTeacherInput(currQuestion) {
 		var teacherDiv = document.getElementById("teacherInput");
@@ -116,7 +116,7 @@ function drawStudentSelect() {
 	var optionText = "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
 	for(var i = 0; i < studentArr.length; i++) {
-		optionText += "<option value="+studentArr[i]+" onChange=\"ajaxGetRequest(\""+studentArr[i]+"\")>"+studentArr[i]+"</option>";
+		optionText += "<option value="+studentArr[i]+" onChange=\"ajaxGetRequest(\""+studentArr[i]+"\")\">"+studentArr[i]+"</option>";
 	}
 	//selectText += "<select>";
 	selectDiv.innerHTML = optionText;
