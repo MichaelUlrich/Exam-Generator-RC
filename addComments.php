@@ -19,6 +19,7 @@ var sample = [{"studentInput":"input", "autoComments":"Missing Function name, Wr
 					{"studentInput":"input3", "autoComments":"autoComment3", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input4", "autoComments":"autoComment4", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input5", "autoComments":"autoComment5", "grade":"100", "maxGrade": "100"}];
+var STUDENT_INPUT = ""
 function drawAutoComments() {
 		var inputTd, idTd, idText, inputText, commentTd, commentText,
 					gradeTd, gradeText, tr, tableBody, intI, editTd, editText,
@@ -60,16 +61,22 @@ function drawAutoComments() {
 		studentDiv.appendChild(publishDiv);
 	}
 function ajaxGetRequest(student) {
-	// TODO: Get grades from db
-	/*
+	/* TODO: Get grades from db
 		Get UCID -> cURL graded DB w/UCID -> return&print
 	*/
-	//document.getElementById("testing").innerHTML = "working";
 	var studentId = document.getElementById(student.id);
-	studentId = studentId.value;
-	//document.getElementById("testing").innerHTML = studentId;
+	var phpFile = "addCommentsGetCurl.php";
+	var xmhlObj = new XMLHttpRequest();
+	studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
+	xmhlObj.open("POST", phpFile, true);
+	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
+	xmhlObj.onreadystatechange = function() {
+	if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
+		STUDENT_INPUT = xmhlObj.responseText; //Returns student input for specific UCID
+		}
+	}
+	xmhlObj.send();
 	drawAutoComments();
-
 }
 function drawTeacherInput(currQuestion) {
 		var teacherDiv = document.getElementById("teacherInput");
@@ -124,9 +131,24 @@ function confirmChange(callingId) {
 function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
 }
+function getStudents() {
+	// TODO: cURL to get student usernames -> return JSON of usernames
+	var students = "";
+	var phpFile = "addCommentsGetUsers.php";
+	var xmhlObj = new XMLHttpRequest();
+	//studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
+	xmhlObj.open("POST", phpFile, true);
+	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
+	xmhlObj.onreadystatechange = function() {
+	if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
+			return xmhlObj.responseText; //Returns UCIDs
+		}
+	}
+	xmhlObj.send();	
+}
 function drawStudentSelect() {
 	//document.getElementById("testing").innerHTML = "not working";
-	var studentArr = ["meu3", "bk95"];
+	var studentArr = getStudents();
 	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
 	for(var i = 0; i < studentArr.length; i++) {
