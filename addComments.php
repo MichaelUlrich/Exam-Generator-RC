@@ -22,7 +22,7 @@ var sample = [{"studentInput":"input", "autoComments":"Missing Function name, Wr
 function drawAutoComments() {
 		var inputTd, idTd, idText, inputText, commentTd, commentText,
 					gradeTd, gradeText, tr, tableBody, intI, editTd, editText,
-					confirmTd, confirmText;
+					confirmTd, confirmText, publishDiv;
 		tableBody = document.getElementById("tableBody");
 		tableBody.innerHTML =""
 		for(var i in sample) {
@@ -53,6 +53,9 @@ function drawAutoComments() {
 			tr.appendChild(confirmTd);
 			tableBody.appendChild(tr);
 		}
+		// Publish to public DB for student to view
+		publishDiv = document.createElement("div");
+		publishDiv.innerHTML = '<button>Publish Grades</button>'
 	}
 function ajaxGetRequest(student) {
 	// TODO: Get grades from db
@@ -162,7 +165,7 @@ window.onload = function() {
 			</table>
 		</div>
 	</div>
-	<button>Publish Grades</button> <!-- Publish to public DB for student to view -->
+
 	<!--<p id="test">TEST</p>-->
 </body>
 </html>
