@@ -15,9 +15,9 @@
 		var question = document.getElementById('question').value;
 		var type = document.getElementById('type').value;
 		var diff = document.getElementById('diff').value;
-		var points = document.getElementById('points').value;
+		//var points = document.getElementById('points').value;
 		var node = document.createElement('li');
-		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + '] | [Points: '+ points + ']');
+		var textNode = document.createTextNode('[Question: '+ question+ ' ] | [Type: ' + type + '] | [Difficulty: ' + diff + ']');// | [Points: '+ points + ']');
 		node.appendChild(textNode);
 		document.getElementById('selectedList').appendChild(node);
 	}
@@ -133,14 +133,12 @@ function ajaxRequest() {
 					<option value="arrays">Arrays</option>
 					<option value="2dArrays">2D-Arrays</option>
 					<option value="vectors">Vectors</option>
-
 				</select>
 			</p>
 			<p> Select Constraint:
 						<input type="radio" id="forRadio" name="loopType" value="forLoop">For-Loop
 						<input type="radio" id="whileRadio" name="loopType" value="whileLoop">While-Loop
 						<input type="radio" id="recursionRadio" name="loopType" value="whileLoop">Recursion<br>
-
 			</p>
 			<p> Select if the output is Return or Printed
 			<select name="displayType" id="displayType" required>
@@ -148,8 +146,8 @@ function ajaxRequest() {
 					<option value="print">Print</option>
 			</select>
 			</p>
-			<!--<p> Number of Points <input type="text" name="points" id="points" placeholder="Point Value" required> </p>
-			<button onClick="moveText(); ajaxRequest();">Submit Question:</button>-->
+			<!--<p> Number of Points <input type="text" name="points" id="points" placeholder="Point Value" required> </p>-->
+			<button onClick="moveText(); ajaxRequest();">Submit Question:</button>
 		</div>
 		<div class="column" style="background-color:#bbb;">
 			<h2> Submitted Questions </h2>
