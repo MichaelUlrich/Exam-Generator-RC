@@ -15,7 +15,7 @@
 	//th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 </style>
 <script>
-var sample = [{"studentInput":"input", "autoComments":"Missing Function name, Wrong Return Type", "grade":"100", "maxGrade": "100"},
+var sample = [{"studentInput":"input \n testCode", "autoComments":"Missing Function name, Wrong Return Type", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input2", "autoComments":"autoComment2", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input3", "autoComments":"autoComment3", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input4", "autoComments":"autoComment4", "grade":"100", "maxGrade": "100"},
@@ -90,8 +90,8 @@ function drawTeacherInput(currQuestion) {
 	var	grade = sample[currQuestion].grade;
 	var	code = sample[currQuestion].studentInput;
 
-	commentDiv.innerHTML = '<h3>Edit Comment</h3><textarea id="commentEditText" maxlength="5000" cols="45" rows="10">'+comment+'</textarea><br>';
-	codeDiv.innerHTML = '<h3>Student\'s Code</h3><textarea readonly id="codeText" maxlength="5000" cols="45" rows="10">'+code+'</textarea><br>';
+	commentDiv.innerHTML = '<h3>Edit Comment</h3><textarea id="commentEditText" maxlength="5000" cols="60" rows="10">'+comment+'</textarea><br>';
+	codeDiv.innerHTML = '<h3>View Student\'s Code</h3><textarea readonly id="codeText" maxlength="5000" cols="60" rows="10">'+code+'</textarea><br>';
 	gradeDiv.innerHTML ='<h3>Edit Grade</h3><input type="text" id="gradeEditText" value="'+grade+'"></input><br><br>';
 	buttonDiv.innerHTML='<button onClick="edit('+currQuestion+')">Submit Edit</button>';
 }
