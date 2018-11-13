@@ -4,14 +4,15 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-*{box-sizing: border-box;}
-.row{display: flex;}
-.column{flex: 50%; padding: 10px}
-//table,td{border: 1px solid grey;}
-table{border-spacing: 0; border: 1px solid grey}
-td,th{text-align: left; padding: 16px;}
-tr:nth-child(even){background-color: #bbb;}
-//th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
+	*{box-sizing: border-box;}
+	.row{display: flex;}
+	.column{flex: 50%; padding: 10px}
+	.inline{display:inline-block;}
+	//table,td{border: 1px solid grey;}
+	table{border-spacing: 0; border: 1px solid grey}
+	td,th{text-align: left; padding: 16px;}
+	tr:nth-child(even){background-color: #bbb;}
+	//th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 </style>
 <script>
 var sample = [{"studentInput":"input", "autoComments":"Missing Function name, Wrong Return Type", "grade":"100", "maxGrade": "100"},
@@ -64,10 +65,11 @@ function ajaxGetRequest(student) {
 	/* TODO: Get grades from db
 		Get UCID -> cURL graded DB w/UCID -> return&print
 	*/
-	var studentId = document.getElementById(student.id);
+	//var studentId = document.getElementById(student.id);
 	var phpFile = "addCommentsGetCurl.php";
 	var xmhlObj = new XMLHttpRequest();
-	studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
+	//studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
+	var url = "username="+student;
 	xmhlObj.open("POST", phpFile, true);
 	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 	xmhlObj.onreadystatechange = function() {
@@ -75,7 +77,7 @@ function ajaxGetRequest(student) {
 		STUDENT_INPUT = xmhlObj.responseText; //Returns student input for specific UCID
 		}
 	}
-	xmhlObj.send();
+	xmhlObj.send(url);
 	drawAutoComments();
 }
 function drawTeacherInput(currQuestion) {
@@ -83,8 +85,12 @@ function drawTeacherInput(currQuestion) {
 		var commentDiv = document.getElementById("commentEdit");
 		var gradeDiv = document.getElementById("gradeEdit");
 		var buttonDiv = document.getElementById("buttonEdit");
+		var codeDiv = document.getElementById("codeView");
 		var comment = sample[currQuestion].autoComments;
-				grade = sample[currQuestion].grade;
+		var	grade = sample[currQuestion].grade;
+		var	code = sample[currQuestion].studentInput;
+
+
 	//	var editComment = document.createElement("textarea"),
 	//			editGrade = document.createElement("input");
 	//	var commentText = document.createTextNode(comment);
@@ -93,6 +99,7 @@ function drawTeacherInput(currQuestion) {
 
 	//buttonTd.setAttribute("onClick", "edit("+currQuestion+")");
 	commentDiv.innerHTML = '<h3>Edit Comment</h3><textarea id="commentEditText" maxlength="5000" cols="45" rows="10">'+comment+'</textarea><br>';
+	codeDiv.innerHTML = '<h3>Student\'s Code</h3><textarea readonly id="codeText" maxlength="5000" cols="45" rows="10">'+code+'</textarea><br>';
 	gradeDiv.innerHTML ='<h3>Edit Grade</h3><input type="text" id="gradeEditText" value="'+grade+'"></input><br><br>';
 	buttonDiv.innerHTML='<button onClick="edit('+currQuestion+')">Submit Edit</button>';
 	//buttonTd.appendChild(buttonText);
@@ -165,7 +172,8 @@ window.onload = function() {
 	<h2> Edit Grades and Comments </h2>
 	<div class="row">
 		<div class="column" id="teacherInput" style="background-color:#bbb">
-				<div id="commentEdit"></div>
+				<div class="inline" id="codeView"></div>
+				<div class="inline" id="commentEdit"></div>
 				<div id="gradeEdit"></div>
 				<div id="buttonEdit"></div>
 		</div>
