@@ -45,14 +45,14 @@ function drawAutoComments() {
 			gradeTd.appendChild(gradeText);
 			editTd = document.createElement("td");
 			editTd.innerHTML = '<div class="text-center" ><input type="button" value="Edit" onClick="drawTeacherInput('+i+')" id="'+i+'"></div>';
-			confirmTd = document.createElement("td");
-			confirmTd.innerHTML = '<div class="text-center" ><input type="button" value="Confirm" onClick="confirmChange('+i+')" id=""></div>';
+			//confirmTd = document.createElement("td");
+			//confirmTd.innerHTML = '<div class="text-center" ><input type="button" value="Confirm" onClick="confirmChange('+i+')" id=""></div>';
 			tr.appendChild(idTd);
 			//tr.appendChild(inputTd);
 			tr.appendChild(commentTd);
 			tr.appendChild(gradeTd);
 			tr.appendChild(editTd);
-			tr.appendChild(confirmTd);
+		//	tr.appendChild(confirmTd);
 			tableBody.appendChild(tr);
 		}
 		// Publish to public DB for student to view
@@ -104,7 +104,7 @@ function edit(currQuestion) {
 	drawAutoComments();
 	//document.getElementById("test").innerHTML = "edited: " + teacherComment +'/' + teacherGrade;//sample[currQuestion].autoComments;
 }
-function confirmChange(callingId) {
+function confirmChange() {
 	// TODO: Ajax send grades to db
 	var comment = "", grade = "", maxGrade = "", studentInput = "", url = "",
 			xmhlObj = new XMLHttpRequest(), phpFile = "";
@@ -183,7 +183,7 @@ window.onload = function() {
 				</thead>
 				<tbody id="tableBody"></tbody>
 			</table><br>
-			<button>Publish Grades</button>
+			<button onclick="confirmChange()">Publish Grades</button>
 		</div>
 	</div>
 
