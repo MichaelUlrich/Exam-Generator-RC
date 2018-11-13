@@ -176,7 +176,7 @@ window.onload = function() {
 				<thead>
 					<tr>
 							<th>Question #</th>
-							<th>Student's Code</th>
+						<!--	<th>Student's Code</th> -->
 							<th>Auto Comments</th>
 							<th>Grade</th>
 					</tr>
