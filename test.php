@@ -86,7 +86,7 @@
 		var xmhlObj = new XMLHttpRequest();
 		var phpFile = 'testCurl.php';
 		//var url = "username="+username+"&studentInput="+studentInput;//For AJAX POST
-	//GLOBAL_JSON += url;
+	//GOBAL_JSON += url;
 		var testingText = "";
 		var return_data = "";
 		xmhlObj.open("POST", phpFile, false);
