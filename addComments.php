@@ -34,9 +34,9 @@ function drawAutoComments() {
 			idTd = document.createElement("td");
 			idText = document.createTextNode(intI+1);
 			idTd.appendChild(idText);
-			inputTd = document.createElement("td");
-			inputText = document.createTextNode(sample[i].studentInput);
-			inputTd.appendChild(inputText);
+			//inputTd = document.createElement("td");
+			//inputText = document.createTextNode(sample[i].studentInput);
+			//inputTd.appendChild(inputText);
 			commentTd = document.createElement("td");
 			commentText = document.createTextNode(sample[i].autoComments);
 			commentTd.appendChild(commentText);
@@ -48,7 +48,7 @@ function drawAutoComments() {
 			confirmTd = document.createElement("td");
 			confirmTd.innerHTML = '<div class="text-center" ><input type="button" value="Confirm" onClick="confirmChange('+i+')" id=""></div>';
 			tr.appendChild(idTd);
-			tr.appendChild(inputTd);
+			//tr.appendChild(inputTd);
 			tr.appendChild(commentTd);
 			tr.appendChild(gradeTd);
 			tr.appendChild(editTd);
