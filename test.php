@@ -62,11 +62,9 @@
 			var pointsElement = document.createElement("p");
 			var intI = parseInt(i, 10);
 			intI+=1;
-
-
 			//pointsElement.innerHTML = '<p style="margin-left:2%; margin-right:10>Points: TEMP</p>';
 			questionElement.setAttribute("data-content", "Question #"+i+": ");  //+sample[i].question);
-			pointsElement.textContent = "Points: TEMP";
+			pointsElement.textContent = "Points:"+parseQuestions[i].points;
 			questionElement.textContent =  "Question #"+intI+": "+parseQuestions[i].question;
 			questionDiv.appendChild(questionElement);
 			questionDiv.appendChild(pointsElement);
