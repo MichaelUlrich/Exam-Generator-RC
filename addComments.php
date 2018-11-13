@@ -136,25 +136,23 @@ function getStudents() {
 	var students = "";
 	var phpFile = "addCommentsGetUsers.php";
 	var xmhlObj = new XMLHttpRequest();
-	//studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
-	xmhlObj.open("POST", phpFile, true);
+/*	xmhlObj.open("POST", phpFile, true);
 	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 	xmhlObj.onreadystatechange = function() {
 	if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 			return xmhlObj.responseText; //Returns UCIDs
 		}
 	}
-	xmhlObj.send();	
+	xmhlObj.send();	*/
+	return [{"username":"meu3"}, {"username":"bk95"}]; //Testing variable
 }
 function drawStudentSelect() {
-	//document.getElementById("testing").innerHTML = "not working";
 	var studentArr = getStudents();
 	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
 	for(var i = 0; i < studentArr.length; i++) {
-		optionText += '<option value="'+studentArr[i]+'"onChange="ajaxGetRequest()">'+studentArr[i]+'</option>';
+		optionText += '<option value="'+studentArr[i].username+'"onChange="ajaxGetRequest('+studentArr[i].username+')">'+studentArr[i].username+'</option>';
 	}
-	//selectText += "<select>";
 	selectDiv.innerHTML = optionText;
 }
 window.onload = function() {
