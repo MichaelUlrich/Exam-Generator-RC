@@ -64,13 +64,13 @@ function ajaxRequest() {
 		var type = document.getElementById('type').value;
 		var loopType = getLoopType();
 		var diff = document.getElementById('diff').value;
-		var points = document.getElementById('points').value;
+		//var points = document.getElementById('points').value;
 		var testCases = getTestCases();
 		//document.getElementById("test").innerHTML = testCases;
 		var functionName = document.getElementById('funcName').value;
 		var varNames = document.getElementById('varNames').value;
 		var returnPrint = document.getElementById('displayType').value;
-		var url = "question="+question+"&type="+type+"&loopType="+loopType+"&diff="+diff+"&points="+points+"&testCases="+testCases
+		var url = "question="+question+"&type="+type+"&loopType="+loopType+"&diff="+diff+"&testCases="+testCases
 							+"&functionName="+functionName+"&variableNames="+varNames+"&returnPrint="+returnPrint; //For AJAX POST
 
 		xmhlObj.open("POST", phpFile, true);
