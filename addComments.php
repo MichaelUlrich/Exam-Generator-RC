@@ -56,10 +56,10 @@ function drawAutoComments() {
 			tableBody.appendChild(tr);
 		}
 		// Publish to public DB for student to view
-		publishDiv = document.createElement("div");
+	/*	publishDiv = document.createElement("div");
 		studentDiv = document.getElementById("studentInput");
 		publishDiv.innerHTML = '<button>Publish Grades</button>';
-		studentDiv.appendChild(publishDiv);
+		studentDiv.appendChild(publishDiv);*/
 	}
 function ajaxGetRequest(student) {
 	/* TODO: Get grades from db
@@ -81,29 +81,19 @@ function ajaxGetRequest(student) {
 	drawAutoComments();
 }
 function drawTeacherInput(currQuestion) {
-		var teacherDiv = document.getElementById("teacherInput");
-		var commentDiv = document.getElementById("commentEdit");
-		var gradeDiv = document.getElementById("gradeEdit");
-		var buttonDiv = document.getElementById("buttonEdit");
-		var codeDiv = document.getElementById("codeView");
-		var comment = sample[currQuestion].autoComments;
-		var	grade = sample[currQuestion].grade;
-		var	code = sample[currQuestion].studentInput;
+	var teacherDiv = document.getElementById("teacherInput");
+	var commentDiv = document.getElementById("commentEdit");
+	var gradeDiv = document.getElementById("gradeEdit");
+	var buttonDiv = document.getElementById("buttonEdit");
+	var codeDiv = document.getElementById("codeView");
+	var comment = sample[currQuestion].autoComments;
+	var	grade = sample[currQuestion].grade;
+	var	code = sample[currQuestion].studentInput;
 
-
-	//	var editComment = document.createElement("textarea"),
-	//			editGrade = document.createElement("input");
-	//	var commentText = document.createTextNode(comment);
-	//	var buttonTd = document.createElement("button");
-	//	var buttonText = document.createTextNode("Save Edit");
-
-	//buttonTd.setAttribute("onClick", "edit("+currQuestion+")");
 	commentDiv.innerHTML = '<h3>Edit Comment</h3><textarea id="commentEditText" maxlength="5000" cols="45" rows="10">'+comment+'</textarea><br>';
 	codeDiv.innerHTML = '<h3>Student\'s Code</h3><textarea readonly id="codeText" maxlength="5000" cols="45" rows="10">'+code+'</textarea><br>';
 	gradeDiv.innerHTML ='<h3>Edit Grade</h3><input type="text" id="gradeEditText" value="'+grade+'"></input><br><br>';
 	buttonDiv.innerHTML='<button onClick="edit('+currQuestion+')">Submit Edit</button>';
-	//buttonTd.appendChild(buttonText);
-	//teacherDiv.appendChild(buttonTd);
 }
 function edit(currQuestion) {
 	var teacherComment = document.getElementById("commentEditText").value;
@@ -192,7 +182,8 @@ window.onload = function() {
 					</tr>
 				</thead>
 				<tbody id="tableBody"></tbody>
-			</table>
+			</table><br>
+			<button>Publish Grades</button>
 		</div>
 	</div>
 
