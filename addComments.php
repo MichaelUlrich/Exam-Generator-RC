@@ -106,9 +106,16 @@ function edit(currQuestion) {
 }
 function confirmChange() {
 	// TODO: Ajax send grades to db
-	var comment = "", grade = "", maxGrade = "", studentInput = "", url = "",
-			xmhlObj = new XMLHttpRequest(), phpFile = "";
-		phpFile = "addCommentsCurl.php";
+	var commentTable, row = "", column = "", comment = "", grade = "", maxGrade = "", studentInput = "", url = "",
+			xmhlObj = new XMLHttpRequest(), phpFile = "", test="";
+		commentTable = document.getElementById("studentTable");
+		for(var rowIndex = 0; rowLength = commentTable.rows.length; rowIndex < rowLength; rowIndex++) {
+			for(var colIndex = 0; colLength = commentTable.rows[].cells.length; colIndex < colLength; colIndex++) {
+				test += commentTable.rows[rowIndex].cells[colIndex].innerHTML;
+				document.getElementById("testing").innerHTML = test;
+			}
+		}
+	/*	phpFile = "addCommentsCurl.php";
 		comment = sample[callingId].autoComments;
 		grade = sample[callingId].grade;
 		maxGrade = sample[callingId].maxGrade;
@@ -123,7 +130,7 @@ function confirmChange() {
 			}
 		}
 		xmhlObj.send(url); //Send request
-		//document.getElementById("testing").innerHTML = url;
+		//document.getElementById("testing").innerHTML = url;*/
 }
 function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
