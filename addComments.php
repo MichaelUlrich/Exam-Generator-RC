@@ -108,9 +108,9 @@ function confirmChange() {
 	// TODO: Ajax send grades to db
 	var commentTable, row = "", column = "", comment = "", grade = "", maxGrade = "", studentInput = "", url = "",
 			xmhlObj = new XMLHttpRequest(), phpFile = "", test="";
-	commentTable = document.getElementById("studentTable");
-	for(var rowIndex = 0, rowLength = commentTable.rows.length; rowIndex < rowLength; rowIndex++) {
-		for(var colIndex = 0, colLength = commentTable.rows[rowIndex].cells.length; colIndex < colLength; colIndex++) {
+	commentTable = document.getElementById("tableBody");
+	for(var rowIndex = 0, rowLength = commentTable.rows.length; rowIndex < rowLength - 1; rowIndex++) {
+		for(var colIndex = 0, colLength = commentTable.rows[rowIndex].cells.length; colIndex < colLength - 1; colIndex++) {
 			test += commentTable.rows[rowIndex].cells[colIndex].innerHTML;
 			document.getElementById("testing").innerHTML = test; //+ "<br>";
 		}
