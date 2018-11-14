@@ -110,7 +110,7 @@ function confirmChange() {
 			xmhlObj = new XMLHttpRequest(), phpFile = "", test="";
 	commentTable = document.getElementById("tableBody");
 	for(i in sample) {
-		test += sample[i].autoCommennts + '/';
+		test += sample[i].autoComments + '/';
 		test += sample[i].grade + '/';
 		test += sample[i].maxGrade + "/";
 	}
