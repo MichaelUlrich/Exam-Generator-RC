@@ -112,7 +112,7 @@ function confirmChange() {
 	for(i in sample) {
 		test += sample[i].autoCommennts + '/';
 		test += sample[i].grade + '/';
-		test += smaple[i].maxGrade + "/";
+		test += sample[i].maxGrade + "/";
 	}
 	document.getElementById("testing").innerHTML = test; //+ "<br>";
 	/*	phpFile = "addCommentsCurl.php";
