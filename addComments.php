@@ -109,12 +109,12 @@ function confirmChange() {
 	var commentTable, row = "", column = "", comment = "", grade = "", maxGrade = "", studentInput = "", url = "",
 			xmhlObj = new XMLHttpRequest(), phpFile = "", test="";
 	commentTable = document.getElementById("tableBody");
-	for(var rowIndex = 0, rowLength = commentTable.rows.length; rowIndex < rowLength - 1; rowIndex++) {
-		for(var colIndex = 0, colLength = commentTable.rows[rowIndex].cells.length; colIndex < colLength - 1; colIndex++) {
-			test += commentTable.rows[rowIndex].cells[colIndex].innerHTML;
-			document.getElementById("testing").innerHTML = test; //+ "<br>";
-		}
+	for(i in sample) {
+		test += sample[i].autoCommennts + '/';
+		test += sample[i].grade + '/';
+		test += smaple[i].maxGrade + oninvalid="/";
 	}
+	document.getElementById("testing").innerHTML = test; //+ "<br>";
 	/*	phpFile = "addCommentsCurl.php";
 		comment = sample[callingId].autoComments;
 		grade = sample[callingId].grade;
