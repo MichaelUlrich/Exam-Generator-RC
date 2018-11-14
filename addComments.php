@@ -109,8 +109,8 @@ function confirmChange() {
 	var commentTable, row = "", column = "", comment = "", grade = "", maxGrade = "", studentInput = "", url = "",
 			xmhlObj = new XMLHttpRequest(), phpFile = "", test="";
 	commentTable = document.getElementById("studentTable");
-	for(var rowIndex = 0; rowLength = commentTable.rows.length; rowIndex < rowLength; rowIndex++) {
-		for(var colIndex = 0; colLength = commentTable.rows[].cells.length; colIndex < colLength; colIndex++) {
+	for(var rowIndex = 0, rowLength = commentTable.rows.length; rowIndex < rowLength; rowIndex++) {
+		for(var colIndex = 0, colLength = commentTable.rows[].cells.length; colIndex < colLength; colIndex++) {
 			test += commentTable.rows[rowIndex].cells[colIndex].innerHTML;
 			document.getElementById("testing").innerHTML = test; //+ "<br>";
 		}
