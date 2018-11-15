@@ -21,6 +21,7 @@
 					{"studentInput":"input4", "autoComments":"autoComment4", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input5", "autoComments":"autoComment5", "grade":"100", "maxGrade": "100"}];*/
 var GLOBAL_JSON;
+var USERNAME;
 function drawAutoComments() {
 		var inputTd, idTd, idText, inputText, commentTd, commentText,
 					gradeTd, gradeText, tr, tableBody, intI, editTd, editText,
@@ -70,6 +71,7 @@ function ajaxGetRequest(student) {
 	var phpFile = "addCommentsGetCurl.php";
 	var xmhlObj = new XMLHttpRequest();
 	var username = studentId.value;
+	USERNAME = username;
 	//studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
 	document.getElementById("testing").innerHTML = "sending: "+ studentId.value;
 	var url = "username="+username;
@@ -120,31 +122,23 @@ function edit(currQuestion) {
 }
 function confirmChange() {
 	// TODO: Ajax send grades to db
-	var commentTable, row = "", column = "", comment = "", grade = "", maxGrade = "", studentInput = "", url = "",
-			xmhlObj = new XMLHttpRequest(), phpFile = "", test="";
-	commentTable = document.getElementById("tableBody");
-	for(i in sample) {
-		test += sample[i].autoComments + '/';
-		test += sample[i].grade + '/';
-		test += sample[i].maxGrade + "/";
-	}
-	document.getElementById("testing").innerHTML = test; //+ "<br>";
-	/*	phpFile = "addCommentsCurl.php";
-		comment = sample[callingId].autoComments;
-		grade = sample[callingId].grade;
-		maxGrade = sample[callingId].maxGrade;
-		studentInput = sample[callingId].studentInput;
- 		url = "comment="+comment+"&grade="+grade+"&maxGrade="+maxGrade+"&studentInput="+studentInput;
-		xmhlObj.open("POST", phpFile, true);
-		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
-		xmhlObj.onreadystatechange = function() {
-		if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
-			var return_data = xmhlObj.responseText;
-			document.getElementById("testing").innerHTML = return_data;
-			}
+		var studentInput, comments, grade, maxGrade, username;
+		for(var i in GLOBAL_JSON) {
+			var phpFile = "addCommentsCurl.php";
+			var xmhlObj = new XMLHttpRequest();
+			studentInput = GLOBAL_JSON[i].studentInput;
+			comments = GLOBAL_JSON[i].comments;
+			grade = GLOBAL_JSON[i].pointsGiven;
+			maxGrade = GLOBAL_JSON[i].maxPoints;
+			username = USERNAME;
+			var url = "comment="+comments+"&grade="+grade+"&maxGrade="+maxGrade+"&studentInput="+studentInput+"&username="+username;
+			xmhlObj.open("POST", phpFile, true);
+			xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
+			xmhlObj.onreadystatechange = function() {
+			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {
+
 		}
-		xmhlObj.send(url); //Send request
-		//document.getElementById("testing").innerHTML = url;*/
+		xmhlObj.send(url);
 }
 function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
@@ -194,7 +188,7 @@ window.onload = function() {
 				<div id="buttonEdit"></div>
 		</div>
 		<div class="column" id="studentInput" style="background-color:#fff">
-			<!--Dropdown to select student who's test to edit-->
+			<!-- Dropdown to select student whos test to edit-->
 			<select id="studentSelect" onChange="ajaxGetRequest(this)" required>
 			</select>
 			<p id="testing"></p>
@@ -203,7 +197,6 @@ window.onload = function() {
 				<thead>
 					<tr>
 							<th>Question #</th>
-						<!--	<th>Student's Code</th> -->
 							<th>Auto Comments</th>
 							<th>Grade</th>
 					</tr>
@@ -211,6 +204,7 @@ window.onload = function() {
 				<tbody id="tableBody"></tbody>
 			</table><br>
 			<button onclick="confirmChange()">Publish Grades</button>
+			<h2>
 		</div>
 	</div>
 
