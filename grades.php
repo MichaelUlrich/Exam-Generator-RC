@@ -46,7 +46,7 @@
 	}
 	function getGrade() {
 		var totalGrade = 0, maxGrade = 0, scaledGrade = 0;
-		for(var i in sample) {
+		for(var i in GLOBAL_JSON) {
 			totalGrade += parseInt(GLOBAL_JSON[i].grade,10);
 			maxGrade += parseInt(GLOBAL_JSON[i].maxGrade,10);
 		}
