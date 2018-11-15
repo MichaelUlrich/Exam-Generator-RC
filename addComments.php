@@ -146,7 +146,7 @@ function getStudents() {
 	xmhlObj.onreadystatechange = function() {
 	if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 			test = xmhlObj.responseText;
-			document.getElementById("testing").innerHTML = "recieved: " + JSON.stringify(test);
+			document.getElementById("testing").innerHTML = "recieved: " + test;
 			drawStudentSelect(test);
 		}
 	}
@@ -155,15 +155,15 @@ function getStudents() {
 }
 function drawStudentSelect(studentArr) {
 	//var studentArr = getStudents();
-	var studentJSON = JSON.stringify(studentArr);
+	//var studentJSON = JSON.stringify(studentArr);
 	//document.getElementById("testing").innerHTML = //studentArr;
-	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
+/*	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
 	for(var i = 0; i < studentJSON.length; i++) {
 		optionText += '<option value="'+studentJSON[i].username+'"onChange="ajaxGetRequest('+studentJSON[i].username+')">'+studentJSON[i].username+'</option>';
 	}
 	selectDiv.innerHTML = optionText;
-}
+}*/
 window.onload = function() {
 	getStudents();
 }
