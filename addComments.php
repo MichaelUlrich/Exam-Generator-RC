@@ -71,7 +71,7 @@ function ajaxGetRequest(student) {
 	var xmhlObj = new XMLHttpRequest();
 	studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
 	var url = "username="+studentId;
-	var responseText, responseJSON;
+	var responseText="", responseJSON;
 	xmhlObj.open("POST", phpFile, true);
 	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 	xmhlObj.onreadystatechange = function() {
@@ -167,7 +167,7 @@ function drawStudentSelect(studentArr) {
 	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
   for(var i = 0; i < studentJSON.length; i++) {
-		optionText += '<option value="'+studentJSON[i].username+'"onChange="ajaxGetRequest('+studentJSON[i].username+')">'+studentJSON[i].username+'</option>';
+		optionText += '<option value="'+studentJSON[i].username'>'+studentJSON[i].username+'</option>';
 	}
 	selectDiv.innerHTML = optionText;
 }
