@@ -118,6 +118,8 @@
 			</table>
 		</div>
 		<div class="column" style="background-color:#a1">
+			<h2>Grade:</h2>
+			<h2 id="studentGrade"></h2>
 			<h2>Comments and Points</h2>
 			<table id="gradeTable">
 				<thead>
@@ -132,7 +134,5 @@
 		</div>
 	</div>
 	<div>
-		<h2>Grade:</h2>
-		<h2 id="studentGrade"></h2>
 	<div>
 </html>
