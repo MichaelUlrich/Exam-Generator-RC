@@ -4,5 +4,5 @@
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $result = curl_exec($ch);
-    echo json_encode($result);
+    echo $result;
 ?>
