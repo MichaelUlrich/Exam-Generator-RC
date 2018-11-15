@@ -146,7 +146,7 @@ function getStudents() {
 	xmhlObj.onreadystatechange = function() {
 	if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 			test = xmhlObj.responseText;
-			document.getElementById("testing").innerHTML = "recieved: " + test;
+			document.getElementById("testing").innerHTML = "recieved: " + JSON.stringify(test);
 			drawStudentSelect(test);
 		}
 	}
