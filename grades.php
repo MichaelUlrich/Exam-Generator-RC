@@ -14,11 +14,6 @@
 		//th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 	</style>
 	<script>
-	/*var sample = [{"studentInput":"input", "autoComments":"Missing Function name, Wrong Return Type", "grade":"50", "maxGrade":"100"},
-						{"studentInput":"input2", "autoComments":"autoComment2", "grade":"90", "maxGrade":"95"},
-						{"studentInput":"input3", "autoComments":"autoComment3", "grade":"60", "maxGrade":"100"},
-						{"studentInput":"input4", "autoComments":"autoComment4", "grade":"70", "maxGrade":"100"},
-						{"studentInput":"input5", "autoComments":"autoComment5", "grade":"0", "maxGrade":"100"}];*/
 	var GLOBAL_JSON;
 	function ajaxGetRequest() {
 		var username = "<?php echo $_SESSION['username']?>";
@@ -33,13 +28,13 @@
 			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 				text = xmhlObj.responseText; //Returns student input for specific UCID
 				//document.getElementById("nameTesting").innerHTML = text;
-				if(!text) {
-					document.getElementById("rowDiv").innerHTML = "<h1>No Grades Available Yet</h2>";
-				} else {
+			//	if(!text) {
+			//		document.getElementById("rowDiv").innerHTML = "<h1>No Grades Available Yet</h2>";
+			//	} else {
 					GLOBAL_JSON = "";
 					GLOBAL_JSON = JSON.parse(text);
 					drawComments();
-				}
+			//	}
 			}
 		}
 		xmhlObj.send(url);
@@ -62,11 +57,11 @@
 					//confirmTd, confirmText;
 		var gradeTableBody = document.getElementById("gradeTableBody");
 		var codeTableBody = document.getElementById("codeTableBody");
-		//tableBody.innerHTML ="";
+
 		for(var i in GLOBAL_JSON) {
-			//document.getElementById("codeTableBody").innerHTML = "test"
+
 			intI = parseInt(i, 10);
-			//document.getElementById("test").innerHTML = i;
+
 			commentTr = document.createElement("tr");
 			codeTr = document.createElement("tr");
 
@@ -87,19 +82,13 @@
 			gradeTd = document.createElement("td");
 			gradeText = document.createTextNode(GLOBAL_JSON[i].grade+'/'+GLOBAL_JSON[i].maxGrade);
 			gradeTd.appendChild(gradeText);
-		//	editTd = document.createElement("td");
-		//	editTd.innerHTML = '<div class="text-center" ><input type="button" value="Edit" onClick="drawTeacherInput('+i+')" id="'+i+'"></div>';
-		//	confirmTd = document.createElement("td");
-		//	confirmTd.innerHTML = '<div class="text-center" ><input type="button" value="Confirm" onClick="confirmChange('+i+')" id=""></div>';
-			commentTr.appendChild(gradeIdTd);
-			commentTr.appendChild(commentTd);
-			commentTr.appendChild(gradeTd);
-			codeTr.appendChild(codeIdTd);
-			codeTr.appendChild(inputTd);
-		//	tr.appendChild(editTd);
-		//	tr.appendChild(confirmTd);
-			codeTableBody.appendChild(codeTr)
-			gradeTableBody.appendChild(commentTr);
+		commentTr.appendChild(gradeIdTd);
+		commentTr.appendChild(commentTd);
+		commentTr.appendChild(gradeTd);
+		codeTr.appendChild(codeIdTd);
+		codeTr.appendChild(inputTd);
+		codeTableBody.appendChild(codeTr)
+		gradeTableBody.appendChild(commentTr);
 		}
 	}
 	function goToHomepage() {
