@@ -71,7 +71,7 @@ function ajaxGetRequest(student) {
 	var xmhlObj = new XMLHttpRequest();
 	var username = studentId.value;
 	//studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
-	document.getElementById("testing").innerHTML = "sending: "+ studentId;
+	document.getElementById("testing").innerHTML = "sending: "+ studentId.value;
 	var url = "username="+username;
 //	document.getElementById("testing").innerHTML = url;
 	var text, responseJSON;
