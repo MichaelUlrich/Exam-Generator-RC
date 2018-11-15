@@ -26,7 +26,7 @@ accessing -->
 </style>
 </head>
 <body>
-	<h2> Temporary Student  Homepage </h2>
+	<h2> Student  Homepage </h2>
 	<button class="block" onclick="window.location.href='test.php'"> Take Test </button><br>
 	<button class="block" onclick="window.location.href='grades.php'"> View Grades and Comments </button><br>
 </body>
