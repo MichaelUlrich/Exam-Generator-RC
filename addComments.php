@@ -137,7 +137,7 @@ function confirmChange() {
 			xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 			xmhlObj.onreadystatechange = function() {
 				if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {
-					document.getElementById("testing").innerHTML = "Student's Test is now Published";
+					document.getElementById("isPublished").innerHTML = "Student's Test is now Published";
 				}
 				xmhlObj.send(url);
 			}
