@@ -146,7 +146,7 @@ function getStudents() {
 	xmhlObj.onreadystatechange = function() {
 	if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 			test = xmhlObj.responseText;
-			//document.getElementById("testing").innerHTML = test;
+			document.getElementById("testing").innerHTML = "recieved: " + test;
 			return test; //Returns UCIDs
 		}
 	}
@@ -155,8 +155,8 @@ function getStudents() {
 }
 function drawStudentSelect() {
 	var studentArr = getStudents();
-	JSON.stringify(studentArr);
-	document.getElementById("testing").innerHTML = studentArr[0];
+	var studentJSON = JSON.stringify(studentArr);
+	document.getElementById("testing").innerHTML = studentJSON;
 	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
 	for(var i = 0; i < studentArr.length; i++) {
