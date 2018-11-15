@@ -69,9 +69,10 @@ function ajaxGetRequest(student) {
 	var studentId = document.getElementById(student.id);
 	var phpFile = "addCommentsGetCurl.php";
 	var xmhlObj = new XMLHttpRequest();
-	studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
-	document.getElementById("testing").innerHTML = "sending: "+studentId;
-	var url = "username="+studentId;
+	var username = studentId.value;
+	//studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
+	document.getElementById("testing").innerHTML = "sending: "+ username;
+	var url = "username="+username;
 	var text, responseJSON;
 	xmhlObj.open("POST", phpFile, true);
 	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
