@@ -71,7 +71,7 @@ function ajaxGetRequest(student) {
 	var xmhlObj = new XMLHttpRequest();
 	//studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
 	var url = "username="+student;
-	var responseText = "", responseJSON;
+	var responseText = "l", responseJSON;
 	xmhlObj.open("POST", phpFile, true);
 	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 	xmhlObj.onreadystatechange = function() {
@@ -80,6 +80,7 @@ function ajaxGetRequest(student) {
 		}
 	}
 	xmhlObj.send(url);
+	document.getElementById("nameTesting").innerHTML = student
 	document.getElementById("testing").innerHTML = responseText;
 	responseJSON = JSON.parse(responseText);
 	//drawAutoComments(studentJSON);
@@ -188,6 +189,7 @@ window.onload = function() {
 			<select id="studentSelect" onChange="ajaxGetRequest(this)" required>
 			</select>
 			<p id="testing"></p>
+			<p id="nameTesting"></p>
 			<table id="studentTable">
 				<thead>
 					<tr>
