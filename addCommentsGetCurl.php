@@ -1,8 +1,10 @@
 <?php
 // TODO: PHP file to get auto-grader comments for review
-  $ch = curl_init(/*"https://web.njit.edu/~bkw2/getExam.php"*/);
+  $testData = array('username' => $_POST['username']);//, 'username' => $_POST['username'])
+  $ch = curl_init("https://web.njit.edu/~bkw2/getQuestionsByUser.php");
     curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $testData);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $result = curl_exec($ch);
-    echo json_encod($result);
+    echo $result;
 ?>
