@@ -83,8 +83,8 @@ function ajaxGetRequest(student) {
 	xmhlObj.send(url);
 	document.getElementById("nameTesting").innerHTML = studentId
 	document.getElementById("testing").innerHTML = responseText;
-	responseJSON = JSON.parse(responseText);
-	document.getElementById("testing").innerHTML = responseJSON;
+	//responseJSON = JSON.parse(responseText);
+	//document.getElementById("testing").innerHTML = responseJSON;
 	//drawAutoComments(studentJSON);
 }
 function drawTeacherInput(currQuestion, studentJSON) {
