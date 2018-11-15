@@ -73,7 +73,7 @@ function ajaxGetRequest(student) {
 	var username = studentId.value;
 	USERNAME = username;
 	//studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
-	document.getElementById("testing").innerHTML = "sending: "+ studentId.value;
+	//document.getElementById("testing").innerHTML = "sending: "+ studentId.value;
 	var url = "username="+username;
 //	document.getElementById("testing").innerHTML = url;
 	var text, responseJSON;
@@ -89,12 +89,7 @@ function ajaxGetRequest(student) {
 		drawAutoComments();
 		}
 	}
-	xmhlObj.send(url);
-	//document.getElementById("nameTesting").innerHTML = studentId
-	//document.getElementById("testing").innerHTML = responseText;
-	//responseJSON = JSON.parse(responseText);
-	//document.getElementById("testing").innerHTML = responseJSON;
-	//drawAutoComments(GLOBAL_JSON);
+	xmhlObj.send(url);;
 }
 function drawTeacherInput(currQuestion) {
 	var teacherDiv = document.getElementById("teacherInput");
@@ -122,9 +117,9 @@ function edit(currQuestion) {
 }
 function confirmChange() {
 	// TODO: Ajax send grades to db
-		var studentInput, comments, grade, maxGrade, username;
+		var studentInput, comments, grade, maxGrade, username, phpFile;
 		for(var i = 0; i < GLOBAL_JSON.length; i++){
-			var phpFile = "addCommentsCurl.php";
+			phpFile = "addCommentsCurl.php";
 			var xmhlObj = new XMLHttpRequest();
 			studentInput = GLOBAL_JSON[i].studentInput;
 			comments = GLOBAL_JSON[i].comments;
@@ -132,15 +127,14 @@ function confirmChange() {
 			maxGrade = GLOBAL_JSON[i].maxPoints;
 			username = USERNAME;
 			var url = "comment="+comments+"&grade="+grade+"&maxGrade="+maxGrade+"&studentInput="+studentInput+"&username="+username;
-			document.getElementById("isPublished").innerHTML = url;
 			xmhlObj.open("POST", phpFile, true);
 			xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 			xmhlObj.onreadystatechange = function() {
 				if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {
 					document.getElementById("isPublished").innerHTML = "Student's Test is now Published";
 				}
-				xmhlObj.send(url);
 			}
+			xmhlObj.send(url);
 		}
 		//document.getElementById("testing").innerHTML = "Student's Test is now Published";*/
 }
@@ -168,7 +162,7 @@ function getStudents() {
 function drawStudentSelect(studentArr) {
 	//var studentArr = getStudents();
 	var studentJSON = JSON.parse(studentArr);
-	document.getElementById("testing").innerHTML = studentJSON[0].username+'/'+studentJSON[1].username;//studentArr;
+	//document.getElementById("testing").innerHTML = studentJSON[0].username+'/'+studentJSON[1].username;//studentArr;
 	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
   for(var i = 0; i < studentJSON.length; i++) {
