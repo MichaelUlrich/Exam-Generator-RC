@@ -48,9 +48,9 @@
 			generateURL(formText, i);
 			ajaxRequest();
 		}
-		document.getElementById("testing").innerHTML = "url is: "+URL;
+		//document.getElementById("testing").innerHTML = "url is: "+URL;
 		//ajaxRequest();
-		document.getElementById("studentInput").innerHTML = testingText;
+		//document.getElementById("studentInput").innerHTML = testingText;
 		document.getElementById("submitedText").innerHTML = "Your Test has been Submitted"; //Testing
 		returnDiv.innerHTML = '<button onclick="goToHomepage()">Return to Homepage</button>';
 	}
@@ -96,7 +96,7 @@
 				USERNAME += xmhlObj.responseText;
 				//document.getElementById("testing").innerHTML = return_data;
 			}
-			document.getElementById("testing2").innerHTML = "server output: "+USERNAME;
+			//document.getElementById("testing2").innerHTML = "server output: "+USERNAME;
 		}
 		xmhlObj.send(URL); //Send request
 		//document.getElementById("testing").innerHTML = testingText;
@@ -121,7 +121,6 @@
 </script>
 <body>
 	<button onClick="goToHomepage()">REMOVE-Return to Homepage</button>
-	<h1> ONLY WANT ONE BUTTON </h1>
 	<h2> Carefully read each question. Hit Submit for Each Question.  Good Luck. </h2>
 	<p> Only click submit when you code is 100% finished </p>
 	<p id="studentInput"></p>
