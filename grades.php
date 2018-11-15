@@ -48,7 +48,7 @@
 		scaledGrade = totalGrade/maxGrade;
 		scaledGrade = scaledGrade * 100;
 		scaledGrade = scaledGrade.toFixed(0);
-		if(scaledGrade == "NaN" || scaledGrade = null) {scaledGrade = "";}
+	//	if(scaledGrade == "NaN" || scaledGrade = null) {scaledGrade = "";}
 		document.getElementById("studentGrade").innerHTML = scaledGrade + '%';
 	}
 	function drawComments() {
