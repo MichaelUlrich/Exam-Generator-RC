@@ -162,8 +162,8 @@ function drawStudentSelect(studentArr) {
 	for(var i = 0; i < studentJSON.length; i++) {
 		optionText += '<option value="'+studentJSON[i].username+'"onChange="ajaxGetRequest('+studentJSON[i].username+')">'+studentJSON[i].username+'</option>';
 	}
-	selectDiv.innerHTML = optionText;
-}*/
+	selectDiv.innerHTML = optionText;*/
+}
 window.onload = function() {
 	getStudents();
 }
