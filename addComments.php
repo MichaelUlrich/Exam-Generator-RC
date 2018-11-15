@@ -80,8 +80,9 @@ function ajaxGetRequest(student) {
 		}
 	}
 	xmhlObj.send(url);
+	document.getElementById("testing").innerHTML = studentInput;
 	responseJSON = JSON.parse(studentInput);
-	drawAutoComments(studentJSON);
+	//drawAutoComments(studentJSON);
 }
 function drawTeacherInput(currQuestion, studentJSON) {
 	var teacherDiv = document.getElementById("teacherInput");
