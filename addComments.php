@@ -132,7 +132,7 @@ function confirmChange() {
 			maxGrade = GLOBAL_JSON[i].maxPoints;
 			username = USERNAME;
 			var url = "comment="+comments+"&grade="+grade+"&maxGrade="+maxGrade+"&studentInput="+studentInput+"&username="+username;
-			document.getElementById("testing").innerHTML = url;
+			document.getElementById("isPublished").innerHTML = url;
 			xmhlObj.open("POST", phpFile, true);
 			xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 			xmhlObj.onreadystatechange = function() {
@@ -208,7 +208,7 @@ window.onload = function() {
 				<tbody id="tableBody"></tbody>
 			</table><br>
 			<button onclick="confirmChange()">Publish Grades</button>
-			<h2 id="isPublished"></h2>
+			<h2 id="isPublished">test</h2>
 		</div>
 	</div>
 </body>
