@@ -118,7 +118,7 @@ function edit(currQuestion) {
 function confirmChange() {
 	// TODO: Ajax send grades to db
 		var studentInput, comments, grade, maxGrade, username, phpFile;
-		for(var i = 0; i < GLOBAL_JSON.length; i++){
+		for(var i in GLOBAL_JSON){
 			phpFile = "addCommentsCurl.php";
 			var xmhlObj = new XMLHttpRequest();
 			studentInput = GLOBAL_JSON[i].studentInput;
