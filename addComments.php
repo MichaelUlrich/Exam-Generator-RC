@@ -76,12 +76,12 @@ function ajaxGetRequest(student) {
 	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 	xmhlObj.onreadystatechange = function() {
 	if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
-		studentInput = xmhlObj.responseText; //Returns student input for specific UCID
+		responseText = xmhlObj.responseText; //Returns student input for specific UCID
 		}
 	}
 	xmhlObj.send(url);
-	document.getElementById("testing").innerHTML = studentInput;
-	responseJSON = JSON.parse(studentInput);
+	document.getElementById("testing").innerHTML = responseText;
+	responseJSON = JSON.parse(responseText);
 	//drawAutoComments(studentJSON);
 }
 function drawTeacherInput(currQuestion, studentJSON) {
