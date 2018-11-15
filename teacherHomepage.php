@@ -26,10 +26,10 @@ accessing -->
 </style>
 </head>
 <body>
-	<h2>  Teacher Homepage </h2>
+	<h2>Teacher Homepage</h2>
 	<button class="block" onclick="window.location.href='addQuestions.php'"> Add Questions </button><br>
 	<button class="block" onclick="window.location.href='selectQuestions.php'"> Select Questions </button><br>
-	<button class="block" onclick="window.location.href='test.php'"> Review Test[REMOVE AFTER TESTING] </button><br>
+	<!--<button class="block" onclick="window.location.href='test.php'"> Review Test[REMOVE AFTER TESTING] </button><br>-->
 	<button class="block" onclick="window.location.href='addComments.php'"> Add Comments/Grades </button><br>
 </body>
 </html>
