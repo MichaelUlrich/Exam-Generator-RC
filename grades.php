@@ -90,6 +90,7 @@
 		codeTableBody.appendChild(codeTr)
 		gradeTableBody.appendChild(commentTr);
 		}
+		getGrade();
 	}
 	function goToHomepage() {
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/studentHomepage.php";
