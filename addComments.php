@@ -147,26 +147,25 @@ function getStudents() {
 	if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 			test = xmhlObj.responseText;
 			document.getElementById("testing").innerHTML = "recieved: " + test;
-			return test; //Returns UCIDs
+			drawStudentSelect(test);
 		}
 	}
 	xmhlObj.send();
 	//return [{"username":"meu3"}, {"username":"bk95"}]; //Testing variable
 }
-function drawStudentSelect() {
-	var studentArr = getStudents();
+function drawStudentSelect(studentArr) {
+	//var studentArr = getStudents();
 	var studentJSON = JSON.stringify(studentArr);
 	document.getElementById("testing").innerHTML = studentJSON;
 	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
-	for(var i = 0; i < studentArr.length; i++) {
-		optionText += '<option value="'+studentArr[i].username+'"onChange="ajaxGetRequest('+studentArr[i].username+')">'+studentArr[i].username+'</option>';
+	for(var i = 0; i < studentJSON.length; i++) {
+		optionText += '<option value="'+studentJSON[i].username+'"onChange="ajaxGetRequest('+studentJSON[i].username+')">'+studentJSON[i].username+'</option>';
 	}
 	selectDiv.innerHTML = optionText;
 }
 window.onload = function() {
 	getStudents();
-	drawStudentSelect();
 }
 </script>
 </head>
