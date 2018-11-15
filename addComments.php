@@ -165,6 +165,7 @@ function drawStudentSelect() {
 	selectDiv.innerHTML = optionText;
 }
 window.onload = function() {
+	getStudents();
 	drawStudentSelect();
 }
 </script>
