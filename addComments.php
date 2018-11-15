@@ -132,7 +132,8 @@ function confirmChange() {
 			maxGrade = GLOBAL_JSON[i].maxPoints;
 			username = USERNAME;
 			var url = "comment="+comments+"&grade="+grade+"&maxGrade="+maxGrade+"&studentInput="+studentInput+"&username="+username;
-			xmhlObj.open("POST", phpFile, true);
+			document.getElementById("testing").innerHTML = url;
+		/*	xmhlObj.open("POST", phpFile, true);
 			xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 			xmhlObj.onreadystatechange = function() {
 				if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {
@@ -141,7 +142,7 @@ function confirmChange() {
 				xmhlObj.send(url);
 			}
 		}
-		//document.getElementById("testing").innerHTML = "Student's Test is now Published";
+		//document.getElementById("testing").innerHTML = "Student's Test is now Published";*/
 }
 function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
