@@ -140,11 +140,14 @@ function getStudents() {
 	var students = "";
 	var phpFile = "addCommentsGetUsers.php";
 	var xmhlObj = new XMLHttpRequest();
+	var test = ""
 	xmhlObj.open("POST", phpFile, true);
 	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 	xmhlObj.onreadystatechange = function() {
 	if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
-			return xmhlObj.responseText; //Returns UCIDs
+			test = xmhlObj.responseText;
+			document.getElementById("testing").innerHTML = test;
+			return test; //Returns UCIDs
 		}
 	}
 	xmhlObj.send();
