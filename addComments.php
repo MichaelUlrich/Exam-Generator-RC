@@ -133,6 +133,7 @@ function confirmChange() {
 			username = USERNAME;
 			var url = "comment="+comments+"&grade="+grade+"&maxGrade="+maxGrade+"&studentInput="+studentInput+"&username="+username;
 			document.getElementById("testing").innerHTML = url;
+		}
 		/*	xmhlObj.open("POST", phpFile, true);
 			xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 			xmhlObj.onreadystatechange = function() {
