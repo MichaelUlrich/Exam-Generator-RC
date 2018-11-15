@@ -15,11 +15,11 @@
 	//th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 </style>
 <script>
-var sample = [{"studentInput":"input \n testCode", "autoComments":"Missing Function name, Wrong Return Type", "grade":"100", "maxGrade": "100"},
+/*var sample = [{"studentInput":"input \n testCode", "autoComments":"Missing Function name, Wrong Return Type", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input2", "autoComments":"autoComment2", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input3", "autoComments":"autoComment3", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input4", "autoComments":"autoComment4", "grade":"100", "maxGrade": "100"},
-					{"studentInput":"input5", "autoComments":"autoComment5", "grade":"100", "maxGrade": "100"}];
+					{"studentInput":"input5", "autoComments":"autoComment5", "grade":"100", "maxGrade": "100"}];*/
 var GLOBAL_JSON;
 function drawAutoComments() {
 		var inputTd, idTd, idText, inputText, commentTd, commentText,
@@ -79,6 +79,7 @@ function ajaxGetRequest(student) {
 
 		text = xmhlObj.responseText; //Returns student input for specific UCID
 		//document.getElementById("nameTesting").innerHTML = text;
+		GLOBAL_JSON = "";
 		GLOBAL_JSON = JSON.parse(text);
 		drawAutoComments();
 		}
