@@ -154,9 +154,9 @@ function getStudents() {
 	//return [{"username":"meu3"}, {"username":"bk95"}]; //Testing variable
 }
 function drawStudentSelect() {
-	var studentArr[] = getStudents();
+	var studentArr = getStudents();
 	JSON.stringify(studentArr);
-	document.getElementById("testing").innerHTML = studentArr;
+	document.getElementById("testing").innerHTML = studentArr[0].username;
 	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
 	for(var i = 0; i < studentArr.length; i++) {
