@@ -135,10 +135,12 @@ function confirmChange() {
 			xmhlObj.open("POST", phpFile, true);
 			xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 			xmhlObj.onreadystatechange = function() {
-			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {
-
+				if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {
+					document.getElementById.innerHTML("isPublished").innerHTML = "Student's Test is now Published";
+				}
+				xmhlObj.send(url);
+			}
 		}
-		xmhlObj.send(url);
 }
 function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
@@ -188,7 +190,7 @@ window.onload = function() {
 				<div id="buttonEdit"></div>
 		</div>
 		<div class="column" id="studentInput" style="background-color:#fff">
-			<!-- Dropdown to select student whos test to edit-->
+			<!--Dropdown to select student whos test to edit-->
 			<select id="studentSelect" onChange="ajaxGetRequest(this)" required>
 			</select>
 			<p id="testing"></p>
@@ -204,10 +206,8 @@ window.onload = function() {
 				<tbody id="tableBody"></tbody>
 			</table><br>
 			<button onclick="confirmChange()">Publish Grades</button>
-			<h2>
+			<h2 id="isPublished"></h2>
 		</div>
 	</div>
-
-	<!--<p id="test">TEST</p>-->
 </body>
 </html>
