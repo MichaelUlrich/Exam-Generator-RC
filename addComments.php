@@ -131,12 +131,11 @@ function confirmChange() {
 			xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 			xmhlObj.onreadystatechange = function() {
 				if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {
-					document.getElementById("isPublished").innerHTML = "Student's Test is now Published";
+					document.getElementById("isPublished").innerHTML = xmhlObj.responseText;
 				}
 			}
 			xmhlObj.send(url);
 		}
-		//document.getElementById("testing").innerHTML = "Student's Test is now Published";*/
 }
 function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
