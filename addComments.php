@@ -122,7 +122,7 @@ function edit(currQuestion) {
 }
 function confirmChange() {
 	// TODO: Ajax send grades to db
-		var studentInput, comments, grade, maxGrade, username;
+	/*	var studentInput, comments, grade, maxGrade, username;
 		for(var i = 0; i < GLOBAL_JSON.length; i++){
 			var phpFile = "addCommentsCurl.php";
 			var xmhlObj = new XMLHttpRequest();
@@ -140,7 +140,8 @@ function confirmChange() {
 				}
 				xmhlObj.send(url);
 			}
-		}
+		}*/
+		document.getElementById.innerHTML("testing").innerHTML = "Student's Test is now Published";
 }
 function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
