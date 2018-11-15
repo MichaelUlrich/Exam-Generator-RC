@@ -31,6 +31,7 @@
 			//	if(!text) {
 			//		document.getElementById("rowDiv").innerHTML = "<h1>No Grades Available Yet</h2>";
 			//	} else {
+					document.getElementById("testing").innerHTML = text;
 					GLOBAL_JSON = "";
 					GLOBAL_JSON = JSON.parse(text);
 					drawComments();
@@ -105,6 +106,7 @@
 	</div>
 	<h2>Grades and Comments</h2>
 	<div id="rowDiv" class="row">
+		<p id="testing"></p>
 		<div class="column" style="background-color:#fff">
 			<h2>Student Input</h2>
 			<table id="codeTable">
