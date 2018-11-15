@@ -156,7 +156,7 @@ function getStudents() {
 function drawStudentSelect(studentArr) {
 	//var studentArr = getStudents();
 	var studentJSON = JSON.stringify(studentArr);
-	document.getElementById("testing").innerHTML = studentArr;
+	//document.getElementById("testing").innerHTML = //studentArr;
 	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
 	for(var i = 0; i < studentJSON.length; i++) {
