@@ -201,7 +201,7 @@ window.onload = function() {
 				<tbody id="tableBody"></tbody>
 			</table><br>
 			<button onclick="confirmChange()">Publish Grades</button>
-			<h2 id="isPublished">test</h2>
+			<h2 id="isPublished"></h2>
 		</div>
 	</div>
 </body>
