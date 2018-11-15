@@ -66,12 +66,12 @@ function ajaxGetRequest(student) {
 	/* TODO: Get grades from db
 		Get UCID -> cURL graded DB w/UCID -> return&print
 	*/
-	//var studentId = document.getElementById(student.id);
+	var studentId = document.getElementById(student.id);
 	var phpFile = "addCommentsGetCurl.php";
 	var xmhlObj = new XMLHttpRequest();
-	//studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
-	var url = "username="+student;
-	var responseText = "l", responseJSON;
+	studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
+	var url = "username="+studentId;
+	var responseText = "no response", responseJSON;
 	xmhlObj.open("POST", phpFile, true);
 	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 	xmhlObj.onreadystatechange = function() {
@@ -80,7 +80,7 @@ function ajaxGetRequest(student) {
 		}
 	}
 	xmhlObj.send(url);
-	document.getElementById("nameTesting").innerHTML = student
+	document.getElementById("nameTesting").innerHTML = studentId
 	document.getElementById("testing").innerHTML = responseText;
 	responseJSON = JSON.parse(responseText);
 	//drawAutoComments(studentJSON);
