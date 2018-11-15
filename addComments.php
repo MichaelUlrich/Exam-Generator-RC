@@ -73,6 +73,7 @@ function ajaxGetRequest(student) {
 	//studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
 	document.getElementById("testing").innerHTML = "sending: "+ username;
 	var url = "username="+username;
+	document.getElementById("testing").innerHTML = url;
 	var text, responseJSON;
 	xmhlObj.open("POST", phpFile, true);
 	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
