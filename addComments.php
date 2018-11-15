@@ -20,15 +20,15 @@ var sample = [{"studentInput":"input \n testCode", "autoComments":"Missing Funct
 					{"studentInput":"input3", "autoComments":"autoComment3", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input4", "autoComments":"autoComment4", "grade":"100", "maxGrade": "100"},
 					{"studentInput":"input5", "autoComments":"autoComment5", "grade":"100", "maxGrade": "100"}];
-
-function drawAutoComments(studentJSON) {
+var GLOBAL_JSON;
+function drawAutoComments() {
 		var inputTd, idTd, idText, inputText, commentTd, commentText,
 					gradeTd, gradeText, tr, tableBody, intI, editTd, editText,
 					confirmTd, confirmText, publishDiv, studentDiv;
 	//	var studentJSON = JSON.parse(studentInput);
 		tableBody = document.getElementById("tableBody");
 		tableBody.innerHTML =""
-		for(var i in studentJSON) {
+		for(var i in GLOBAL_JSON) {
 			intI = parseInt(i, 10);
 			//document.getElementById("test").innerHTML = i;
 			tr = document.createElement("tr");
@@ -39,13 +39,13 @@ function drawAutoComments(studentJSON) {
 			//inputText = document.createTextNode(sample[i].studentInput);
 			//inputTd.appendChild(inputText);
 			commentTd = document.createElement("td");
-			commentText = document.createTextNode(studentJSON[i].comments);
+			commentText = document.createTextNode(GLOBAL_JSON[i].comments);
 			commentTd.appendChild(commentText);
 			gradeTd = document.createElement("td");
-			gradeText = document.createTextNode(studentJSON[i].pointsGiven+'/'+studentJSON[i].maxPoints);
+			gradeText = document.createTextNode(GLOBAL_JSON[i].pointsGiven+'/'+GLOBAL_JSON[i].maxPoints);
 			gradeTd.appendChild(gradeText);
 			editTd = document.createElement("td");
-			editTd.innerHTML = '<div class="text-center"><input type="button" value="Edit" onClick="drawTeacherInput('+i+','+studentJSON+')" id="'+i+'"></div>';
+			editTd.innerHTML = '<div class="text-center"><input type="button" value="Edit" onClick="drawTeacherInput('+i+')" id="'+i+'"></div>';
 			//confirmTd = document.createElement("td");
 			//confirmTd.innerHTML = '<div class="text-center" ><input type="button" value="Confirm" onClick="confirmChange('+i+')" id=""></div>';
 			tr.appendChild(idTd);
@@ -79,8 +79,8 @@ function ajaxGetRequest(student) {
 
 		text = xmhlObj.responseText; //Returns student input for specific UCID
 		//document.getElementById("nameTesting").innerHTML = text;
-		responseJSON = JSON.parse(text);
-		drawAutoComments(responseJSON);
+		GLOBAL_JSON = JSON.parse(text);
+		drawAutoComments();
 		}
 	}
 	xmhlObj.send(url);
@@ -88,17 +88,17 @@ function ajaxGetRequest(student) {
 	//document.getElementById("testing").innerHTML = responseText;
 	//responseJSON = JSON.parse(responseText);
 	//document.getElementById("testing").innerHTML = responseJSON;
-	//drawAutoComments(studentJSON);
+	//drawAutoComments(GLOBAL_JSON);
 }
-function drawTeacherInput(currQuestion, studentJSON) {
+function drawTeacherInput(currQuestion) {
 	var teacherDiv = document.getElementById("teacherInput");
 	var commentDiv = document.getElementById("commentEdit");
 	var gradeDiv = document.getElementById("gradeEdit");
 	var buttonDiv = document.getElementById("buttonEdit");
 	var codeDiv = document.getElementById("codeView");
-	var comment = studentJSON[currQuestion].comments;
-	var	grade = studentJSON[currQuestion].pointsGiven;
-	var	code = studentJSON[currQuestion].studentInput;
+	var comment = GLOBAL_JSON[currQuestion].comments;
+	var	grade = GLOBAL_JSON[currQuestion].pointsGiven;
+	var	code = GLOBAL_JSON[currQuestion].studentInput;
 
 	commentDiv.innerHTML = '<h3>Edit Comment</h3><textarea id="commentEditText" maxlength="5000" cols="60" rows="10">'+comment+'</textarea><br>';
 	codeDiv.innerHTML = '<h3>View Student\'s Code</h3><textarea readonly id="codeText" maxlength="5000" cols="60" rows="10">'+code+'</textarea><br>';
@@ -109,9 +109,9 @@ function edit(currQuestion) {
 	var teacherComment = document.getElementById("commentEditText").value;
 	var teacherGrade = document.getElementById("gradeEditText").value;
 
-	studentJSON[currQuestion].comments = teacherComment;
-	studentJSON[currQuestion].pointsGiven = teacherGrade;
-	drawAutoComments(studentJSON);
+	GLOBAL_JSON[currQuestion].comments = teacherComment;
+	GLOBAL_JSON[currQuestion].pointsGiven = teacherGrade;
+	drawAutoComments();
 	//document.getElementById("test").innerHTML = "edited: " + teacherComment +'/' + teacherGrade;//sample[currQuestion].autoComments;
 }
 function confirmChange() {
