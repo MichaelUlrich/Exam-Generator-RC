@@ -76,8 +76,9 @@ function ajaxGetRequest(student) {
 	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 	xmhlObj.onreadystatechange = function() {
 	if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
-		document.getElementById("nameTesting").innerHTML = "called cURL";
+
 		text = xmhlObj.responseText; //Returns student input for specific UCID
+		document.getElementById("nameTesting").innerHTML = text;
 		responseJSON = JSON.parse(text);
 		drawAutoComments(responseJSON);
 		}
