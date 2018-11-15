@@ -17,7 +17,6 @@
 	var GLOBAL_JSON;
 	function ajaxGetRequest() {
 		var username = "<?php echo $_SESSION['username']?>";
-		var studentId = document.getElementById(student.id);
 		var phpFile = "gradesGetCurl.php";
 		var xmhlObj = new XMLHttpRequest();
 		var url = "username="+username;
