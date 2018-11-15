@@ -140,13 +140,13 @@ function getStudents() {
 	var students = "";
 	var phpFile = "addCommentsGetUsers.php";
 	var xmhlObj = new XMLHttpRequest();
-	var test = "";
+	var test;
 	xmhlObj.open("POST", phpFile, true);
 	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 	xmhlObj.onreadystatechange = function() {
 	if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 			test = xmhlObj.responseText;
-			document.getElementById("testing").innerHTML = "recieved: " + test;//[0].username;
+			//document.getElementById("testing").innerHTML = "recieved: " + test;//[0].username;
 			drawStudentSelect(test);
 		}
 	}
@@ -156,12 +156,12 @@ function getStudents() {
 function drawStudentSelect(studentArr) {
 	//var studentArr = getStudents();
 	var studentJSON = JSON.parse(studentArr);
-	document.getElementById("testing").innerHTML = studentJSON[0].username;//studentArr;
+	//document.getElementById("testing").innerHTML = studentJSON[0].username;//studentArr;
 	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
-  //for(var i = 0; i < studentArr.length; i++) {
-	//	optionText += '<option value="'+studentJSON[i].username+'"onChange="ajaxGetRequest('+studentJSON[i].username+')">'+studentJSON[i].username+'</option>';
-	//}
+  for(var i = 0; i < studentArr.length; i++) {
+		optionText += '<option value="'+studentJSON[i].username+'"onChange="ajaxGetRequest('+studentJSON[i].username+')">'+studentJSON[i].username+'</option>';
+	}
 	selectDiv.innerHTML = optionText;
 }
 window.onload = function() {
