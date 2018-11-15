@@ -98,7 +98,7 @@ function ajaxRequest() {
 				<textarea name="question" id="question" placeholder="Write your question here" rows="5" cols="50" required></textarea>
 			<p> Enter Function Name </p>
 				<input type="text" name="funcName" id="funcName" placeholder="Function Name" required><br>
-			<p> Enter Variable Names (Seperated by Spaces) </p>
+			<p> Enter Variable Names (Seperated by Commas) </p>
 				<input type="text" name="varNames" id="varNames" placeholder="Variable Names" required><br>
 			<p> Enter Test Cases (Leave Extra Inputs Blank) </p>
 				<form id="testCase" action="">
