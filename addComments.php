@@ -140,7 +140,7 @@ function getStudents() {
 	var students = "";
 	var phpFile = "addCommentsGetUsers.php";
 	var xmhlObj = new XMLHttpRequest();
-	var test = ""
+	var test = "";
 	xmhlObj.open("POST", phpFile, true);
 	xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
 	xmhlObj.onreadystatechange = function() {
