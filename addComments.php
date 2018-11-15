@@ -141,7 +141,7 @@ function confirmChange() {
 				xmhlObj.send(url);
 			}
 		}*/
-		document.getElementById.innerHTML("testing").innerHTML = "Student's Test is now Published";
+		document.getElementById("testing").innerHTML = "Student's Test is now Published";
 }
 function goToHomepage() {
 	window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/teacherHomepage.php";
