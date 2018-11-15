@@ -70,6 +70,7 @@ function ajaxGetRequest(student) {
 	var phpFile = "addCommentsGetCurl.php";
 	var xmhlObj = new XMLHttpRequest();
 	studentId = studentId.value; //ID to send to db, pull Answers w/ matching UCID
+	document.getElementById("testing").innerHTML = "sending: " studentId;
 	var url = "username="+studentId;
 	var text, responseJSON;
 	xmhlObj.open("POST", phpFile, true);
