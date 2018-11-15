@@ -30,7 +30,7 @@
 			//	if(!text) {
 			//		document.getElementById("rowDiv").innerHTML = "<h1>No Grades Available Yet</h2>";
 			//	} else {
-					document.getElementById("testing").innerHTML = "HELLO";
+					//document.getElementById("testing").innerHTML = "HELLO";
 					GLOBAL_JSON = "";
 					GLOBAL_JSON = JSON.parse(text);
 
@@ -96,7 +96,7 @@
 		window.location.href="https://web.njit.edu/~meu3/CS490/Exam-Generator-RC/studentHomepage.php";
 	}
 	window.onload = function() {
-		getGrade();
+		ajaxGetRequest();
 		//drawComments();
 	}
 </script>
