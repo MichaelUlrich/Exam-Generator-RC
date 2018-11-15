@@ -42,6 +42,7 @@
 		var testingText = "";
 		var i;
 		var returnDiv = document.getElementById("returnDiv");
+		var submitButton = document.getElementById("");
 		for(var i = 0; i < form.length; i++) {
 			formText = form.elements[i].value; //Testing
 			testingText += i;
@@ -110,7 +111,6 @@
 		xmhlObj.onreadystatechange = function() {
 			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 				return_data = xmhlObj.responseText;
-			//	document.getElementById("testing").innerHTML = return_data;
 				drawQuestions(return_data);
 			}
 		}
@@ -120,7 +120,7 @@
 
 </script>
 <body>
-	<button onClick="goToHomepage()">REMOVE-Return to Homepage</button>
+	<!--<button onClick="goToHomepage()">REMOVE-Return to Homepage</button>-->
 	<h2> Carefully read each question. Hit Submit for Each Question.  Good Luck. </h2>
 	<p> Only click submit when you code is 100% finished </p>
 	<p id="studentInput"></p>
@@ -129,7 +129,7 @@
 	<div class="row">
 		<div id="testDiv" class="column" style="background-color:#aaa;">
 			<form id="test"></form>
-			<button onclick="submit()">Submit Test</button>
+			<button id="submitButton" onclick="submit()">Submit Test</button>
 			<h3 id="submitedText"></h3>
 			<div id="returnDiv"></div>
 		</div>
