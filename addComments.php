@@ -159,7 +159,7 @@ function drawStudentSelect(studentArr) {
 	document.getElementById("testing").innerHTML = studentJSON[0].username+'/'+studentJSON[1].username;//studentArr;
 	var optionText = '<option value="" disabled selected>Select Student\'s Test to Edit</option>';//= "<option value\"\" disabled selected>Select Student</option>";
 	var selectDiv = document.getElementById("studentSelect");
-  for(var i = 0; i < studentArr.length; i++) {
+  for(var i = 0; i < studentJSON.length; i++) {
 		optionText += '<option value="'+studentJSON[i].username+'"onChange="ajaxGetRequest('+studentJSON[i].username+')">'+studentJSON[i].username+'</option>';
 	}
 	selectDiv.innerHTML = optionText;
