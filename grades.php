@@ -33,7 +33,6 @@
 					//document.getElementById("testing").innerHTML = "HELLO";
 					GLOBAL_JSON = "";
 					GLOBAL_JSON = JSON.parse(text);
-
 					drawComments();
 			//	}
 			}
@@ -43,8 +42,8 @@
 	function getGrade() {
 		var totalGrade = 0, maxGrade = 0, scaledGrade = 0;
 		for(var i in GLOBAL_JSON) {
-			totalGrade += parseInt(GLOBAL_JSON[i].grade,10);
-			maxGrade += parseInt(GLOBAL_JSON[i].maxGrade,10);
+			totalGrade += parseInt(GLOBAL_JSON[i].pointsGiven,10);
+			maxGrade += parseInt(GLOBAL_JSON[i].maxPoints,10);
 		}
 		scaledGrade = totalGrade/maxGrade;
 		scaledGrade = scaledGrade * 100;
@@ -78,10 +77,10 @@
 			inputText = document.createTextNode(GLOBAL_JSON[i].studentInput);
 			inputTd.appendChild(inputText);
 			commentTd = document.createElement("td");
-			commentText = document.createTextNode(GLOBAL_JSON[i].autoComments);
+			commentText = document.createTextNode(GLOBAL_JSON[i].comments);
 			commentTd.appendChild(commentText);
 			gradeTd = document.createElement("td");
-			gradeText = document.createTextNode(GLOBAL_JSON[i].grade+'/'+GLOBAL_JSON[i].maxGrade);
+			gradeText = document.createTextNode(GLOBAL_JSON[i].pointsGiven+'/'+GLOBAL_JSON[i].maxPoints);
 			gradeTd.appendChild(gradeText);
 		commentTr.appendChild(gradeIdTd);
 		commentTr.appendChild(commentTd);
