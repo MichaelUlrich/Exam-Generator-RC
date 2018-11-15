@@ -14,12 +14,35 @@
 		//th{left; padding: 16px;background-color: #f2f2f2; border: 1px solid grey}
 	</style>
 	<script>
-	var sample = [{"studentInput":"input", "autoComments":"Missing Function name, Wrong Return Type", "grade":"50", "maxGrade":"100"},
+	/*var sample = [{"studentInput":"input", "autoComments":"Missing Function name, Wrong Return Type", "grade":"50", "maxGrade":"100"},
 						{"studentInput":"input2", "autoComments":"autoComment2", "grade":"90", "maxGrade":"95"},
 						{"studentInput":"input3", "autoComments":"autoComment3", "grade":"60", "maxGrade":"100"},
 						{"studentInput":"input4", "autoComments":"autoComment4", "grade":"70", "maxGrade":"100"},
-						{"studentInput":"input5", "autoComments":"autoComment5", "grade":"0", "maxGrade":"100"}];
-
+						{"studentInput":"input5", "autoComments":"autoComment5", "grade":"0", "maxGrade":"100"}];*/
+	var GLOBAL_JSON;
+	function ajaxGetRequest() {
+		var username = "<?php echo $_SESSION['username']?>";
+		var studentId = document.getElementById(student.id);
+		var phpFile = "gradesGetCurl.php";
+		var xmhlObj = new XMLHttpRequest();
+		var url = "username="+username;
+		var text, responseJSON;
+		xmhlObj.open("POST", phpFile, true);
+		xmhlObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Sending URL encoded variables
+		xmhlObj.onreadystatechange = function() {
+			if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
+				text = xmhlObj.responseText; //Returns student input for specific UCID
+				//document.getElementById("nameTesting").innerHTML = text;
+				if(!text) {
+					document.getElementById("rowDiv").innerHTML = "<h1>No Grades Available Yet</h2>";
+				} else {
+					GLOBAL_JSON = "";
+					GLOBAL_JSON = JSON.parse(text);
+				}
+			}
+		}
+		xmhlObj.send(url);
+	}
 	function getGrade() {
 		var totalGrade = 0, maxGrade = 0, scaledGrade = 0;
 		for(var i in sample) {
@@ -83,15 +106,15 @@
 	}
 	window.onload = function() {
 		getGrade();
-		drawComments();
+		//drawComments();
 	}
-	</script>
+</script>
 </head>
 	<div id="banner">
 		<button id="homepageButton" name="homepageButton" onclick="goToHomepage()">Return to Homepage</button>
 	</div>
 	<h2>Grades and Comments</h2>
-	<div class="row">
+	<div id="rowDiv" class="row">
 		<div class="column" style="background-color:#fff">
 			<h2>Student Input</h2>
 			<table id="codeTable">
