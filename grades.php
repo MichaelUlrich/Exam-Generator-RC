@@ -30,9 +30,10 @@
 			//	if(!text) {
 			//		document.getElementById("rowDiv").innerHTML = "<h1>No Grades Available Yet</h2>";
 			//	} else {
-					document.getElementById("testing").innerHTML = text;
+					document.getElementById("testing").innerHTML = "HELLO";
 					GLOBAL_JSON = "";
 					GLOBAL_JSON = JSON.parse(text);
+
 					drawComments();
 			//	}
 			}
