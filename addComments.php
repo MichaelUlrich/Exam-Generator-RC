@@ -45,7 +45,7 @@ function drawAutoComments(studentJSON) {
 			gradeText = document.createTextNode(studentJSON[i].pointsGiven+'/'+studentJSON[i].maxPoints);
 			gradeTd.appendChild(gradeText);
 			editTd = document.createElement("td");
-			editTd.innerHTML = '<div class="text-center" ><input type="button" value="Edit" onClick="drawTeacherInput('+i,studentJSON+')" id="'+i+'"></div>';
+			editTd.innerHTML = '<div class="text-center"><input type="button" value="Edit" onClick="drawTeacherInput('+i+','+studentJSON+')" id="'+i+'"></div>';
 			//confirmTd = document.createElement("td");
 			//confirmTd.innerHTML = '<div class="text-center" ><input type="button" value="Confirm" onClick="confirmChange('+i+')" id=""></div>';
 			tr.appendChild(idTd);
