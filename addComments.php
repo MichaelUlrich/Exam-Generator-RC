@@ -25,7 +25,7 @@ function drawAutoComments(studentJSON) {
 		var inputTd, idTd, idText, inputText, commentTd, commentText,
 					gradeTd, gradeText, tr, tableBody, intI, editTd, editText,
 					confirmTd, confirmText, publishDiv, studentDiv;
-		var studentJSON = JSON.parse(studentInput);
+	//	var studentJSON = JSON.parse(studentInput);
 		tableBody = document.getElementById("tableBody");
 		tableBody.innerHTML =""
 		for(var i in studentJSON) {
@@ -78,7 +78,7 @@ function ajaxGetRequest(student) {
 	if(xmhlObj.readyState == 4 && xmhlObj.status == 200) {  //Conection is established and working
 
 		text = xmhlObj.responseText; //Returns student input for specific UCID
-		document.getElementById("nameTesting").innerHTML = text;
+		//document.getElementById("nameTesting").innerHTML = text;
 		responseJSON = JSON.parse(text);
 		drawAutoComments(responseJSON);
 		}
