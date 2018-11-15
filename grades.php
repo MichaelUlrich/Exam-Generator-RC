@@ -38,6 +38,7 @@
 				} else {
 					GLOBAL_JSON = "";
 					GLOBAL_JSON = JSON.parse(text);
+					drawComments();
 				}
 			}
 		}
@@ -46,8 +47,8 @@
 	function getGrade() {
 		var totalGrade = 0, maxGrade = 0, scaledGrade = 0;
 		for(var i in sample) {
-			totalGrade += parseInt(sample[i].grade,10);
-			maxGrade += parseInt(sample[i].maxGrade,10);
+			totalGrade += parseInt(GLOBAL_JSON[i].grade,10);
+			maxGrade += parseInt(GLOBAL_JSON[i].maxGrade,10);
 		}
 		scaledGrade = totalGrade/maxGrade;
 		scaledGrade = scaledGrade * 100;
@@ -62,7 +63,7 @@
 		var gradeTableBody = document.getElementById("gradeTableBody");
 		var codeTableBody = document.getElementById("codeTableBody");
 		//tableBody.innerHTML ="";
-		for(var i in sample) {
+		for(var i in GLOBAL_JSON) {
 			//document.getElementById("codeTableBody").innerHTML = "test"
 			intI = parseInt(i, 10);
 			//document.getElementById("test").innerHTML = i;
@@ -78,13 +79,13 @@
 			codeIdTd.appendChild(codeIdText);
 
 			inputTd = document.createElement("td");
-			inputText = document.createTextNode(sample[i].studentInput);
+			inputText = document.createTextNode(GLOBAL_JSON[i].studentInput);
 			inputTd.appendChild(inputText);
 			commentTd = document.createElement("td");
-			commentText = document.createTextNode(sample[i].autoComments);
+			commentText = document.createTextNode(GLOBAL_JSON[i].autoComments);
 			commentTd.appendChild(commentText);
 			gradeTd = document.createElement("td");
-			gradeText = document.createTextNode(sample[i].grade+'/'+sample[i].maxGrade);
+			gradeText = document.createTextNode(GLOBAL_JSON[i].grade+'/'+GLOBAL_JSON[i].maxGrade);
 			gradeTd.appendChild(gradeText);
 		//	editTd = document.createElement("td");
 		//	editTd.innerHTML = '<div class="text-center" ><input type="button" value="Edit" onClick="drawTeacherInput('+i+')" id="'+i+'"></div>';
