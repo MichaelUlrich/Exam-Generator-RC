@@ -29,7 +29,7 @@
 	if($resultDecoded->{'student'} == "true") {
 		$_SESSION['student'] = true;
 		$_SESSION['username'] = $user["username"];
-//		redirect("studentHomepage.php");
+//	redirect("studentHomepage.php");
 		header('Location: studentHomepage.php');
 		exit();
 	} else if($resultDecoded->{'teacher'} == "true") {
@@ -38,8 +38,8 @@
 		header('Location: teacherHomepage.php');
 		exit();
 	} else {
-//		redirect("login.html");
-	//	header('Location: login.html');
+	//redirect("login.html");
+		header('Location: login.html');
 		exit();
 //		echo '<div id="test"> Wrong Info. Try Again</div>';
 	}
