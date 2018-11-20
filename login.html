@@ -93,7 +93,7 @@
                                 if(XMLHobj.readyState == 4 && XMLHobj.status == 200) {  //Coneection is established and working
                                         document.getElementById("status").innerHTML = "Loading...";
                                         var return_data = XMLHobj.responseText;
-                                        document.getElementById("status").innerHTML = return_data;
+                                        document.getElementById("body").innerHTML = return_data;
                                 }
                         }
                         XMLHobj.send(url); //Send request
@@ -102,7 +102,7 @@
         </script>
 </head>
 <html>
-  <body>
+  <body id ="body">
     <div id="status" class="loginBox">
       <!--<h1> CS491 Login </h1>-->
         <div class="input">
@@ -110,7 +110,6 @@
             <input class="loginInput" name="username" id="username" type="text" placeholder="Enter Username"><br>
             <input class="loginInput" name="pwd" id="pwd" type="password" placeholder="Enter Password" ><br>
             <button class="btn" id="button" onClick="ajax_post_req()"> Login </button><br><br>
-            <div id="status"></div>
         </div>
     </div>
 	    <div id="test"></div>
