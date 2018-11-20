@@ -92,7 +92,7 @@
                         XMLHobj.onreadystatechange = function() {
                                 if(XMLHobj.readyState == 4 && XMLHobj.status == 200) {  //Coneection is established and working
                                         var return_data = XMLHobj.responseText;
-                                        document.getElementById("status").innerHTML = return_data;
+                                        document.getElementById("input").innerHTML = return_data;
                                 }
                         }
                         XMLHobj.send(url); //Send request
